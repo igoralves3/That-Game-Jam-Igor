@@ -1,6 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://2le3c1dfyjy6"]
+[gd_scene load_steps=4 format=3 uid="uid://2le3c1dfyjy6"]
 
 [ext_resource type="Script" uid="uid://brvyegqtasjbu" path="res://scripts/Buildings/alojamento.gd" id="1_522a5"]
+[ext_resource type="Texture2D" uid="uid://cbj30mqjibh0h" path="res://icon.svg" id="2_nbex5"]
 
-[node name="Alojamento" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ko8sl"]
+
+[node name="Alojamento" type="Area2D"]
 script = ExtResource("1_522a5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_nbex5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_ko8sl")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

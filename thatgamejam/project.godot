@@ -11,5 +11,10 @@ config_version=5
 [application]
 
 config/name="ThatGameJam"
+run/main_scene="uid://b4ty43kpbs2hv"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Global="*res://scripts/Global.gd"

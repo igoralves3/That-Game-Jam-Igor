@@ -1,0 +1,133 @@
+[gd_scene load_steps=6 format=3 uid="uid://ba7te33cdsgj4"]
+
+[ext_resource type="Script" uid="uid://csj1icabcarcv" path="res://scripts/HUD.gd" id="1_h1unm"]
+[ext_resource type="StyleBox" uid="uid://vxyt17ke6obh" path="res://HUD/new_style_box_flat.tres" id="1_jn7va"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_m4c56"]
+
+[sub_resource type="Theme" id="Theme_mfxnh"]
+
+[sub_resource type="Theme" id="Theme_pjnyh"]
+
+[node name="Hud" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_h1unm")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+material = SubResource("CanvasItemMaterial_m4c56")
+offset_right = 1151.0
+offset_bottom = 80.0
+theme = SubResource("Theme_mfxnh")
+
+[node name="PanelContainer6" type="PanelContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = ExtResource("1_jn7va")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/PanelContainer6"]
+layout_mode = 2
+text = "Buildings: 0"
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_pjnyh")
+theme_override_styles/panel = ExtResource("1_jn7va")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/PanelContainer"]
+layout_mode = 2
+text = "Wood: 0"
+
+[node name="PanelContainer2" type="PanelContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = ExtResource("1_jn7va")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/PanelContainer2"]
+layout_mode = 2
+text = "Faith: 0"
+
+[node name="PanelContainer3" type="PanelContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = ExtResource("1_jn7va")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/PanelContainer3"]
+layout_mode = 2
+text = "Supplies: 0"
+
+[node name="PanelContainer4" type="PanelContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = ExtResource("1_jn7va")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/PanelContainer4"]
+layout_mode = 2
+text = "Money: 0"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+material = SubResource("CanvasItemMaterial_m4c56")
+offset_top = 564.0
+offset_right = 1151.0
+offset_bottom = 644.0
+
+[node name="PanelContainer9" type="Button" parent="HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+action_mode = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer2/PanelContainer9"]
+layout_mode = 2
+offset_right = 227.0
+offset_bottom = 80.0
+text = "Capela"
+
+[node name="PanelContainer5" type="Button" parent="HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer2/PanelContainer5"]
+layout_mode = 2
+offset_right = 227.0
+offset_bottom = 80.0
+text = "Alojamento"
+
+[node name="PanelContainer6" type="Button" parent="HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer2/PanelContainer6"]
+layout_mode = 2
+offset_right = 227.0
+offset_bottom = 80.0
+text = "Minas"
+
+[node name="PanelContainer7" type="Button" parent="HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer2/PanelContainer7"]
+layout_mode = 2
+offset_right = 227.0
+offset_bottom = 80.0
+text = "Madeireira"
+
+[node name="PanelContainer8" type="Button" parent="HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer2/PanelContainer8"]
+layout_mode = 2
+offset_right = 227.0
+offset_bottom = 80.0
+text = "Fazenda"
+
+[connection signal="button_down" from="HBoxContainer2/PanelContainer9" to="." method="_on_panel_container_9_button_down"]
+[connection signal="button_down" from="HBoxContainer2/PanelContainer9" to="HBoxContainer2/PanelContainer9" method="verifica"]
+[connection signal="pressed" from="HBoxContainer2/PanelContainer9" to="." method="_on_panel_container_9_pressed"]
+[connection signal="pressed" from="HBoxContainer2/PanelContainer9" to="HBoxContainer2/PanelContainer9" method="_on_pressed"]
+[connection signal="pressed" from="HBoxContainer2/PanelContainer5" to="HBoxContainer2/PanelContainer5" method="_on_pressed"]
+[connection signal="pressed" from="HBoxContainer2/PanelContainer6" to="HBoxContainer2/PanelContainer6" method="_on_pressed"]
+[connection signal="pressed" from="HBoxContainer2/PanelContainer7" to="HBoxContainer2/PanelContainer7" method="_on_pressed"]
+[connection signal="pressed" from="HBoxContainer2/PanelContainer8" to="HBoxContainer2/PanelContainer8" method="_on_pressed"]
