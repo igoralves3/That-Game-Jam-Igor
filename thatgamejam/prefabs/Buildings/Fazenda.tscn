@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cy6qtr3ifo84y"]
+
+[ext_resource type="Script" uid="uid://dp5jg65c5im8q" path="res://scripts/Buildings/fazenda.gd" id="1_wn0f5"]
+
+[node name="Fazenda" type="CharacterBody2D"]
+script = ExtResource("1_wn0f5")

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://q7qr8yhx454a"]
+
+[ext_resource type="Script" uid="uid://bcwd2uor0frlc" path="res://scripts/Buildings/madeireira.gd" id="1_mwo5r"]
+
+[node name="Madeireira" type="CharacterBody2D"]
+script = ExtResource("1_mwo5r")

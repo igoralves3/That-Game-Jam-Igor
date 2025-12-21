@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ethbkulecqol"]
+
+[ext_resource type="Script" uid="uid://b4fwqdw8fvasc" path="res://scripts/Buildings/minas.gd" id="1_i1wpe"]
+
+[node name="Minas" type="CharacterBody2D"]
+script = ExtResource("1_i1wpe")
