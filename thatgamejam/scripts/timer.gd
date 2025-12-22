@@ -8,11 +8,11 @@ var turnoAtual;
 
 func _ready() -> void:
 	turnoAtual = Turno.Manha
-	
+	print('iniciou')
 
 	
-	
-
+func _physics_process(delta: float) -> void:
+	print(str(timer.time_left))
 
 func _on_timer_timeout() -> void:
 	if turnoAtual == Turno.Manha:

@@ -15,7 +15,7 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(14, 97, 1139, 97, 1139,
 navigation_polygon = SubResource("NavigationPolygon_l7207")
 
 [node name="Builder" parent="." instance=ExtResource("2_11bju")]
-position = Vector2(115, 200)
+position = Vector2(282, 327)
 
 [node name="Alojamento" parent="." instance=ExtResource("3_a34lh")]
 position = Vector2(473, 302)
