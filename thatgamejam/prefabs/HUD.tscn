@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://ba7te33cdsgj4"]
 
 [ext_resource type="Script" uid="uid://csj1icabcarcv" path="res://scripts/HUD.gd" id="1_h1unm"]
-[ext_resource type="StyleBox" uid="uid://vxyt17ke6obh" path="res://HUD/new_style_box_flat.tres" id="1_jn7va"]
+[ext_resource type="StyleBox" uid="uid://vxyt17ke6obh" path="res://Assets/HUD/new_style_box_flat.tres" id="1_jn7va"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_m4c56"]
 
@@ -16,6 +16,7 @@ script = ExtResource("1_h1unm")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 material = SubResource("CanvasItemMaterial_m4c56")
+layout_mode = 0
 offset_right = 1151.0
 offset_bottom = 80.0
 theme = SubResource("Theme_mfxnh")
@@ -68,6 +69,7 @@ text = "Money: 0"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="."]
 material = SubResource("CanvasItemMaterial_m4c56")
+layout_mode = 0
 offset_top = 564.0
 offset_right = 1151.0
 offset_bottom = 644.0

@@ -1,0 +1,231 @@
+[gd_scene load_steps=11 format=3 uid="uid://d3fefgqtdhori"]
+
+[ext_resource type="Texture2D" uid="uid://sh7ivrjv41ki" path="res://Assets/resources/UIBG.tres" id="1_eh5i7"]
+[ext_resource type="Script" uid="uid://b7vko2yn7j5nr" path="res://prefabs/UI/ui.gd" id="1_fw6kh"]
+[ext_resource type="Texture2D" uid="uid://vgteqbp4f6ww" path="res://Assets/Free Icon Pack 3.0.1 (Basic)/Currency/Ingot/64px/Gold 1st 64px.png" id="1_so3dn"]
+[ext_resource type="Texture2D" uid="uid://den0yng333q8b" path="res://Assets/resources/CounterBG.tres" id="2_fw6kh"]
+[ext_resource type="Texture2D" uid="uid://bifyd2x52kwpw" path="res://Assets/resources/ButtonBG.tres" id="4_w6nql"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l6v0m"]
+texture = ExtResource("1_eh5i7")
+texture_margin_left = 20.0
+texture_margin_right = 20.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hwdps"]
+texture = ExtResource("2_fw6kh")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fw6kh"]
+texture = ExtResource("4_w6nql")
+texture_margin_left = 12.0
+texture_margin_right = 12.0
+modulate_color = Color(0.756863, 0.756863, 0.756863, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w6nql"]
+texture = ExtResource("4_w6nql")
+texture_margin_left = 12.0
+texture_margin_right = 12.0
+expand_margin_left = 6.0
+expand_margin_top = 4.0
+expand_margin_right = 6.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wo3d2"]
+texture = ExtResource("4_w6nql")
+texture_margin_left = 12.0
+texture_margin_right = 12.0
+
+[node name="Ui" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_fw6kh")
+
+[node name="TopPanel" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 96.0
+scale = Vector2(0.998839, 1)
+theme_override_styles/panel = SubResource("StyleBoxTexture_l6v0m")
+
+[node name="MarginContainer" type="MarginContainer" parent="TopPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 16
+
+[node name="TopTab" type="HBoxContainer" parent="TopPanel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="CoinCounter" type="PanelContainer" parent="TopPanel/MarginContainer/TopTab"]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_hwdps")
+
+[node name="MarginContainer" type="MarginContainer" parent="TopPanel/MarginContainer/TopTab/CoinCounter"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+
+[node name="HBox" type="HBoxContainer" parent="TopPanel/MarginContainer/TopTab/CoinCounter/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 13
+
+[node name="TextureRect" type="TextureRect" parent="TopPanel/MarginContainer/TopTab/CoinCounter/MarginContainer/HBox"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("1_so3dn")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="TopPanel/MarginContainer/TopTab/CoinCounter/MarginContainer/HBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.639216, 0.439216, 0.227451, 1)
+theme_override_font_sizes/font_size = 20
+text = "0"
+
+[node name="WoodCounter" type="PanelContainer" parent="TopPanel/MarginContainer/TopTab"]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_hwdps")
+
+[node name="MarginContainer" type="MarginContainer" parent="TopPanel/MarginContainer/TopTab/WoodCounter"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+
+[node name="HBox" type="HBoxContainer" parent="TopPanel/MarginContainer/TopTab/WoodCounter/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 13
+
+[node name="TextureRect" type="TextureRect" parent="TopPanel/MarginContainer/TopTab/WoodCounter/MarginContainer/HBox"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("1_so3dn")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="TopPanel/MarginContainer/TopTab/WoodCounter/MarginContainer/HBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.639216, 0.439216, 0.227451, 1)
+theme_override_font_sizes/font_size = 20
+text = "0"
+
+[node name="SupplyCounter" type="PanelContainer" parent="TopPanel/MarginContainer/TopTab"]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_hwdps")
+
+[node name="MarginContainer" type="MarginContainer" parent="TopPanel/MarginContainer/TopTab/SupplyCounter"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+
+[node name="HBox" type="HBoxContainer" parent="TopPanel/MarginContainer/TopTab/SupplyCounter/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 13
+
+[node name="TextureRect" type="TextureRect" parent="TopPanel/MarginContainer/TopTab/SupplyCounter/MarginContainer/HBox"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("1_so3dn")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="TopPanel/MarginContainer/TopTab/SupplyCounter/MarginContainer/HBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.639216, 0.439216, 0.227451, 1)
+theme_override_font_sizes/font_size = 20
+text = "0"
+
+[node name="FaithCounter" type="PanelContainer" parent="TopPanel/MarginContainer/TopTab"]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_hwdps")
+
+[node name="MarginContainer" type="MarginContainer" parent="TopPanel/MarginContainer/TopTab/FaithCounter"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+
+[node name="HBox" type="HBoxContainer" parent="TopPanel/MarginContainer/TopTab/FaithCounter/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 13
+
+[node name="TextureRect" type="TextureRect" parent="TopPanel/MarginContainer/TopTab/FaithCounter/MarginContainer/HBox"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("1_so3dn")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="TopPanel/MarginContainer/TopTab/FaithCounter/MarginContainer/HBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.639216, 0.439216, 0.227451, 1)
+theme_override_font_sizes/font_size = 20
+text = "0"
+
+[node name="Buttons" type="HBoxContainer" parent="TopPanel/MarginContainer/TopTab"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 32
+alignment = 2
+
+[node name="PopCounter" type="PanelContainer" parent="TopPanel/MarginContainer/TopTab/Buttons"]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_hwdps")
+
+[node name="MarginContainer" type="MarginContainer" parent="TopPanel/MarginContainer/TopTab/Buttons/PopCounter"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+
+[node name="HBox" type="HBoxContainer" parent="TopPanel/MarginContainer/TopTab/Buttons/PopCounter/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 13
+
+[node name="TextureRect" type="TextureRect" parent="TopPanel/MarginContainer/TopTab/Buttons/PopCounter/MarginContainer/HBox"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("1_so3dn")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="TopPanel/MarginContainer/TopTab/Buttons/PopCounter/MarginContainer/HBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.639216, 0.439216, 0.227451, 1)
+theme_override_font_sizes/font_size = 20
+text = "0"
+
+[node name="ReligionLvl" type="PanelContainer" parent="TopPanel/MarginContainer/TopTab/Buttons"]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_hwdps")
+
+[node name="MarginContainer" type="MarginContainer" parent="TopPanel/MarginContainer/TopTab/Buttons/ReligionLvl"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+
+[node name="HBox" type="HBoxContainer" parent="TopPanel/MarginContainer/TopTab/Buttons/ReligionLvl/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 13
+
+[node name="TextureRect" type="TextureRect" parent="TopPanel/MarginContainer/TopTab/Buttons/ReligionLvl/MarginContainer/HBox"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("1_so3dn")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="TopPanel/MarginContainer/TopTab/Buttons/ReligionLvl/MarginContainer/HBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.639216, 0.439216, 0.227451, 1)
+theme_override_font_sizes/font_size = 20
+text = "0"
+
+[node name="Menu" type="Button" parent="TopPanel/MarginContainer/TopTab/Buttons"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/hover = SubResource("StyleBoxTexture_fw6kh")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_w6nql")
+theme_override_styles/normal = SubResource("StyleBoxTexture_wo3d2")
+text = "Menu"
+
+[connection signal="pressed" from="TopPanel/MarginContainer/TopTab/Buttons/Menu" to="." method="_on_menu_pressed"]

@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cullxet1yq1n4"]
+
+[ext_resource type="Texture2D" uid="uid://cm3jpedtr10t1" path="res://Assets/Free Icon Pack 3.0.1 (Basic)/Currency/Coin/64px/Golden Coin 2nd 64px.png" id="1_xosfr"]
+
+[node name="CoinCounter" type="HBoxContainer"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_xosfr")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "0"
