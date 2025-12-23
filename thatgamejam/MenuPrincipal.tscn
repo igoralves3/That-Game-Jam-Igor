@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfucmaamm4jhv"]
+
+[ext_resource type="Script" uid="uid://jw2m8yd0at51" path="res://scripts/menu_principal.gd" id="1_0oe1n"]
+
+[node name="MenuPrincipal" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_0oe1n")
+
+[node name="ButtonStart" type="Button" parent="."]
+layout_mode = 0
+offset_left = 524.0
+offset_top = 397.0
+offset_right = 620.0
+offset_bottom = 428.0
+scale = Vector2(3.56, 1.76)
+text = "Start Game"
+
+[node name="ButtonExit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 524.0
+offset_top = 466.0
+offset_right = 620.0
+offset_bottom = 497.0
+scale = Vector2(3.56, 1.76)
+text = "Exit Game"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 514.0
+offset_top = 69.0
+offset_right = 554.0
+offset_bottom = 92.0
+scale = Vector2(3.52, 3.56)
+text = "Nome do Jogo"
+
+[connection signal="pressed" from="ButtonStart" to="." method="_on_button_start_pressed"]
+[connection signal="pressed" from="ButtonExit" to="." method="_on_button_exit_pressed"]
