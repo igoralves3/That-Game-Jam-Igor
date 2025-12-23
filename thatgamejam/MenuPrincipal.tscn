@@ -34,5 +34,15 @@ offset_bottom = 92.0
 scale = Vector2(3.52, 3.56)
 text = "Nome do Jogo"
 
+[node name="ButtonOptions" type="Button" parent="."]
+layout_mode = 0
+offset_left = 524.0
+offset_top = 565.0
+offset_right = 620.0
+offset_bottom = 596.0
+scale = Vector2(3.56, 1.76)
+text = "Options"
+
 [connection signal="pressed" from="ButtonStart" to="." method="_on_button_start_pressed"]
 [connection signal="pressed" from="ButtonExit" to="." method="_on_button_exit_pressed"]
+[connection signal="pressed" from="ButtonOptions" to="." method="_on_button_options_pressed"]
