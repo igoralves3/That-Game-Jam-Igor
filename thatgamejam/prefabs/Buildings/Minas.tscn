@@ -7,6 +7,8 @@
 
 [node name="Minas" type="Area2D"]
 script = ExtResource("1_i1wpe")
+resource_type = "money"
+wood_cost = 200
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_a58me")
