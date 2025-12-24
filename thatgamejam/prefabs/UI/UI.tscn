@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://d3fefgqtdhori"]
+[gd_scene load_steps=12 format=3 uid="uid://d3fefgqtdhori"]
 
 [ext_resource type="Texture2D" uid="uid://sh7ivrjv41ki" path="res://Assets/resources/UIBG.tres" id="1_eh5i7"]
 [ext_resource type="Script" uid="uid://b7vko2yn7j5nr" path="res://prefabs/UI/ui.gd" id="1_fw6kh"]
 [ext_resource type="Texture2D" uid="uid://vgteqbp4f6ww" path="res://Assets/Free Icon Pack 3.0.1 (Basic)/Currency/Ingot/64px/Gold 1st 64px.png" id="1_so3dn"]
 [ext_resource type="Texture2D" uid="uid://den0yng333q8b" path="res://Assets/resources/CounterBG.tres" id="2_fw6kh"]
 [ext_resource type="Texture2D" uid="uid://bifyd2x52kwpw" path="res://Assets/resources/ButtonBG.tres" id="4_w6nql"]
+[ext_resource type="Texture2D" uid="uid://cbj30mqjibh0h" path="res://icon.svg" id="6_w6nql"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l6v0m"]
 texture = ExtResource("1_eh5i7")
@@ -230,7 +231,7 @@ text = "Menu"
 
 [node name="BottomPanel" type="PanelContainer" parent="."]
 layout_mode = 0
-offset_top = 560.0
+offset_top = 520.0
 offset_right = 1280.0
 offset_bottom = 720.0
 
@@ -280,11 +281,47 @@ size_flags_vertical = 3
 [node name="MarginContainer" type="MarginContainer" parent="BottomPanel/Controller/BaseController"]
 layout_mode = 2
 theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 32
 
 [node name="HBoxContainer" type="HBoxContainer" parent="BottomPanel/Controller/BaseController/MarginContainer"]
 layout_mode = 2
+
+[node name="TabContainer" type="TabContainer" parent="BottomPanel/Controller/BaseController/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+current_tab = 0
+all_tabs_in_front = true
+
+[node name="Upgrades" type="MarginContainer" parent="BottomPanel/Controller/BaseController/MarginContainer/HBoxContainer/TabContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+metadata/_tab_index = 0
+
+[node name="Grid" type="GridContainer" parent="BottomPanel/Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades"]
+layout_mode = 2
+
+[node name="TextureButton" type="TextureButton" parent="BottomPanel/Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
+layout_mode = 2
+texture_normal = ExtResource("6_w6nql")
+ignore_texture_size = true
+
+[node name="Constructions" type="MarginContainer" parent="BottomPanel/Controller/BaseController/MarginContainer/HBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+metadata/_tab_index = 1
+
+[node name="Grid" type="GridContainer" parent="BottomPanel/Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="BottomPanel/Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+layout_mode = 2
+text = "Upgrade"
 
 [connection signal="pressed" from="TopPanel/MarginContainer/TopTab/Buttons/Menu" to="." method="_on_menu_pressed"]
