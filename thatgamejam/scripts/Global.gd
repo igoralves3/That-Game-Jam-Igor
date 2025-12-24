@@ -18,7 +18,8 @@ func reset_game():
 	money = 0
 
 func _process(delta: float) -> void:
-	print("wood: "+ str(wood)+ " money: "+ str(money) +" supplies: "+ str(supplies))
+	pass
+	#print("wood: "+ str(wood)+ " money: "+ str(money) +" supplies: "+ str(supplies))
 
 func add_resource(type: String, amount: int):
 	

@@ -10,6 +10,8 @@ var timer: Timer
 
 func _ready() -> void:
 	timer = Timer.new()
+	timer.ignore_time_scale = false
+	timer.paused = false
 	timer.wait_time = 180
 	timer.timeout.connect(_on_timer_timeout)
 	add_child(timer)
@@ -19,8 +21,9 @@ func _ready() -> void:
 
 
 	
-func _physics_process(delta: float) -> void:
-	print(str(timer.time_left))
+func _process(delta: float) -> void:
+	#print(str(timer.time_left))
+	print(str(timer.paused))
 
 func _on_timer_timeout() -> void:
 	if turnoAtual == Turno.Manha:
@@ -46,3 +49,10 @@ func start_tick():
 		await get_tree().create_timer(tick_interval).timeout
 		if is_day:
 			emit_signal("production_tick")
+
+
+func _on_pause_pressed() -> void:
+	if timer.paused:
+		timer.paused = false
+		
+	else: timer.paused = true
