@@ -324,13 +324,7 @@ layout_mode = 2
 layout_mode = 2
 text = "Upgrade"
 
-[node name="Timer" type="Timer" parent="."]
-one_shot = true
-autostart = true
-ignore_time_scale = true
-
 [connection signal="pressed" from="TopPanel/MarginContainer/TopTab/Buttons/Menu" to="." method="_on_menu_pressed"]
 [connection signal="pressed" from="BottomPanel/Controller/TimeController/MarginContainer/HBoxContainer/Pause" to="." method="_on_pause_pressed"]
 [connection signal="pressed" from="BottomPanel/Controller/TimeController/MarginContainer/HBoxContainer/HBoxContainer/1x" to="." method="_on_x_pressed"]
 [connection signal="pressed" from="BottomPanel/Controller/TimeController/MarginContainer/HBoxContainer/HBoxContainer/2x" to="." method="_on_2x_pressed"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

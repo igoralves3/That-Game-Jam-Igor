@@ -1,5 +1,9 @@
 extends Node
 
+enum GameState {MENU, PLAYING, PAUSED}
+
+var state := GameState.MENU
+
 var total_followers = 0
 var total_buildings = 0
 var wood = 0
@@ -10,6 +14,10 @@ var money = 0
 var currentBuilding = "None"
 var currentFollower = null
 
+func start_game():
+	state = GameState.PLAYING
+	reset_game()
+
 func reset_game():
 	total_buildings = 0
 	wood = 0
@@ -17,12 +25,22 @@ func reset_game():
 	supplies = 0
 	money = 0
 
+func pause_game():
+	state = GameState.PAUSED
+
+func resume_game():
+	state = GameState.PLAYING
+
+func end_game():
+	state = GameState.MENU
+
 func _process(delta: float) -> void:
-	pass
-	#print("wood: "+ str(wood)+ " money: "+ str(money) +" supplies: "+ str(supplies))
+	
+	print("wood: "+ str(wood)+ " money: "+ str(money) +" supplies: "+ str(supplies))
 
 func add_resource(type: String, amount: int):
-	
+	if state != GameState.PLAYING:
+		return
 	match type:
 		"wood":
 			wood += amount
