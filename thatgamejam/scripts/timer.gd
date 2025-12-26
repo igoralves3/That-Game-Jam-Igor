@@ -129,12 +129,31 @@ func _change_turn() -> void:
 		is_day = false
 		day_changed_this_night = false  
 		print('noite')
+		
+		for f in get_tree().get_nodes_in_group("Followers"):
+			if f is Builder:
+				f.agent.target_position = f.global_position
+				f.velocity = Vector2.ZERO
+				f.timer.stop()
+				f.cur_state = Builder.SeguidorState.Sleeping
 	
 	elif turnoAtual == Turno.Noite:
 		turnoAtual = Turno.Manha
 		is_day = true
 		current_turn_duration = TURN_DURATION[turnoAtual]
 		print('manha')
+		
+		for f in get_tree().get_nodes_in_group("Followers"):
+			if f is Builder:
+				if f.working:
+					f.cur_state = Builder.SeguidorState.Working
+					f.agent.target_position = f.building.global_position
+				else:
+					f.cur_state = Builder.SeguidorState.Wander
+					f.enter_wander()	 
+		
+		for i in range(0,randi_range(1,5)):
+			spawn_followers()
 
 func _start_tick_loop():
 	while ticking:
@@ -157,3 +176,4 @@ func spawn_followers():
 	var agente := preload("res://prefabs/Builder.tscn").instantiate()
 	agente.global_position = ponto
 	add_child(agente)
+	agente.add_to_group("Followers")

@@ -18,6 +18,8 @@ var wander_target: Vector2
 
 @export var building = null
 
+@export var working = false
+
 func _ready():
 	#await wait_for_navigation_ready()
 	cur_state = SeguidorState.Wander
@@ -37,6 +39,8 @@ func _physics_process(delta):
 		process_working()
 	elif cur_state == SeguidorState.Hidden:
 		process_hidden()
+	elif cur_state == SeguidorState.Sleeping:
+		process_sleeping()
 
 func process_wander():
 	
@@ -99,10 +103,11 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 
 func process_working():
 	print('working')
-	if agent.is_navigation_finished() or global_position.distance_to(agent.target_position) < 5.0:
+	if  global_position.distance_to(building.global_position) < 5.0:
 	
 		velocity = Vector2.ZERO
 		#move_and_slide()
+		
 		
 		cur_state = SeguidorState.Hidden
 		return
@@ -116,3 +121,6 @@ func process_working():
 func process_hidden():
 	visible = false
 	print('hidden and visible = ' + str(visible))
+	
+func process_sleeping():
+	print(str(self) + ' is sleeping')
