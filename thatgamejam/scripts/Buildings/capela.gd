@@ -5,4 +5,4 @@ extends Area2D
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.pressed:
-		print("Clicou no Control")
+		print("Clicou na capela")

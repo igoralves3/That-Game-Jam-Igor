@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
-enum SeguidorState {Wander}
+class_name Builder
+
+enum SeguidorState {Wander, Working, Sleeping, Praying, Hidden}
 
 @export var cur_state = SeguidorState.Wander
 
@@ -13,6 +15,8 @@ enum SeguidorState {Wander}
 var wander_target: Vector2
 
 @onready var timer = $Timer
+
+@export var building = null
 
 func _ready():
 	#await wait_for_navigation_ready()
@@ -29,6 +33,10 @@ func wait_for_navigation_ready():
 func _physics_process(delta):
 	if cur_state == SeguidorState.Wander:
 		process_wander()
+	elif cur_state == SeguidorState.Working:
+		process_working()
+	elif cur_state == SeguidorState.Hidden:
+		process_hidden()
 
 func process_wander():
 	
@@ -72,3 +80,39 @@ func _on_timer_timeout() -> void:
 
 func _on_navigation_agent_2d_navigation_finished() -> void:
 	enter_wander()
+
+
+#func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+#	if event is InputEventMouseButton:
+#		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+#			print("Clicou no personagem!")
+
+
+func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			if Global.currentFollower != self:
+				Global.currentFollower = self;
+				print(str(Global.currentFollower))
+			else:
+				Global.currentFollower = null
+
+func process_working():
+	print('working')
+	if agent.is_navigation_finished() or global_position.distance_to(agent.target_position) < 5.0:
+	
+		velocity = Vector2.ZERO
+		#move_and_slide()
+		
+		cur_state = SeguidorState.Hidden
+		return
+	
+	var next_point = agent.get_next_path_position()
+	var direction = (next_point - global_position).normalized()
+	
+	velocity = direction * wander_speed
+	move_and_slide()
+
+func process_hidden():
+	visible = false
+	print('hidden and visible = ' + str(visible))

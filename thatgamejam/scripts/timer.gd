@@ -145,3 +145,17 @@ func _start_tick_loop():
 			continue
 		if is_day:
 			emit_signal("production_tick")
+			
+func spawn_followers():
+	var nav_map :RID = get_world_2d().navigation_map
+	
+	var ponto := NavigationServer2D.map_get_random_point(
+		nav_map,
+		1,  # camada de navegação
+		false
+	)
+	print("ponto: " + str(ponto))
+	
+	var agente := preload("res://prefabs/Builder.tscn").instantiate()
+	agente.global_position = ponto
+	add_child(agente)
