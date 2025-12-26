@@ -11,7 +11,7 @@ var faith = 0
 var supplies = 0
 var money = 0
 
-var currentBuilding = "None"
+var currentBuilding = null#"None"
 var currentFollower = null
 
 func start_game():
@@ -51,5 +51,5 @@ func add_resource(type: String, amount: int):
 		"faith":
 			faith += amount
 
-	currentBuilding = "None"
+	currentBuilding = null#"None"
 	currentFollower = null
