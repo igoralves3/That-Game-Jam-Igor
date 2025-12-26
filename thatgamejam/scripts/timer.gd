@@ -18,7 +18,6 @@ var speed := 1.0
 var day := 1
 var week := 1
 
-# Controle manual do tempo
 var elapsed_turn_time := 0.0
 var current_turn_duration := 0.0
 var day_changed_this_night := false
@@ -73,7 +72,6 @@ func _process(delta: float) -> void:
 	
 	elapsed_turn_time += delta
 	
-	# Detecta mudança de dia à meia-noite (durante a Noite)
 	if turnoAtual == Turno.Noite and !day_changed_this_night:
 		var progress_before = previous_time / current_turn_duration
 		var progress_after = elapsed_turn_time / current_turn_duration
