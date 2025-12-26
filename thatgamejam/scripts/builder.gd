@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-enum SeguidorState {Wander}
+enum SeguidorState {Wander, Working, Sleeping, Praying}
 
 @export var cur_state = SeguidorState.Wander
 
@@ -72,3 +72,19 @@ func _on_timer_timeout() -> void:
 
 func _on_navigation_agent_2d_navigation_finished() -> void:
 	enter_wander()
+
+
+#func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+#	if event is InputEventMouseButton:
+#		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+#			print("Clicou no personagem!")
+
+
+func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			if Global.currentFollower != self:
+				Global.currentFollower = self;
+				print(str(Global.currentFollower))
+			else:
+				Global.currentFollower = null

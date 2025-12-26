@@ -16,7 +16,7 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(14, 97, 1139, 97, 1139,
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_nj3ej")
 
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." groups=["Navigation"]]
 navigation_polygon = SubResource("NavigationPolygon_l7207")
 
 [node name="Builder" parent="." instance=ExtResource("2_11bju")]

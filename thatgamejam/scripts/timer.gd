@@ -3,7 +3,7 @@ extends Node2D
 enum Turno {Manha, Tarde, Noite}
 
 const TURN_DURATION := {
-	Turno.Manha: 180.0,
+	Turno.Manha: 180.0 ,
 	Turno.Tarde: 240.0,
 	Turno.Noite: 180
 }
@@ -26,6 +26,8 @@ var speed := 1
 
 var day := 1
 var week := 1
+
+
 
 func _ready() -> void:
 	timer = Timer.new()
@@ -78,6 +80,10 @@ func _apply_timer():
 	timer.wait_time = turn_duration / speed
 
 func _on_timer_timeout() -> void:
+	print('timeout')
+	
+	
+	
 	if turnoAtual == Turno.Manha:
 		turnoAtual = Turno.Tarde
 		turn_duration = TURN_DURATION[turnoAtual]
@@ -95,6 +101,10 @@ func _on_timer_timeout() -> void:
 		turn_duration = TURN_DURATION[turnoAtual]
 		print('manha')
 		
+		for i in range(0,randi_range(1,5)):
+			spawn_followers()
+		
+		
 		day += 1
 		if day > 7:
 			day = 1
@@ -110,3 +120,17 @@ func _start_tick_loop():
 		await get_tree().create_timer(tick_interval).timeout
 		if is_day:
 			emit_signal("production_tick")
+			
+func spawn_followers():
+	var nav_map :RID = get_world_2d().navigation_map
+	
+	var ponto := NavigationServer2D.map_get_random_point(
+		nav_map,
+		1,  # camada de navegação
+		false
+	)
+	print("ponto: " + str(ponto))
+	
+	var agente := preload("res://prefabs/Builder.tscn").instantiate()
+	agente.global_position = ponto
+	add_child(agente)
