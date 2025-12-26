@@ -1,7 +1,0 @@
-[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://sh7ivrjv41ki"]
-
-[ext_resource type="Texture2D" uid="uid://bhqd20c23n1yh" path="res://Assets/kenney_ui-pack-adventure/Spritesheet/spritesheet-default.png" id="1_bvgek"]
-
-[resource]
-atlas = ExtResource("1_bvgek")
-region = Rect2(128, 432, 64, 64)
