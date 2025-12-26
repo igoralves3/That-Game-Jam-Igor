@@ -1,63 +1,59 @@
 extends Node2D
-
 enum Turno {Manha, Tarde, Noite}
-
 const TURN_DURATION := {
-	Turno.Manha: 180.0,
-	Turno.Tarde: 240.0,
-	Turno.Noite: 180
+	Turno.Manha: 4.0,
+	Turno.Tarde: 8.0,
+	Turno.Noite: 4.0
 }
-
 signal production_tick
 signal day_changed(day, week)
 signal pause_changed(paused)
-
-@export var tick_interval := 10
-
-var turnoAtual = Turno.Manha;
+signal speed_changed(speed)
+@export var tick_interval := 2
+var turnoAtual = Turno.Manha
 var is_day := true
-
-var timer: Timer
 var ticking := false
 var paused := false
-
-var turn_duration := 180
-var speed := 1
-
+var speed := 1.0
 var day := 1
 var week := 1
 
+# Controle manual do tempo
+var elapsed_turn_time := 0.0
+var current_turn_duration := 0.0
+var day_changed_this_night := false
+
 func _ready() -> void:
-	timer = Timer.new()
-	timer.ignore_time_scale = false
-	timer.timeout.connect(_on_timer_timeout)
-	add_child(timer)
+	process_mode = Node.PROCESS_MODE_PAUSABLE
 
 func start_game_time():
 	if ticking:
 		return
 	ticking = true
 	paused = false
-	_apply_timer()
-	timer.start()
+	turnoAtual = Turno.Manha
+	is_day = true
+	current_turn_duration = TURN_DURATION[turnoAtual]
+	elapsed_turn_time = 0.0
+	day_changed_this_night = false
 	_start_tick_loop()
 
 func stop_game_time():
 	ticking = false
-	timer.stop()
+	Engine.time_scale = 1.0
 
 func pause():
 	if paused:
 		return
 	paused = true
-	timer.paused = true
+	get_tree().paused = true
 	emit_signal("pause_changed", true)
 
 func resume():
 	if !paused:
 		return
 	paused = false
-	timer.paused = false
+	get_tree().paused = false
 	emit_signal("pause_changed", false)
 
 func set_speed(multiplier: float):
@@ -65,48 +61,87 @@ func set_speed(multiplier: float):
 		return
 	
 	speed = multiplier
+	Engine.time_scale = speed
 	emit_signal("speed_changed", speed)
-	
-	if timer.is_stopped() or paused:
+	print("Speed changed to:", speed, " | time_scale:", Engine.time_scale)
+
+func _process(delta: float) -> void:
+	if !ticking or paused:
 		return
 	
-	var progress := 1.0 - (timer.time_left / timer.wait_time)
-	_apply_timer()
-	timer.start(timer.wait_time * (1.0 - progress))
+	var previous_time = elapsed_turn_time
+	
+	elapsed_turn_time += delta
+	
+	# Detecta mudança de dia à meia-noite (durante a Noite)
+	if turnoAtual == Turno.Noite and !day_changed_this_night:
+		var progress_before = previous_time / current_turn_duration
+		var progress_after = elapsed_turn_time / current_turn_duration
+		var hour_before = progress_before * 6  
+		var hour_after = progress_after * 6
+		
+		if hour_before < 0.1 and hour_after >= 0.1:
+			day += 1
+			if day > 7:
+				day = 1
+				week += 1
+			emit_signal("day_changed", day, week)
+			day_changed_this_night = true
+			print("Novo dia:", day, "semana:", week)
+	
+	if elapsed_turn_time >= current_turn_duration:
+		elapsed_turn_time = 0.0
+		_change_turn()
 
-func _apply_timer():
-	timer.wait_time = turn_duration / speed
+func get_current_time() -> Vector2:
+	if !ticking:
+		return Vector2.ZERO
+	
+	var progress := elapsed_turn_time / current_turn_duration
+	
+	var start_hour := 0
+	var duration_hours := 0
+	
+	match turnoAtual:
+		Turno.Noite:
+			start_hour = 0
+			duration_hours = 6
+		Turno.Manha:
+			start_hour = 6
+			duration_hours = 6
+		Turno.Tarde:
+			start_hour = 12
+			duration_hours = 12
+		
+	var total_hours := start_hour + progress * duration_hours
+	var hour := int(total_hours)
+	var minutes := int((total_hours - hour) * 60)
+	
+	return Vector2(hour, minutes)
 
-func _on_timer_timeout() -> void:
+func _change_turn() -> void:
 	if turnoAtual == Turno.Manha:
 		turnoAtual = Turno.Tarde
-		turn_duration = TURN_DURATION[turnoAtual]
+		current_turn_duration = TURN_DURATION[turnoAtual]
 		print('tarde')
 	
 	elif turnoAtual == Turno.Tarde:
 		turnoAtual = Turno.Noite
-		turn_duration = TURN_DURATION[turnoAtual]
+		current_turn_duration = TURN_DURATION[turnoAtual]
 		is_day = false
+		day_changed_this_night = false  
 		print('noite')
 	
 	elif turnoAtual == Turno.Noite:
 		turnoAtual = Turno.Manha
 		is_day = true
-		turn_duration = TURN_DURATION[turnoAtual]
+		current_turn_duration = TURN_DURATION[turnoAtual]
 		print('manha')
-		
-		day += 1
-		if day > 7:
-			day = 1
-			week += 1
-		
-		emit_signal("day_changed", day, week)
-	
-	_apply_timer()
-	timer.start()
 
 func _start_tick_loop():
 	while ticking:
-		await get_tree().create_timer(tick_interval).timeout
+		await get_tree().create_timer(tick_interval, false).timeout
+		if paused:
+			continue
 		if is_day:
 			emit_signal("production_tick")

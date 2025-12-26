@@ -35,8 +35,7 @@ func end_game():
 	state = GameState.MENU
 
 func _process(delta: float) -> void:
-	
-	print("wood: "+ str(wood)+ " money: "+ str(money) +" supplies: "+ str(supplies))
+	pass
 
 func add_resource(type: String, amount: int):
 	if state != GameState.PLAYING:

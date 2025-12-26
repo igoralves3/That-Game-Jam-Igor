@@ -173,22 +173,22 @@ custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_hwdps")
 
-[node name="MarginContainer" type="MarginContainer" parent="TopPanel/MarginContainer/TopTab/Buttons/PopCounter"]
+[node name="HappinessCounter" type="MarginContainer" parent="TopPanel/MarginContainer/TopTab/Buttons/PopCounter"]
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_right = 8
 
-[node name="HBox" type="HBoxContainer" parent="TopPanel/MarginContainer/TopTab/Buttons/PopCounter/MarginContainer"]
+[node name="HBox" type="HBoxContainer" parent="TopPanel/MarginContainer/TopTab/Buttons/PopCounter/HappinessCounter"]
 layout_mode = 2
 theme_override_constants/separation = 13
 
-[node name="TextureRect" type="TextureRect" parent="TopPanel/MarginContainer/TopTab/Buttons/PopCounter/MarginContainer/HBox"]
+[node name="TextureRect" type="TextureRect" parent="TopPanel/MarginContainer/TopTab/Buttons/PopCounter/HappinessCounter/HBox"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture = ExtResource("1_so3dn")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="TopPanel/MarginContainer/TopTab/Buttons/PopCounter/MarginContainer/HBox"]
+[node name="Label" type="Label" parent="TopPanel/MarginContainer/TopTab/Buttons/PopCounter/HappinessCounter/HBox"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.639216, 0.439216, 0.227451, 1)
 theme_override_font_sizes/font_size = 20
@@ -256,11 +256,15 @@ alignment = 1
 
 [node name="Pause" type="Button" parent="BottomPanel/Controller/TimeController/MarginContainer/HBoxContainer"]
 layout_mode = 2
-text = "||"
+text = "Pause"
 
 [node name="Weekday" type="Label" parent="BottomPanel/Controller/TimeController/MarginContainer/HBoxContainer"]
 layout_mode = 2
 text = "Week 1, day 1"
+
+[node name="Time" type="Label" parent="BottomPanel/Controller/TimeController/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "00:00"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="BottomPanel/Controller/TimeController/MarginContainer/HBoxContainer"]
 layout_mode = 2
@@ -326,5 +330,5 @@ text = "Upgrade"
 
 [connection signal="pressed" from="TopPanel/MarginContainer/TopTab/Buttons/Menu" to="." method="_on_menu_pressed"]
 [connection signal="pressed" from="BottomPanel/Controller/TimeController/MarginContainer/HBoxContainer/Pause" to="." method="_on_pause_pressed"]
-[connection signal="pressed" from="BottomPanel/Controller/TimeController/MarginContainer/HBoxContainer/HBoxContainer/1x" to="." method="_on_x_pressed"]
+[connection signal="pressed" from="BottomPanel/Controller/TimeController/MarginContainer/HBoxContainer/HBoxContainer/1x" to="." method="_on_1x_pressed"]
 [connection signal="pressed" from="BottomPanel/Controller/TimeController/MarginContainer/HBoxContainer/HBoxContainer/2x" to="." method="_on_2x_pressed"]
