@@ -12,15 +12,23 @@ func _unhandled_input(event: InputEvent) -> void:
 			
 		var current = null
 			
-		if Global.currentBuildType == "Alojamento":
+		if Global.currentBuildType == "Alojamento" and Global.wood >= 150:
+			Global.wood = Global.wood- 150
+			
 			current = preload("res://prefabs/Buildings/Alojamento.tscn")
-		elif Global.currentBuildType == "Minas":
+		elif Global.currentBuildType == "Minas" and Global.wood >= 200:
+			Global.wood = Global.wood- 200
+			
 			current = preload("res://prefabs/Buildings/Minas.tscn")
-		elif Global.currentBuildType == "Madeireira":
+		elif Global.currentBuildType == "Madeireira"and Global.wood >= 100:
+			Global.wood = Global.wood- 100
+			
 			current = preload("res://prefabs/Buildings/Madeireira.tscn")
 		elif Global.currentBuildType == "Capela":
 			current = preload("res://prefabs/Buildings/Capela.tscn")
-		elif Global.currentBuildType == "Fazenda":
+		elif Global.currentBuildType == "Fazenda" and Global.wood >= 150:
+			Global.wood = Global.wood- 150
+			
 			current = preload("res://prefabs/Buildings/Fazenda.tscn")
 
 		if current != null:
