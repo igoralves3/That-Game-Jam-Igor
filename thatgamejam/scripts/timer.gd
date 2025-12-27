@@ -132,10 +132,13 @@ func _change_turn() -> void:
 		
 		for f in get_tree().get_nodes_in_group("Followers"):
 			if f is Builder:
+				f.visible = true
+				
 				f.agent.target_position = f.global_position
 				f.velocity = Vector2.ZERO
 				f.timer.stop()
 				f.cur_state = Builder.SeguidorState.Sleeping
+				f.enter_sleeping()
 	
 	elif turnoAtual == Turno.Noite:
 		turnoAtual = Turno.Manha
@@ -145,6 +148,7 @@ func _change_turn() -> void:
 		
 		for f in get_tree().get_nodes_in_group("Followers"):
 			if f is Builder:
+				f.visible = true
 				if f.working:
 					f.cur_state = Builder.SeguidorState.Working
 					f.agent.target_position = f.building.global_position

@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 class_name Builder
 
-enum SeguidorState {Wander, Working, Sleeping, Praying, Hidden}
+enum SeguidorState {Wander, Working, Sleeping, Praying, Hidden, InsideAlojamento}
 
 @export var cur_state = SeguidorState.Wander
 
@@ -19,6 +19,8 @@ var wander_target: Vector2
 @export var building = null
 
 @export var working = false
+
+@export var alojamento = null
 
 func _ready():
 	#await wait_for_navigation_ready()
@@ -41,6 +43,8 @@ func _physics_process(delta):
 		process_hidden()
 	elif cur_state == SeguidorState.Sleeping:
 		process_sleeping()
+	elif cur_state == SeguidorState.InsideAlojamento:
+		process_inside_alojamento()
 
 func process_wander():
 	
@@ -103,7 +107,7 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 
 func process_working():
 	print('working')
-	if  global_position.distance_to(building.global_position) < 5.0:
+	if  global_position.distance_to(building.global_position) < 10.0:
 	
 		velocity = Vector2.ZERO
 		#move_and_slide()
@@ -120,7 +124,44 @@ func process_working():
 
 func process_hidden():
 	visible = false
-	print('hidden and visible = ' + str(visible))
+	print('working and visible = ' + str(visible))
 	
 func process_sleeping():
 	print(str(self) + ' is sleeping')
+	
+	if  global_position.distance_to(alojamento.global_position) < 10.0:
+	
+		velocity = Vector2.ZERO
+		#move_and_slide()
+		
+		
+		cur_state = SeguidorState.InsideAlojamento
+		return
+	
+	var next_point = agent.get_next_path_position()
+	var direction = (next_point - global_position).normalized()
+	
+	velocity = direction * wander_speed
+	move_and_slide()
+	
+func enter_sleeping():
+	
+	var nearest = null
+	var min_dist := INF
+	
+	for a in get_tree().get_nodes_in_group("Alojamento"):
+		var dist = global_position.distance_to(a.global_position)
+		if dist < min_dist:
+			min_dist = dist
+			nearest = a
+			
+			
+	alojamento = nearest
+	agent.target_position = nearest.global_position
+	
+func process_inside_alojamento():
+	visible = false
+	print('sleeping and visible = ' + str(visible))
+	
+func enter_inside_alojamento():
+	pass
