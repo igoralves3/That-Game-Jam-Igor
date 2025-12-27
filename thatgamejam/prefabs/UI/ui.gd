@@ -61,3 +61,23 @@ func _update_weekday(day, week):
 
 func _on_x_pressed():
 	pass # Replace with function body.
+
+#seleciona alojamento
+func _on_texture_button_pressed() -> void:
+	Global.currentBuildType = "Alojamento"
+
+#seleciona minas
+func _on_texture_button_2_pressed() -> void:
+	Global.currentBuildType = "Minas"
+
+#seleciona madeireira
+func _on_texture_button_3_pressed() -> void:
+	Global.currentBuildType = "Madeireira"
+
+#seleciona capela
+func _on_texture_button_4_pressed() -> void:
+	Global.currentBuildType = "Capela"
+
+#seleciona fazenda
+func _on_texture_button_5_pressed() -> void:
+	Global.currentBuildType = "Fazenda"

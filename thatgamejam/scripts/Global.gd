@@ -14,6 +14,8 @@ var money = 0
 var currentBuilding = null#"None"
 var currentFollower = null
 
+var currentBuildType = null
+
 func start_game():
 	state = GameState.PLAYING
 	reset_game()
