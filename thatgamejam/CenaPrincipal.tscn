@@ -9,9 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://ethbkulecqol" path="res://prefabs/Buildings/Minas.tscn" id="6_5vuhn"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_l7207"]
-vertices = PackedVector2Array(1129, 537, 24, 537, 24, 107, 1129, 107)
+vertices = PackedVector2Array(1673.95, 520.07, -293.953, 534.922, -292.039, 109.969, 1672.04, 105.023)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(14, 97, 1139, 97, 1139, 547, 14, 547)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-302, 100, 1682, 95, 1684, 530, -304, 545)])
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_nj3ej")

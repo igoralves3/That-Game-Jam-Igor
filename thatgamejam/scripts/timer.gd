@@ -168,6 +168,8 @@ func _start_tick_loop():
 			emit_signal("production_tick")
 			
 func spawn_followers():
+
+	
 	var nav_map :RID = get_world_2d().navigation_map
 	
 	var ponto := NavigationServer2D.map_get_random_point(
@@ -176,6 +178,11 @@ func spawn_followers():
 		false
 	)
 	print("ponto: " + str(ponto))
+	if ponto.x > get_viewport().get_visible_rect().size.x/2:
+		ponto.x = -100
+	else:
+		ponto.x = get_viewport().get_visible_rect().size.x + 100
+	
 	
 	var agente := preload("res://prefabs/Builder.tscn").instantiate()
 	agente.global_position = ponto

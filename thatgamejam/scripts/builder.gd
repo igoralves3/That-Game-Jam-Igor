@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 class_name Builder
 
-enum SeguidorState {Wander, Working, Sleeping, Praying, Hidden, InsideAlojamento}
+enum SeguidorState {Entering,Wander, Working, Sleeping, Praying, Hidden, InsideAlojamento}
 
 @export var cur_state = SeguidorState.Wander
 
@@ -23,9 +23,10 @@ var wander_target: Vector2
 @export var alojamento = null
 
 func _ready():
+	cur_state=SeguidorState.Entering
 	#await wait_for_navigation_ready()
-	cur_state = SeguidorState.Wander
-	enter_wander()
+	#cur_state = SeguidorState.Wander
+	#enter_wander()
 	
 
 func wait_for_navigation_ready():
@@ -35,7 +36,10 @@ func wait_for_navigation_ready():
 		await get_tree().physics_frame
 
 func _physics_process(delta):
-	if cur_state == SeguidorState.Wander:
+	if cur_state == SeguidorState.Entering:
+		process_entering()
+	
+	elif cur_state == SeguidorState.Wander:
 		process_wander()
 	elif cur_state == SeguidorState.Working:
 		process_working()
@@ -45,6 +49,14 @@ func _physics_process(delta):
 		process_sleeping()
 	elif cur_state == SeguidorState.InsideAlojamento:
 		process_inside_alojamento()
+
+func process_entering():
+	if global_position.x > get_viewport().get_visible_rect().size.x/2:
+		velocity.x = -50
+		
+	else:
+		velocity.x = 50
+	move_and_slide()
 
 func process_wander():
 	
@@ -63,6 +75,8 @@ func get_random_wander_point() -> Vector2:
 		randf_range(-1.0, 1.0)
 	).normalized()
 
+	
+	
 	var global2d = Vector2(global_position.x,global_position.y);
 
 	var random_point = global2d + random_direction * randf_range(10.0, wander_radius)
@@ -165,3 +179,9 @@ func process_inside_alojamento():
 	
 func enter_inside_alojamento():
 	pass
+
+
+func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
+	
+	cur_state=SeguidorState.Wander
+	enter_wander()
