@@ -11,6 +11,10 @@ extends Control
 @onready var supply_count_label = $TopPanel/MarginContainer/TopTab/SupplyCounter/HBox/Label
 @onready var money_count_label = $TopPanel/MarginContainer/TopTab/GoldCounter/HBox/Label
 
+@onready var pop_count_label = $TopPanel/MarginContainer/TopTab/Buttons/PopCounter/HBox/Label
+@onready var happiness_count_label = $TopPanel/MarginContainer/TopTab/Buttons/HappinessCounter/HBox/Label
+@onready var religion_lvl_label = $TopPanel/MarginContainer/TopTab/Buttons/ReligionLvl/HBox/Label
+
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	timer.day_changed.connect(_update_weekday)
@@ -24,6 +28,9 @@ func _process(delta: float) -> void:
 	wood_count_label.text = str(Global.wood)
 	money_count_label.text = str(Global.money)
 	supply_count_label.text = str(Global.supplies)
+	pop_count_label.text = str(Global.total_followers)
+	happiness_count_label.text = str(Global.happiness)
+	religion_lvl_label.text = str(Global.religionLvl)
 
 func _on_pause_pressed():
 	if timer.paused:

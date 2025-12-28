@@ -22,8 +22,12 @@ var elapsed_turn_time := 0.0
 var current_turn_duration := 0.0
 var day_changed_this_night := false
 
+var hasPrayed: bool = false
+
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_PAUSABLE
+	var follower_lst = get_tree().get_nodes_in_group("Followers")
+	Global.total_followers = follower_lst.size()
 
 func start_game_time():
 	if ticking:
@@ -90,6 +94,8 @@ func _process(delta: float) -> void:
 	if elapsed_turn_time >= current_turn_duration:
 		elapsed_turn_time = 0.0
 		_change_turn()
+		var follower_lst = get_tree().get_nodes_in_group("Followers")
+		Global.total_followers = follower_lst.size()
 
 func get_current_time() -> Vector2:
 	if !ticking:
@@ -142,11 +148,21 @@ func _change_turn() -> void:
 	
 	elif turnoAtual == Turno.Noite:
 		turnoAtual = Turno.Manha
+		Global.estimate_happiness()
 		is_day = true
+		hasPrayed = false
 		current_turn_duration = TURN_DURATION[turnoAtual]
 		print('manha')
+		var follower_lst = get_tree().get_nodes_in_group("Followers")
 		
-		for f in get_tree().get_nodes_in_group("Followers"):
+		if Global.happiness < 0.5:
+			var difference = 0.5 - Global.happiness
+			var followers_quited = Global.total_followers * difference
+			for i in range(followers_quited):
+				var quitter = follower_lst.pick_random()
+				quitter.queue_free()
+			
+		for f in follower_lst:
 			if f is Builder:
 				f.visible = true
 				if f.working:
@@ -154,8 +170,8 @@ func _change_turn() -> void:
 					f.agent.target_position = f.building.global_position
 				else:
 					f.cur_state = Builder.SeguidorState.Wander
-					f.enter_wander()	 
-		
+					f.enter_wander()
+					
 		for i in range(0,randi_range(1,5)):
 			spawn_followers()
 
@@ -168,23 +184,22 @@ func _start_tick_loop():
 			emit_signal("production_tick")
 			
 func spawn_followers():
-
+	if Global.happiness > 0.5:
+		var nav_map :RID = get_world_2d().navigation_map
 	
-	var nav_map :RID = get_world_2d().navigation_map
-	
-	var ponto := NavigationServer2D.map_get_random_point(
-		nav_map,
-		1,  # camada de navegação
-		false
-	)
-	print("ponto: " + str(ponto))
-	if ponto.x > get_viewport().get_visible_rect().size.x/2:
-		ponto.x = -100
-	else:
-		ponto.x = get_viewport().get_visible_rect().size.x + 100
+		var ponto := NavigationServer2D.map_get_random_point(
+			nav_map,
+			1,  # camada de navegação
+			false
+		)
+		print("ponto: " + str(ponto))
+		if ponto.x > get_viewport().get_visible_rect().size.x/2:
+			ponto.x = -100
+		else:
+			ponto.x = get_viewport().get_visible_rect().size.x + 100
 	
 	
-	var agente := preload("res://prefabs/Builder.tscn").instantiate()
-	agente.global_position = ponto
-	add_child(agente)
-	agente.add_to_group("Followers")
+		var agente := preload("res://prefabs/Builder.tscn").instantiate()
+		agente.global_position = ponto
+		add_child(agente)
+		agente.add_to_group("Followers")
