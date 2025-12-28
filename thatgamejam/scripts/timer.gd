@@ -96,6 +96,9 @@ func _process(delta: float) -> void:
 		_change_turn()
 		var follower_lst = get_tree().get_nodes_in_group("Followers")
 		Global.total_followers = follower_lst.size()
+		var canLvlUp:= Global.check_level_up()
+		if canLvlUp:
+			Global.level_up()
 
 func get_current_time() -> Vector2:
 	if !ticking:

@@ -11,7 +11,10 @@ var faith: int = 0
 var supplies: int = 0
 var happiness: float = 1.0
 var money: int = 0
+
 var religionLvl: int = 1
+var requirementsToLvlUp: Array[Dictionary] = [{"pop": 5}, {"pop": 10}, {"pop": 15}, {"pop": 25}, {"pop": 40}, {"pop":65}, {"pop": 105}, {"pop": 170}, {"pop": 275}, {"pop": 445}, {"pop": 720}, {"pop": 1000}]
+var requirementIndex:= 0
 
 var happinessLossBonus: float = 1.0
 var happinessGainBonus: float = 1.0
@@ -45,6 +48,35 @@ func end_game():
 
 func _process(delta: float) -> void:
 	pass
+
+func level_up() -> void:
+	religionLvl+=1
+	requirementIndex+=1
+	print("[LvlUp] subiu de nível: ", religionLvl, " reqs: ", requirementsToLvlUp[requirementIndex])
+	happinessGainBonus += 0.01
+
+func check_level_up() -> bool:
+	var requirement:Dictionary = requirementsToLvlUp[requirementIndex]
+	for resourceKey in requirement:
+		var resourceValue = requirement[resourceKey]
+		var actualValue = getResource(resourceKey)
+		if resourceValue > actualValue:
+			return false
+	return true
+
+func getResource(resource: String) -> int:
+	match (resource):
+		"wood":
+			return wood
+		"supplies":
+			return supplies
+		"money":
+			return money
+		"faith":
+			return faith
+		"pop":
+			return total_followers
+	return 0
 
 func estimate_happiness() -> float:
 	const max = 1.0
