@@ -2,7 +2,9 @@ extends CharacterBody2D
 
 class_name Builder
 
-enum SeguidorState {Entering,Wander, Working, Sleeping, Praying, Hidden, InsideAlojamento}
+enum SeguidorState {Entering, Stopped,Wander, 
+Working, Woodwork, Minework, Farmwork, 
+Sleeping, Praying, Hidden, InsideAlojamento}
 
 @export var cur_state = SeguidorState.Wander
 
@@ -113,8 +115,11 @@ func _on_navigation_agent_2d_navigation_finished() -> void:
 func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			if Global.currentFollower != self:
+			if Global.currentFollower != self and cur_state == SeguidorState.Stopped:
 				Global.currentFollower = self;
+				
+				cur_state = SeguidorState.Wander
+				enter_wander()
 				print(str(Global.currentFollower))
 			else:
 				Global.currentFollower = null
@@ -183,5 +188,8 @@ func enter_inside_alojamento():
 
 func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
 	
-	cur_state=SeguidorState.Wander
-	enter_wander()
+	cur_state=SeguidorState.Stopped
+	#enter_wander()
+	
+
+	
