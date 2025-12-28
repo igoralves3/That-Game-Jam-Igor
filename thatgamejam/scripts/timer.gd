@@ -166,8 +166,16 @@ func _change_turn() -> void:
 			if f is Builder:
 				f.visible = true
 				if f.working:
-					f.cur_state = Builder.SeguidorState.Working
-					f.agent.target_position = f.building.global_position
+					
+					if f.building != null:
+						if f.building is Fazenda:
+							f.cur_state = Builder.SeguidorState.Farmwork
+						elif f.building is Minas:
+							f.cur_state = Builder.SeguidorState.Minework
+						elif f.building is Madeireira:
+							f.cur_state = Builder.SeguidorState.Woodwork
+						#f.cur_state = Builder.SeguidorState.Working
+						f.agent.target_position = f.building.global_position
 				else:
 					f.cur_state = Builder.SeguidorState.Wander
 					f.enter_wander()

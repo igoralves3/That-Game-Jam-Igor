@@ -1,5 +1,7 @@
 extends "res://scripts/Buildings/Building.gd"
 
+class_name Minas
+
 const capacidade_maxima = 10
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
@@ -18,7 +20,7 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 			Global.currentFollower.working = true
 			
 			Global.currentFollower.agent.target_position = global_position
-			Global.currentFollower.cur_state = Builder.SeguidorState.Working
+			Global.currentFollower.cur_state = Builder.SeguidorState.Minework#Builder.SeguidorState.Working
 
 
 func _ready():

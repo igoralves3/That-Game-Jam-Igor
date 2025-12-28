@@ -45,6 +45,12 @@ func _physics_process(delta):
 		process_wander()
 	elif cur_state == SeguidorState.Working:
 		process_working()
+	elif  cur_state == SeguidorState.Woodwork:
+		process_working()
+	elif  cur_state == SeguidorState.Minework:
+		process_working()
+	elif  cur_state == SeguidorState.Farmwork:
+		process_working()
 	elif cur_state == SeguidorState.Hidden:
 		process_hidden()
 	elif cur_state == SeguidorState.Sleeping:
@@ -115,17 +121,28 @@ func _on_navigation_agent_2d_navigation_finished() -> void:
 func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			if Global.currentFollower != self and cur_state == SeguidorState.Stopped:
-				Global.currentFollower = self;
-				
+			#if Global.currentFollower != self 
+			Global.currentFollower = self
+			if cur_state == SeguidorState.Stopped:	
 				cur_state = SeguidorState.Wander
 				enter_wander()
 				print(str(Global.currentFollower))
-			else:
-				Global.currentFollower = null
+			#elif cur_state == SeguidorState.Wander:
+				
+			#else:
+				
+				
+			#else:
+			#	Global.currentFollower = null
 
 func process_working():
-	print('working')
+	if building is Fazenda:
+		print('working at farm')
+	elif building is Minas:
+		print('working at mines')
+	elif building is Madeireira:
+		print('working at wood')
+	#print('working')
 	if  global_position.distance_to(building.global_position) < 10.0:
 	
 		velocity = Vector2.ZERO
