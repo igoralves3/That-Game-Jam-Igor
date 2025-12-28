@@ -65,7 +65,7 @@ func estimate_happiness() -> float:
 		var followersUnfed = total_followers - followersFed
 		add_resource("supplies", -(followersFed*2))
 		estimatedHappiness = clamp(estimatedHappiness - (lackOfSupply * followersUnfed), min, max)
-		print("[Happy] Seguidores não alimentados", followersUnfed, "não alimentados -2% por seguidor subnutrido ", estimatedHappiness)
+		print("[Happy] Seguidores não alimentados ", followersUnfed, ", -2% por seguidor subnutrido ", estimatedHappiness)
 	
 	if timer.hasPrayed:
 		estimatedHappiness = clamp(estimatedHappiness + faithFufilled, min, max)

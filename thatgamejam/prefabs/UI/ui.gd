@@ -29,7 +29,7 @@ func _process(delta: float) -> void:
 	money_count_label.text = str(Global.money)
 	supply_count_label.text = str(Global.supplies)
 	pop_count_label.text = str(Global.total_followers)
-	happiness_count_label.text = str(Global.happiness)
+	happiness_count_label.text = "%.1f%%" % (Global.happiness * 100)
 	religion_lvl_label.text = str(Global.religionLvl)
 
 func _on_pause_pressed():
