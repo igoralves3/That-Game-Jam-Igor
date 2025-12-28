@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://d3fefgqtdhori"]
+[gd_scene load_steps=17 format=3 uid="uid://d3fefgqtdhori"]
 
 [ext_resource type="Script" uid="uid://b7vko2yn7j5nr" path="res://prefabs/UI/ui.gd" id="1_fw6kh"]
 [ext_resource type="Texture2D" uid="uid://nslqneqn3bg6" path="res://Assets/UI Components/CLEAN MENUS/clean ui_clean menu-09.png" id="2_u7etd"]
@@ -11,7 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://ctc8041is4op0" path="res://Assets/Icons/beer_mug.png" id="8_juusu"]
 [ext_resource type="Texture2D" uid="uid://yj6fvjvdlrf6" path="res://Assets/Icons/icons/tent_leather.png" id="9_w4m0a"]
 [ext_resource type="Texture2D" uid="uid://b3ccrwon7l78f" path="res://Assets/UI Components/KEY ICONS/clean ui_key icon-07.png" id="10_4ctr4"]
-[ext_resource type="Texture2D" uid="uid://dqsi5071rm2pd" path="res://Assets/UI Components/CLEAN MENUS/clean ui_clean menu-05.png" id="11_tethd"]
 [ext_resource type="Texture2D" uid="uid://iifn3hmtdy8h" path="res://Assets/UI Components/UI ICONS/UI ICONS/white icons/ui icons_wht-12.png" id="12_juusu"]
 [ext_resource type="Texture2D" uid="uid://de7re5y7gey2x" path="res://Assets/UI Components/UI ICONS/UI ICONS/white icons/ui icons_wht-07.png" id="13_w4m0a"]
 [ext_resource type="Texture2D" uid="uid://bt3dxm0nam0er" path="res://Assets/UI Components/UI ICONS/UI ICONS/white icons/ui icons_wht-08.png" id="14_4ctr4"]
@@ -20,11 +19,6 @@
 texture = ExtResource("2_u7etd")
 texture_margin_left = 20.0
 texture_margin_right = 20.0
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7ad5i"]
-texture = ExtResource("11_tethd")
-texture_margin_top = 4.0
-texture_margin_bottom = 4.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_igoy7"]
 texture = ExtResource("2_u7etd")
@@ -151,9 +145,54 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "0"
 
+[node name="TimerController" type="HBoxContainer" parent="TopPanel/MarginContainer/TopTab"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="Pause" type="TextureButton" parent="TopPanel/MarginContainer/TopTab/TimerController"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("12_juusu")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Weekday" type="Label" parent="TopPanel/MarginContainer/TopTab/TimerController"]
+layout_mode = 2
+text = "Week 1, day 1"
+
+[node name="Time" type="Label" parent="TopPanel/MarginContainer/TopTab/TimerController"]
+layout_mode = 2
+text = "00:00"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TopPanel/MarginContainer/TopTab/TimerController"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="1x" type="TextureButton" parent="TopPanel/MarginContainer/TopTab/TimerController/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("13_w4m0a")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="2x" type="TextureButton" parent="TopPanel/MarginContainer/TopTab/TimerController/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("14_4ctr4")
+ignore_texture_size = true
+stretch_mode = 5
+
 [node name="Buttons" type="HBoxContainer" parent="TopPanel/MarginContainer/TopTab"]
 layout_mode = 2
-size_flags_horizontal = 3
 theme_override_constants/separation = 16
 alignment = 2
 
@@ -236,79 +275,28 @@ stretch_mode = 5
 
 [node name="Controller" type="VBoxContainer" parent="."]
 layout_mode = 2
-offset_top = 520.0
+offset_top = 541.0
 offset_right = 1280.0
 offset_bottom = 720.0
 
-[node name="TimeController" type="PanelContainer" parent="Controller"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_styles/panel = SubResource("StyleBoxTexture_7ad5i")
-
-[node name="MarginContainer" type="MarginContainer" parent="Controller/TimeController"]
-layout_mode = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 8
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Controller/TimeController/MarginContainer"]
-layout_mode = 2
-theme_override_constants/separation = 32
-alignment = 1
-
-[node name="Pause" type="TextureButton" parent="Controller/TimeController/MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture_normal = ExtResource("12_juusu")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="Weekday" type="Label" parent="Controller/TimeController/MarginContainer/HBoxContainer"]
-layout_mode = 2
-text = "Week 1, day 1"
-
-[node name="Time" type="Label" parent="Controller/TimeController/MarginContainer/HBoxContainer"]
-layout_mode = 2
-text = "00:00"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Controller/TimeController/MarginContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 8
-
-[node name="1x" type="TextureButton" parent="Controller/TimeController/MarginContainer/HBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture_normal = ExtResource("13_w4m0a")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="2x" type="TextureButton" parent="Controller/TimeController/MarginContainer/HBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture_normal = ExtResource("14_4ctr4")
-ignore_texture_size = true
-stretch_mode = 5
-
 [node name="BaseController" type="PanelContainer" parent="Controller"]
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_vertical = 6
 theme_override_styles/panel = SubResource("StyleBoxTexture_igoy7")
 
 [node name="MarginContainer" type="MarginContainer" parent="Controller/BaseController"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Controller/BaseController/MarginContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
 [node name="TabContainer" type="TabContainer" parent="Controller/BaseController/MarginContainer/HBoxContainer"]
 layout_mode = 2
@@ -316,13 +304,623 @@ size_flags_horizontal = 3
 current_tab = 0
 all_tabs_in_front = true
 
-[node name="Upgrades" type="MarginContainer" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer"]
+[node name="Constructions" type="MarginContainer" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 metadata/_tab_index = 0
+
+[node name="Grid" type="GridContainer" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/h_separation = 4
+columns = 33
+
+[node name="TextureButton" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("6_w6nql")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton2" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("6_w6nql")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton3" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("6_w6nql")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton4" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("6_w6nql")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton5" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("6_w6nql")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton6" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("6_w6nql")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton7" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("6_w6nql")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton8" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("6_w6nql")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton9" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("6_w6nql")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton10" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("6_w6nql")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton11" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("6_w6nql")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton12" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("6_w6nql")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton13" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("6_w6nql")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton14" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("6_w6nql")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton15" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("6_w6nql")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton16" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("6_w6nql")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton17" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("6_w6nql")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton18" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("6_w6nql")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton19" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("6_w6nql")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton20" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("6_w6nql")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton21" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("6_w6nql")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton22" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("6_w6nql")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton23" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("6_w6nql")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton24" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("6_w6nql")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton25" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("6_w6nql")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton26" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("6_w6nql")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton27" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("6_w6nql")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton28" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("6_w6nql")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton29" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("6_w6nql")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton30" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("6_w6nql")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton31" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("6_w6nql")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton32" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("6_w6nql")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton33" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("6_w6nql")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton34" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("6_w6nql")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton35" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("6_w6nql")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton36" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("6_w6nql")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton37" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("6_w6nql")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton38" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("6_w6nql")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton39" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("6_w6nql")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton40" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("6_w6nql")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton41" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("6_w6nql")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton42" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("6_w6nql")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton43" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("6_w6nql")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton44" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("6_w6nql")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton45" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("6_w6nql")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton46" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("6_w6nql")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton47" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("6_w6nql")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton48" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("6_w6nql")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton49" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("6_w6nql")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton50" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("6_w6nql")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton51" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("6_w6nql")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton52" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("6_w6nql")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton53" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("6_w6nql")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton54" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("6_w6nql")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton55" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("6_w6nql")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton56" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("6_w6nql")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton57" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("6_w6nql")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton58" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("6_w6nql")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton59" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("6_w6nql")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton60" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("6_w6nql")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton61" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("6_w6nql")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton62" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("6_w6nql")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton63" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("6_w6nql")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton64" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("6_w6nql")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton65" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("6_w6nql")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton66" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("6_w6nql")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Upgrades" type="MarginContainer" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+metadata/_tab_index = 1
 
 [node name="Grid" type="GridContainer" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades"]
 layout_mode = 2
@@ -923,628 +1521,8 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Constructions" type="MarginContainer" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer"]
-visible = false
-layout_mode = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 16
-metadata/_tab_index = 1
-
-[node name="Grid" type="GridContainer" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
-layout_mode = 2
-text = "Upgrade"
-
-[node name="Grid" type="GridContainer" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
-layout_mode = 2
-theme_override_constants/h_separation = 4
-columns = 33
-
-[node name="TextureButton" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/Grid"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture_normal = ExtResource("6_w6nql")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="TextureButton2" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/Grid"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture_normal = ExtResource("6_w6nql")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="TextureButton3" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/Grid"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture_normal = ExtResource("6_w6nql")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="TextureButton4" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/Grid"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture_normal = ExtResource("6_w6nql")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="TextureButton5" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/Grid"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture_normal = ExtResource("6_w6nql")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="TextureButton6" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/Grid"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture_normal = ExtResource("6_w6nql")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="TextureButton7" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/Grid"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture_normal = ExtResource("6_w6nql")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="TextureButton8" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/Grid"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture_normal = ExtResource("6_w6nql")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="TextureButton9" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/Grid"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture_normal = ExtResource("6_w6nql")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="TextureButton10" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/Grid"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture_normal = ExtResource("6_w6nql")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="TextureButton11" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/Grid"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture_normal = ExtResource("6_w6nql")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="TextureButton12" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/Grid"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture_normal = ExtResource("6_w6nql")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="TextureButton13" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/Grid"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture_normal = ExtResource("6_w6nql")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="TextureButton14" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/Grid"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture_normal = ExtResource("6_w6nql")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="TextureButton15" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/Grid"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture_normal = ExtResource("6_w6nql")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="TextureButton16" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/Grid"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture_normal = ExtResource("6_w6nql")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="TextureButton17" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/Grid"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture_normal = ExtResource("6_w6nql")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="TextureButton18" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/Grid"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture_normal = ExtResource("6_w6nql")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="TextureButton19" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/Grid"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture_normal = ExtResource("6_w6nql")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="TextureButton20" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/Grid"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture_normal = ExtResource("6_w6nql")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="TextureButton21" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/Grid"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture_normal = ExtResource("6_w6nql")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="TextureButton22" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/Grid"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture_normal = ExtResource("6_w6nql")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="TextureButton23" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/Grid"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture_normal = ExtResource("6_w6nql")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="TextureButton24" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/Grid"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture_normal = ExtResource("6_w6nql")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="TextureButton25" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/Grid"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture_normal = ExtResource("6_w6nql")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="TextureButton26" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/Grid"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture_normal = ExtResource("6_w6nql")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="TextureButton27" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/Grid"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture_normal = ExtResource("6_w6nql")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="TextureButton28" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/Grid"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture_normal = ExtResource("6_w6nql")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="TextureButton29" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/Grid"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture_normal = ExtResource("6_w6nql")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="TextureButton30" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/Grid"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture_normal = ExtResource("6_w6nql")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="TextureButton31" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/Grid"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture_normal = ExtResource("6_w6nql")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="TextureButton32" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/Grid"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture_normal = ExtResource("6_w6nql")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="TextureButton33" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/Grid"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture_normal = ExtResource("6_w6nql")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="TextureButton34" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/Grid"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture_normal = ExtResource("6_w6nql")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="TextureButton35" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/Grid"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture_normal = ExtResource("6_w6nql")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="TextureButton36" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/Grid"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture_normal = ExtResource("6_w6nql")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="TextureButton37" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/Grid"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture_normal = ExtResource("6_w6nql")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="TextureButton38" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/Grid"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture_normal = ExtResource("6_w6nql")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="TextureButton39" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/Grid"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture_normal = ExtResource("6_w6nql")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="TextureButton40" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/Grid"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture_normal = ExtResource("6_w6nql")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="TextureButton41" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/Grid"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture_normal = ExtResource("6_w6nql")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="TextureButton42" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/Grid"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture_normal = ExtResource("6_w6nql")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="TextureButton43" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/Grid"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture_normal = ExtResource("6_w6nql")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="TextureButton44" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/Grid"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture_normal = ExtResource("6_w6nql")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="TextureButton45" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/Grid"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture_normal = ExtResource("6_w6nql")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="TextureButton46" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/Grid"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture_normal = ExtResource("6_w6nql")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="TextureButton47" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/Grid"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture_normal = ExtResource("6_w6nql")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="TextureButton48" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/Grid"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture_normal = ExtResource("6_w6nql")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="TextureButton49" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/Grid"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture_normal = ExtResource("6_w6nql")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="TextureButton50" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/Grid"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture_normal = ExtResource("6_w6nql")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="TextureButton51" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/Grid"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture_normal = ExtResource("6_w6nql")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="TextureButton52" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/Grid"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture_normal = ExtResource("6_w6nql")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="TextureButton53" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/Grid"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture_normal = ExtResource("6_w6nql")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="TextureButton54" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/Grid"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture_normal = ExtResource("6_w6nql")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="TextureButton55" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/Grid"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture_normal = ExtResource("6_w6nql")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="TextureButton56" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/Grid"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture_normal = ExtResource("6_w6nql")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="TextureButton57" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/Grid"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture_normal = ExtResource("6_w6nql")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="TextureButton58" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/Grid"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture_normal = ExtResource("6_w6nql")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="TextureButton59" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/Grid"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture_normal = ExtResource("6_w6nql")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="TextureButton60" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/Grid"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture_normal = ExtResource("6_w6nql")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="TextureButton61" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/Grid"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture_normal = ExtResource("6_w6nql")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="TextureButton62" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/Grid"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture_normal = ExtResource("6_w6nql")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="TextureButton63" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/Grid"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture_normal = ExtResource("6_w6nql")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="TextureButton64" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/Grid"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture_normal = ExtResource("6_w6nql")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="TextureButton65" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/Grid"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture_normal = ExtResource("6_w6nql")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="TextureButton66" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/Grid"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture_normal = ExtResource("6_w6nql")
-ignore_texture_size = true
-stretch_mode = 5
-
+[connection signal="pressed" from="TopPanel/MarginContainer/TopTab/TimerController/Pause" to="." method="_on_pause_pressed"]
+[connection signal="pressed" from="TopPanel/MarginContainer/TopTab/TimerController/HBoxContainer/1x" to="." method="_on_1x_pressed"]
+[connection signal="pressed" from="TopPanel/MarginContainer/TopTab/TimerController/HBoxContainer/2x" to="." method="_on_2x_pressed"]
 [connection signal="pressed" from="TopPanel/MarginContainer/TopTab/Buttons/Menu" to="." method="_on_menu_pressed"]
-[connection signal="pressed" from="Controller/TimeController/MarginContainer/HBoxContainer/Pause" to="." method="_on_pause_pressed"]
-[connection signal="pressed" from="Controller/TimeController/MarginContainer/HBoxContainer/HBoxContainer/1x" to="." method="_on_1x_pressed"]
-[connection signal="pressed" from="Controller/TimeController/MarginContainer/HBoxContainer/HBoxContainer/2x" to="." method="_on_2x_pressed"]
 [connection signal="pressed" from="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades/Grid/TextureButton" to="." method="_on_texture_button_pressed"]
-[connection signal="pressed" from="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/Grid/TextureButton" to="." method="_on_texture_button_pressed"]
-[connection signal="pressed" from="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/Grid/TextureButton2" to="." method="_on_texture_button_2_pressed"]
-[connection signal="pressed" from="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/Grid/TextureButton3" to="." method="_on_texture_button_3_pressed"]
-[connection signal="pressed" from="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/Grid/TextureButton4" to="." method="_on_texture_button_4_pressed"]
-[connection signal="pressed" from="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/Grid/TextureButton5" to="." method="_on_texture_button_5_pressed"]
