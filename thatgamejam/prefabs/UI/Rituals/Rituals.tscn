@@ -1,0 +1,79 @@
+[gd_scene load_steps=9 format=3 uid="uid://bve2kbkn54bj6"]
+
+[ext_resource type="Texture2D" uid="uid://dea3ix2tk5qu1" path="res://Assets/UI Components/CLEAN MENUS/clean ui_clean menu-01.png" id="1_20t4i"]
+[ext_resource type="Texture2D" uid="uid://b300786b75vq3" path="res://Assets/UI ICONS/UI ICONS/white icons/ui icons_wht-14.png" id="2_a06bj"]
+[ext_resource type="Script" uid="uid://btnk51sv2pnjn" path="res://prefabs/UI/Rituals/rituals.gd" id="2_dd0kr"]
+[ext_resource type="PackedScene" uid="uid://baat8na2lyha5" path="res://prefabs/UI/Rituals/RitualButton.tscn" id="3_dd0kr"]
+[ext_resource type="Script" uid="uid://e1s4bkec4hxa" path="res://scripts/Resources/Ritual.gd" id="3_jd1kl"]
+[ext_resource type="Texture2D" uid="uid://cbj30mqjibh0h" path="res://icon.svg" id="4_fggcg"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dd0kr"]
+texture = ExtResource("1_20t4i")
+
+[sub_resource type="Resource" id="Resource_3sdkw"]
+script = ExtResource("3_jd1kl")
+title = "Sermão diário"
+icon = ExtResource("4_fggcg")
+level = 1
+cost = {}
+reward = {}
+metadata/_custom_type_script = "uid://e1s4bkec4hxa"
+
+[node name="RitualModal" type="PanelContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -300.0
+offset_right = 200.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_dd0kr")
+script = ExtResource("2_dd0kr")
+lista_de_rituais = Array[ExtResource("3_jd1kl")]([SubResource("Resource_3sdkw")])
+ritual_button_prefab = ExtResource("3_dd0kr")
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+mouse_filter = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="CloseButton" type="TextureButton" parent="MarginContainer2"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("2_a06bj")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="HScrollBar" type="VScrollBar" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HScrollBar"]
+layout_mode = 2
+offset_right = 336.0
+offset_bottom = 504.0
+theme_override_constants/separation = 16
+
+[node name="RitualButton" parent="MarginContainer/HScrollBar/VBoxContainer" instance=ExtResource("3_dd0kr")]
+layout_mode = 2
+
+[connection signal="pressed" from="MarginContainer2/CloseButton" to="." method="_on_close_button_pressed"]

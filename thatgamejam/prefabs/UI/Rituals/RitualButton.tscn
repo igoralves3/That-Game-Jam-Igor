@@ -1,0 +1,61 @@
+[gd_scene load_steps=7 format=3 uid="uid://baat8na2lyha5"]
+
+[ext_resource type="Texture2D" uid="uid://buarupxhvua07" path="res://Assets/UI Components/CLEAN MENUS/clean ui_clean menu-06.png" id="1_6xgq1"]
+[ext_resource type="Script" uid="uid://c21aiqn0lp87y" path="res://prefabs/UI/Rituals/ritual_button.gd" id="1_76105"]
+[ext_resource type="Texture2D" uid="uid://cbj30mqjibh0h" path="res://icon.svg" id="3_ipm74"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iumwv"]
+texture = ExtResource("1_6xgq1")
+
+[sub_resource type="LabelSettings" id="LabelSettings_o7ocf"]
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_s2ul2"]
+
+[node name="RitualButton" type="PanelContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 96.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_iumwv")
+script = ExtResource("1_76105")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 32
+
+[node name="Icon" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_ipm74")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Title" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Titulo"
+label_settings = SubResource("LabelSettings_o7ocf")
+
+[node name="Info" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Info"
+label_settings = SubResource("LabelSettings_s2ul2")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
