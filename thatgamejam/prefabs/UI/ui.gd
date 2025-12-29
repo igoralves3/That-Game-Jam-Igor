@@ -70,21 +70,21 @@ func _on_x_pressed():
 	pass # Replace with function body.
 
 #seleciona alojamento
-func _on_texture_button_pressed() -> void:
+func _on_texture_button_pressed_alojamento() -> void:
 	Global.currentBuildType = "Alojamento"
 
 #seleciona minas
-func _on_texture_button_2_pressed() -> void:
+func _on_texture_button_pressed_minas() -> void:
 	Global.currentBuildType = "Minas"
 
 #seleciona madeireira
-func _on_texture_button_3_pressed() -> void:
+func _on_texture_button_pressed_madeireira() -> void:
 	Global.currentBuildType = "Madeireira"
 
 #seleciona capela
-func _on_texture_button_4_pressed() -> void:
+func _on_texture_button_pressed_capela() -> void:
 	Global.currentBuildType = "Capela"
 
 #seleciona fazenda
-func _on_texture_button_5_pressed() -> void:
+func _on_texture_button_pressed_fazenda() -> void:
 	Global.currentBuildType = "Fazenda"

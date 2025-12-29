@@ -319,7 +319,7 @@ size_flags_vertical = 4
 theme_override_constants/h_separation = 4
 columns = 33
 
-[node name="TextureButton" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+[node name="TextureButtonAlojamento" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -328,7 +328,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton2" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+[node name="TextureButtonMadeireira" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -337,7 +337,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton3" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+[node name="TextureButtonMinas" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -346,7 +346,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton4" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+[node name="TextureButtonFazenda" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -356,6 +356,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="TextureButton5" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -365,6 +366,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="TextureButton6" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -374,6 +376,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="TextureButton7" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -383,6 +386,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="TextureButton8" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -392,6 +396,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="TextureButton9" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -401,6 +406,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="TextureButton10" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -410,6 +416,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="TextureButton11" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -419,6 +426,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="TextureButton12" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -428,6 +436,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="TextureButton13" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -437,6 +446,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="TextureButton14" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -446,6 +456,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="TextureButton15" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -455,6 +466,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="TextureButton16" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -464,6 +476,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="TextureButton17" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -473,6 +486,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="TextureButton18" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -482,6 +496,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="TextureButton19" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -491,6 +506,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="TextureButton20" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -500,6 +516,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="TextureButton21" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -509,6 +526,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="TextureButton22" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -518,6 +536,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="TextureButton23" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -527,6 +546,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="TextureButton24" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -536,6 +556,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="TextureButton25" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -545,6 +566,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="TextureButton26" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -554,6 +576,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="TextureButton27" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -563,6 +586,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="TextureButton28" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -572,6 +596,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="TextureButton29" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -581,6 +606,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="TextureButton30" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -590,6 +616,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="TextureButton31" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -599,6 +626,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="TextureButton32" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -608,6 +636,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="TextureButton33" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -617,6 +646,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="TextureButton34" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -626,6 +656,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="TextureButton35" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -635,6 +666,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="TextureButton36" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -644,6 +676,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="TextureButton37" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -653,6 +686,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="TextureButton38" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -662,6 +696,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="TextureButton39" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -671,6 +706,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="TextureButton40" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -680,6 +716,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="TextureButton41" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -689,6 +726,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="TextureButton42" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -698,6 +736,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="TextureButton43" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -707,6 +746,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="TextureButton44" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -716,6 +756,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="TextureButton45" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -725,6 +766,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="TextureButton46" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -734,6 +776,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="TextureButton47" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -743,6 +786,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="TextureButton48" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -752,6 +796,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="TextureButton49" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -761,6 +806,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="TextureButton50" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -770,6 +816,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="TextureButton51" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -779,6 +826,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="TextureButton52" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -788,6 +836,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="TextureButton53" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -797,6 +846,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="TextureButton54" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -806,6 +856,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="TextureButton55" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -815,6 +866,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="TextureButton56" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -824,6 +876,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="TextureButton57" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -833,6 +886,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="TextureButton58" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -842,6 +896,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="TextureButton59" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -851,6 +906,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="TextureButton60" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -860,6 +916,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="TextureButton61" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -869,6 +926,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="TextureButton62" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -878,6 +936,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="TextureButton63" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -887,6 +946,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="TextureButton64" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -896,6 +956,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="TextureButton65" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -905,6 +966,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="TextureButton66" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1525,4 +1587,8 @@ stretch_mode = 5
 [connection signal="pressed" from="TopPanel/MarginContainer/TopTab/TimerController/HBoxContainer/1x" to="." method="_on_1x_pressed"]
 [connection signal="pressed" from="TopPanel/MarginContainer/TopTab/TimerController/HBoxContainer/2x" to="." method="_on_2x_pressed"]
 [connection signal="pressed" from="TopPanel/MarginContainer/TopTab/Buttons/Menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/TextureButtonAlojamento" to="." method="_on_texture_button_pressed_alojamento"]
+[connection signal="pressed" from="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/TextureButtonMadeireira" to="." method="_on_texture_button_pressed_madeireira"]
+[connection signal="pressed" from="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/TextureButtonMinas" to="." method="_on_texture_button_pressed_minas"]
+[connection signal="pressed" from="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/TextureButtonFazenda" to="." method="_on_texture_button_pressed_fazenda"]
 [connection signal="pressed" from="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades/Grid/TextureButton" to="." method="_on_texture_button_pressed"]
