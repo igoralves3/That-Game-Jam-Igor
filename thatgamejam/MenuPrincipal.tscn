@@ -10,18 +10,18 @@ script = ExtResource("1_0oe1n")
 [node name="ButtonStart" type="Button" parent="."]
 layout_mode = 0
 offset_left = 524.0
-offset_top = 397.0
+offset_top = 238.0
 offset_right = 620.0
-offset_bottom = 428.0
+offset_bottom = 269.0
 scale = Vector2(3.56, 1.76)
 text = "Start Game"
 
 [node name="ButtonExit" type="Button" parent="."]
 layout_mode = 0
 offset_left = 524.0
-offset_top = 466.0
+offset_top = 463.0
 offset_right = 620.0
-offset_bottom = 497.0
+offset_bottom = 494.0
 scale = Vector2(3.56, 1.76)
 text = "Exit Game"
 
@@ -37,9 +37,9 @@ text = "Nome do Jogo"
 [node name="ButtonOptions" type="Button" parent="."]
 layout_mode = 0
 offset_left = 524.0
-offset_top = 565.0
+offset_top = 327.0
 offset_right = 620.0
-offset_bottom = 596.0
+offset_bottom = 358.0
 scale = Vector2(3.56, 1.76)
 text = "Options"
 

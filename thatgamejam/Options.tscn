@@ -5,17 +5,18 @@
 [node name="Options" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+scale = Vector2(2.64, 2.16)
 script = ExtResource("1_r314q")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 245.0
-offset_top = 37.0
-offset_right = 285.0
-offset_bottom = 60.0
+offset_left = 220.833
+offset_top = 37.037
+offset_right = 282.833
+offset_bottom = 60.037
 text = "Options"
 
-[node name="Button" type="Button" parent="."]
+[node name="ButtonBackMenu" type="Button" parent="."]
 layout_mode = 0
 offset_left = 210.0
 offset_top = 219.0
@@ -59,6 +60,6 @@ max_value = 1.0
 step = 0.01
 value = 0.5
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="ButtonBackMenu" to="." method="_on_button_pressed"]
 [connection signal="value_changed" from="MusicSlider" to="." method="_on_h_slider_value_changed"]
 [connection signal="value_changed" from="SFXSlider" to="." method="_on_h_slider_2_value_changed"]
