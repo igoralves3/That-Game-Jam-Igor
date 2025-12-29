@@ -25,7 +25,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			
 			current = preload("res://prefabs/Buildings/Madeireira.tscn")
 		elif Global.currentBuildType == "Capela":
-			current = preload("res://prefabs/Buildings/Capela.tscn")
+			current = null#preload("res://prefabs/Buildings/Capela.tscn")
 		elif Global.currentBuildType == "Fazenda" and Global.wood >= 150:
 			Global.wood = Global.wood- 150
 			
