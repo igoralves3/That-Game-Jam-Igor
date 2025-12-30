@@ -135,6 +135,11 @@ func apply_effect(effect_name: String, value) -> void:
 			supplies = max(supplies + int(value), 0)
 		"money":
 			money = max(money + int(value), 0)
-	
+		"faith":
+			faith = max(faith + int(value), 0)
+		"happiness":
+			happiness = clamp(happiness + float(value), 0.0, 1.0)
+		"total_followers":
+			total_followers = max(total_followers + int(value), 0)
 
 	
