@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://d3fefgqtdhori"]
+[gd_scene load_steps=18 format=3 uid="uid://d3fefgqtdhori"]
 
 [ext_resource type="Script" uid="uid://b7vko2yn7j5nr" path="res://prefabs/UI/ui.gd" id="1_fw6kh"]
 [ext_resource type="Texture2D" uid="uid://nslqneqn3bg6" path="res://Assets/UI Components/CLEAN MENUS/clean ui_clean menu-09.png" id="2_u7etd"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://iifn3hmtdy8h" path="res://Assets/UI Components/UI ICONS/UI ICONS/white icons/ui icons_wht-12.png" id="12_juusu"]
 [ext_resource type="Texture2D" uid="uid://de7re5y7gey2x" path="res://Assets/UI Components/UI ICONS/UI ICONS/white icons/ui icons_wht-07.png" id="13_w4m0a"]
 [ext_resource type="Texture2D" uid="uid://bt3dxm0nam0er" path="res://Assets/UI Components/UI ICONS/UI ICONS/white icons/ui icons_wht-08.png" id="14_4ctr4"]
+[ext_resource type="PackedScene" uid="uid://dy21qjlrln5qb" path="res://prefabs/UI/Events/EventModal.tscn" id="15_tethd"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l6v0m"]
 texture = ExtResource("2_u7etd")
@@ -1582,6 +1583,9 @@ size_flags_vertical = 4
 texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
+
+[node name="EventModal" parent="." instance=ExtResource("15_tethd")]
+layout_mode = 1
 
 [connection signal="pressed" from="TopPanel/MarginContainer/TopTab/TimerController/Pause" to="." method="_on_pause_pressed"]
 [connection signal="pressed" from="TopPanel/MarginContainer/TopTab/TimerController/HBoxContainer/1x" to="." method="_on_1x_pressed"]

@@ -39,9 +39,11 @@ func reset_game():
 
 func pause_game():
 	state = GameState.PAUSED
+	timer.pause()
 
 func resume_game():
 	state = GameState.PLAYING
+	timer.resume()
 
 func end_game():
 	state = GameState.MENU
@@ -121,6 +123,18 @@ func add_resource(type: String, amount: int):
 			money += amount
 		"faith":
 			faith += amount
-
+	
 	currentBuilding = null#"None"
 	currentFollower = null
+
+func apply_effect(effect_name: String, value) -> void:
+	match effect_name: 
+		"wood":
+			wood = max(wood + int(value), 0)
+		"supplies":
+			supplies = max(supplies + int(value), 0)
+		"money":
+			money = max(money + int(value), 0)
+	
+
+	

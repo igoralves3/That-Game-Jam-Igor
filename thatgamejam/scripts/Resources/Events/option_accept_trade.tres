@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EventOption" load_steps=2 format=3 uid="uid://tgtsowf0ny7h"]
+
+[ext_resource type="Script" uid="uid://s0gd0ykgbhjp" path="res://scripts/Resources/EventOption.gd" id="1_wuwfd"]
+
+[resource]
+script = ExtResource("1_wuwfd")
+text = "Aceitar Comércio"
+effects = {
+&"money": 150
+}

@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 Global="*res://scripts/Global.gd"
 timer="*res://scripts/timer.gd"
 Bgm="*res://Audio/BGM.tscn"
+EventManagertscn="*res://EventManager.tscn"
 
 [display]
 

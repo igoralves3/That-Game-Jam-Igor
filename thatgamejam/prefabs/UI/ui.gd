@@ -1,13 +1,13 @@
 extends Control
 
 @onready var weekday_label = $TopPanel/MarginContainer/TopTab/TimerController/Weekday
-@onready var pause_button = $Controller/TimeController/MarginContainer/HBoxContainer/Pause
-@onready var speed_1x_button = $"Controller/TimeController/MarginContainer/HBoxContainer/HBoxContainer/1x"
-@onready var speed_2x_button = $"Controller/TimeController/MarginContainer/HBoxContainer/HBoxContainer/2x"
+@onready var pause_button = $TopPanel/MarginContainer/TopTab/TimerController/Pause
+@onready var speed_1x_button = $"TopPanel/MarginContainer/TopTab/TimerController/HBoxContainer/1x"
+@onready var speed_2x_button = $"TopPanel/MarginContainer/TopTab/TimerController/HBoxContainer/2x"
 
 @onready var time_label = $TopPanel/MarginContainer/TopTab/TimerController/Time
 
-@onready var wood_count_label = $TopPanel/MarginContainer/TopTab/GoldCounter/HBox/Label
+@onready var wood_count_label = $TopPanel/MarginContainer/TopTab/WoodCounter/HBox/Label
 @onready var supply_count_label = $TopPanel/MarginContainer/TopTab/SupplyCounter/HBox/Label
 @onready var money_count_label = $TopPanel/MarginContainer/TopTab/GoldCounter/HBox/Label
 
@@ -20,6 +20,7 @@ func _ready():
 	timer.day_changed.connect(_update_weekday)
 	timer.pause_changed.connect(_update_pause_button)
 	timer.speed_changed.connect(_update_speed_buttons)
+	EventManagertscn.event_triggered.connect($EventModal.show_event)
 	_update_speed_buttons(timer.speed)
 
 func _process(delta: float) -> void:

@@ -28,6 +28,7 @@ func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_PAUSABLE
 	var follower_lst = get_tree().get_nodes_in_group("Followers")
 	Global.total_followers = follower_lst.size()
+	day_changed.connect(EventManagertscn.schedule_daily_event)
 
 func start_game_time():
 	if ticking:
@@ -75,6 +76,9 @@ func _process(delta: float) -> void:
 	var previous_time = elapsed_turn_time
 	
 	elapsed_turn_time += delta
+	
+	var time := get_current_time()
+	EventManagertscn.check_event_time(time.x)
 	
 	if turnoAtual == Turno.Noite and !day_changed_this_night:
 		var progress_before = previous_time / current_turn_duration

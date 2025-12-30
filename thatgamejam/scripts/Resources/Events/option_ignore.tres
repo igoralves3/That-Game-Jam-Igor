@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EventOption" load_steps=2 format=3 uid="uid://darwuxtktrs42"]
+
+[ext_resource type="Script" uid="uid://s0gd0ykgbhjp" path="res://scripts/Resources/EventOption.gd" id="1_jgksm"]
+
+[resource]
+script = ExtResource("1_jgksm")
+text = "Ignorar"
+effects = {
+"money": -100
+}
