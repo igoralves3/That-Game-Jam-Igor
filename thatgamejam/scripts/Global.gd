@@ -27,6 +27,8 @@ var currentFollower = null
 
 var currentBuildType = null
 
+
+
 func _ready():
 	prayTimer = Timer.new()
 	add_child(prayTimer)
@@ -88,6 +90,8 @@ func getResource(resource: String) -> int:
 		"faith":
 			return faith
 		"pop":
+			return total_followers
+		"total_followers":
 			return total_followers
 	return 0
 

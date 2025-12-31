@@ -20,5 +20,7 @@ func iconAssignment(key: String) -> Texture2D:
 		"happiness":
 			return preload("res://Assets/Icons/beer_mug.png")
 		"total_followers":
-			return preload("res://Assets/Icons/beer_mug.png")
+			return preload("res://Assets/Icons/icons/axe.png")
+		"pop":
+			return preload("res://Assets/Icons/icons/axe.png")
 	return null
