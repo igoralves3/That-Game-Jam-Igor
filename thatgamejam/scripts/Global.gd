@@ -16,6 +16,9 @@ var religionLvl: int = 1
 var requirementsToLvlUp: Array[Dictionary] = [{"pop": 5}, {"pop": 10}, {"pop": 15}, {"pop": 25}, {"pop": 40}, {"pop":65}, {"pop": 105}, {"pop": 170}, {"pop": 275}, {"pop": 445}, {"pop": 720}, {"pop": 1000}]
 var requirementIndex:= 0
 
+@onready var prayTimer: Timer
+var currentRitual: Ritual = null
+
 var happinessLossBonus: float = 1.0
 var happinessGainBonus: float = 1.0
 
@@ -23,6 +26,13 @@ var currentBuilding = null#"None"
 var currentFollower = null
 
 var currentBuildType = null
+
+func _ready():
+	prayTimer = Timer.new()
+	add_child(prayTimer)
+	prayTimer.one_shot = true
+	prayTimer.autostart = false
+	prayTimer.timeout.connect(on_Pray_Over)
 
 func start_game():
 	state = GameState.PLAYING
@@ -36,6 +46,7 @@ func reset_game():
 	money = 0
 	happiness = 1.0
 	religionLvl = 1
+	currentRitual = null
 
 func pause_game():
 	state = GameState.PAUSED
@@ -142,4 +153,15 @@ func apply_effect(effect_name: String, value) -> void:
 		"total_followers":
 			total_followers = max(total_followers + int(value), 0)
 
-	
+func beginRitual(ritual:Ritual):
+	print(ritual)
+	currentRitual = ritual
+	prayTimer.wait_time = ritual.time
+	prayTimer.start()
+
+func on_Pray_Over():
+	var rewardDic = currentRitual.reward
+	for i in rewardDic:
+		apply_effect(i, rewardDic[i])
+	timer.hasPrayed=true
+	print("[PRAY] wood: ", wood, ", supplies: ", supplies, ", faith: ", faith)

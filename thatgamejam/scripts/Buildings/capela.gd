@@ -14,4 +14,5 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 			Global.pause_game()
 			timer.pause()
 		print("Clicou na capela")
-		capela_clicada.emit()
+		if !timer.hasPrayed:
+			capela_clicada.emit()
