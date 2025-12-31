@@ -3,6 +3,7 @@ extends Control
 @export var lista_de_rituais: Array[Ritual] # Arraste seus arquivos .tres aqui
 @export var ritual_button_prefab: PackedScene
 @export var nivel_visibilidade: int = 5 # Quantos níveis à frente o ritual aparece
+@export var ItemBoxObject: PackedScene
 
 func _ready():
 	atualizar_menu_rituais()
@@ -23,6 +24,7 @@ func atualizar_menu_rituais():
 		if Global.religionLvl >= (ritual.level - nivel_visibilidade):
 			var novo_btn = ritual_button_prefab.instantiate()
 			$VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer.add_child(novo_btn)
+			novo_btn.ItemBoxObject = self.ItemBoxObject
 			novo_btn.setup(ritual)
 			novo_btn.connect("ritual_selecionado", on_selected_ritual, 0)
 

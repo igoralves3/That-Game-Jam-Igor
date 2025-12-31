@@ -161,7 +161,7 @@ func beginRitual(ritual:Ritual):
 
 func on_Pray_Over():
 	var rewardDic = currentRitual.reward
-	for i in rewardDic:
+	for i in rewardDic.keys():
 		apply_effect(i, rewardDic[i])
 	timer.hasPrayed=true
 	print("[PRAY] wood: ", wood, ", supplies: ", supplies, ", faith: ", faith)

@@ -16,9 +16,7 @@ script = ExtResource("3_jd1kl")
 title = "Sermão diário"
 icon = ExtResource("4_fggcg")
 level = 1
-cost = {
-"happiness": 0.5
-}
+cost = {}
 reward = {
 "faith": 10.0
 }

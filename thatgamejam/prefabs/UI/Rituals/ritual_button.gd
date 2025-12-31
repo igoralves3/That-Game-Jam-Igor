@@ -2,6 +2,9 @@ extends PanelContainer
 
 @onready var icone_rect = $MarginContainer/HBoxContainer/Icon
 @onready var nome_label = $MarginContainer/HBoxContainer/VBoxContainer/Title
+@onready var CostContainer = $MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/CostContainer
+@onready var RewardContainer = $MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/RewardContainer
+var ItemBoxObject: PackedScene
 
 var ritual_info: Ritual
 
@@ -14,6 +17,23 @@ func setup(data: Ritual):
 	
 	if Global.religionLvl < data.level:
 		modulate = Color(0.5, 0.5, 0.5) 
+		
+	
+	if data.cost.size() > 0:
+		for cost in data.cost.keys():
+			var novo_box = ItemBoxObject.instantiate()
+			CostContainer.add_child(novo_box)
+			novo_box.setup(cost, data.cost[cost])
+	else:
+		CostContainer.queue_free()
+	
+	if data.reward.size() > 0:
+		for reward in data.reward.keys():
+			var novo_box = ItemBoxObject.instantiate()
+			RewardContainer.add_child(novo_box)
+			novo_box.setup(reward, data.reward[reward])
+	else:
+		RewardContainer.queue_free()
 
 func _on_gui_input(event):
 	if event is InputEventMouseButton and event.pressed:
