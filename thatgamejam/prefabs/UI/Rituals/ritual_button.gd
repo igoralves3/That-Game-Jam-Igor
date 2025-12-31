@@ -41,6 +41,10 @@ func _on_gui_input(event):
 		# Selecionado! Muda a cor do ícone como você pediu
 		icone_rect.self_modulate = Color("#7f7f7f") # Dourado
 		emit_signal("ritual_selecionado", ritual_info)
+		
+		#acrescentado por igor
+		timer.resume()
+		followers_go_to_capela()
 
 func _on_mouse_entered() -> void:
 	# Aumenta o brilho (1.2) para dar o feedback de hover
@@ -62,3 +66,10 @@ func check_cost(data: Dictionary) -> bool:
 		if data[cost] > playersResource:
 			return false
 	return true
+	
+func followers_go_to_capela():
+	var followers =  get_tree().get_nodes_in_group("Followers")
+	for f in followers:
+		
+			print(str(f))
+			f.enter_praying()

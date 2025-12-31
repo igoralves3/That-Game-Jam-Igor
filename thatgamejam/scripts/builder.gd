@@ -4,7 +4,8 @@ class_name Builder
 
 enum SeguidorState {Entering, Stopped,Wander, 
 Working, Woodwork, Minework, Farmwork, 
-Sleeping, Praying, Hidden, InsideAlojamento}
+Sleeping, Praying, Hidden, InsideAlojamento,
+GoPraying}
 
 @export var cur_state = SeguidorState.Wander
 
@@ -23,6 +24,7 @@ var wander_target: Vector2
 @export var working = false
 
 @export var alojamento = null
+@export var capela = null
 
 func _ready():
 	cur_state=SeguidorState.Entering
@@ -57,6 +59,10 @@ func _physics_process(delta):
 		process_sleeping()
 	elif cur_state == SeguidorState.InsideAlojamento:
 		process_inside_alojamento()
+	elif cur_state == SeguidorState.GoPraying:
+		process_go_praying()
+	elif cur_state == SeguidorState.Praying:
+		process_praying()
 
 func process_entering():
 	if global_position.x > get_viewport().get_visible_rect().size.x/2:
@@ -209,4 +215,30 @@ func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
 	#enter_wander()
 	
 
+func enter_praying():
+	cur_state = SeguidorState.GoPraying
+	capela = Global.currentCapela
+	agent.target_position = capela.global_position
 	
+	
+func process_go_praying():
+	print('going to capela ' + str(capela))
+	
+	if  global_position.distance_to(capela.global_position) < 20.0:
+	
+		velocity = Vector2.ZERO
+		#move_and_slide()
+		
+		
+		cur_state = SeguidorState.Praying
+		return
+	
+	var next_point = agent.get_next_path_position()
+	var direction = (next_point - global_position).normalized()
+	
+	velocity = direction * 10.0
+	move_and_slide()
+	
+func process_praying():
+	visible = false
+	print('praying at ' + str(capela))

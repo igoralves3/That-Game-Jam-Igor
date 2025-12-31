@@ -27,7 +27,7 @@ var currentFollower = null
 
 var currentBuildType = null
 
-
+var currentCapela = null
 
 func _ready():
 	prayTimer = Timer.new()

@@ -1,5 +1,7 @@
 extends Area2D
 
+class_name Capela
+
 # Criamos o sinal para a UI escutar
 signal capela_clicada
 
@@ -14,5 +16,7 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 			Global.pause_game()
 			timer.pause()
 		print("Clicou na capela")
+		
 		if !timer.hasPrayed:
 			capela_clicada.emit()
+			Global.currentCapela = self

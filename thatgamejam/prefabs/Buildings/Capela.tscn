@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cbj30mqjibh0h" path="res://icon.svg" id="2_m3n3m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iy7yq"]
+size = Vector2(31, 30.2)
 
 [node name="Capela" type="Area2D"]
 script = ExtResource("1_1dcqa")
@@ -13,6 +14,7 @@ modulate = Color(1, 0, 0, 1)
 texture = ExtResource("2_m3n3m")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.5, 2.5)
 scale = Vector2(5, 5)
 shape = SubResource("RectangleShape2D_iy7yq")
 
