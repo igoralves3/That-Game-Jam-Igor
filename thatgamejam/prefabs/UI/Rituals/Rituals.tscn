@@ -1,29 +1,94 @@
-[gd_scene load_steps=10 format=3 uid="uid://bve2kbkn54bj6"]
+[gd_scene load_steps=17 format=3 uid="uid://bve2kbkn54bj6"]
 
 [ext_resource type="Texture2D" uid="uid://dea3ix2tk5qu1" path="res://Assets/UI Components/CLEAN MENUS/clean ui_clean menu-01.png" id="1_20t4i"]
 [ext_resource type="Texture2D" uid="uid://b300786b75vq3" path="res://Assets/UI ICONS/UI ICONS/white icons/ui icons_wht-14.png" id="2_a06bj"]
 [ext_resource type="Script" uid="uid://btnk51sv2pnjn" path="res://prefabs/UI/Rituals/rituals.gd" id="2_dd0kr"]
 [ext_resource type="PackedScene" uid="uid://baat8na2lyha5" path="res://prefabs/UI/Rituals/RitualButton.tscn" id="3_dd0kr"]
 [ext_resource type="Script" uid="uid://e1s4bkec4hxa" path="res://scripts/Resources/Ritual.gd" id="3_jd1kl"]
-[ext_resource type="Texture2D" uid="uid://cbj30mqjibh0h" path="res://icon.svg" id="4_fggcg"]
+[ext_resource type="Texture2D" uid="uid://c4wwjd18ktyw4" path="res://Assets/UI Components/KEY ICONS/clean ui_collectible-05.png" id="4_3sdkw"]
+[ext_resource type="Texture2D" uid="uid://1dy6gqv3doe8" path="res://Assets/UI Components/KEY ICONS/clean ui_collectible-06.png" id="5_la24y"]
+[ext_resource type="Texture2D" uid="uid://e7lsd4o50ae0" path="res://Assets/UI Components/KEY ICONS/clean ui_key icon-09.png" id="6_jo6vy"]
 [ext_resource type="PackedScene" uid="uid://dy1h6y5quex81" path="res://prefabs/UI/Rituals/ItemBox/ItemBox.tscn" id="7_fggcg"]
+[ext_resource type="Texture2D" uid="uid://rkmh6qfrnlha" path="res://Assets/UI Components/KEY ICONS/clean ui_key icon-13.png" id="7_fxt4u"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dd0kr"]
 texture = ExtResource("1_20t4i")
 
-[sub_resource type="Resource" id="Resource_3sdkw"]
+[sub_resource type="Resource" id="Resource_jo6vy"]
 script = ExtResource("3_jd1kl")
-title = "Sermão diário"
-icon = ExtResource("4_fggcg")
+title = "Daily Ritual"
+icon = ExtResource("4_3sdkw")
 level = 1
-cost = {
-"happiness": 0.5
-}
+cost = {}
 reward = {
-"faith": 10.0
+"faith": 100
 }
 single = false
-time = 1.0
+time = 15.0
+metadata/_custom_type_script = "uid://e1s4bkec4hxa"
+
+[sub_resource type="Resource" id="Resource_fxt4u"]
+script = ExtResource("3_jd1kl")
+title = "Rite of Passage"
+icon = ExtResource("5_la24y")
+level = 2
+cost = {
+"money": 100,
+"supplies": 100
+}
+reward = {
+"faith": 200
+}
+single = true
+time = 15.0
+metadata/_custom_type_script = "uid://e1s4bkec4hxa"
+
+[sub_resource type="Resource" id="Resource_a1npl"]
+script = ExtResource("3_jd1kl")
+title = "Ritual of Plenty"
+icon = ExtResource("6_jo6vy")
+level = 5
+cost = {
+"faith": 100,
+"pop": 1
+}
+reward = {
+"money": 50,
+"supplies": 50,
+"wood": 50
+}
+single = false
+time = 15.0
+metadata/_custom_type_script = "uid://e1s4bkec4hxa"
+
+[sub_resource type="Resource" id="Resource_bpuiq"]
+script = ExtResource("3_jd1kl")
+title = "Ritual of Greed"
+icon = ExtResource("7_fxt4u")
+level = 12
+cost = {
+"faith": 200,
+"pop": 5
+}
+reward = {
+"money": 200
+}
+single = false
+time = 15.0
+metadata/_custom_type_script = "uid://e1s4bkec4hxa"
+
+[sub_resource type="Resource" id="Resource_hhdu8"]
+script = ExtResource("3_jd1kl")
+title = "Ritual of Happiness"
+icon = ExtResource("6_jo6vy")
+level = 1
+cost = {}
+reward = {
+"faith": 50,
+"happiness": 0.15
+}
+single = false
+time = 15.0
 metadata/_custom_type_script = "uid://e1s4bkec4hxa"
 
 [node name="RitualModal" type="PanelContainer"]
@@ -40,7 +105,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_dd0kr")
 script = ExtResource("2_dd0kr")
-lista_de_rituais = Array[ExtResource("3_jd1kl")]([SubResource("Resource_3sdkw")])
+lista_de_rituais = Array[ExtResource("3_jd1kl")]([SubResource("Resource_jo6vy"), SubResource("Resource_fxt4u"), SubResource("Resource_a1npl"), SubResource("Resource_bpuiq"), SubResource("Resource_hhdu8")])
 ritual_button_prefab = ExtResource("3_dd0kr")
 ItemBoxObject = ExtResource("7_fggcg")
 

@@ -49,11 +49,12 @@ func _on_mouse_entered() -> void:
 		modulate = Color("#7f7f7f")
 
 func _on_mouse_exited() -> void:
+	if !disabled:
 	# Retorna ao estado original
-	if Global.religionLvl < ritual_info.level and !disabled:
-		modulate = Color(0.5, 0.5, 0.5) # Mantém cinza se estiver bloqueado
-	else:
-		modulate = Color(1, 1, 1) # Volta ao normal se estiver desbloqueado
+		if Global.religionLvl < ritual_info.level:
+			modulate = Color(0.5, 0.5, 0.5) # Mantém cinza se estiver bloqueado
+		else:
+			modulate = Color(1, 1, 1) # Volta ao normal se estiver desbloqueado
 
 func check_cost(data: Dictionary) -> bool:
 	for cost in data.keys():

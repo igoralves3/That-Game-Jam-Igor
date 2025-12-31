@@ -160,6 +160,11 @@ func apply_effect(effect_name: String, value) -> void:
 func beginRitual(ritual:Ritual):
 	print(ritual)
 	currentRitual = ritual
+	for cost in ritual.cost.keys():
+		if cost != "pop" || cost!= "total_followers":
+			add_resource(cost, ritual.cost[cost] * -1)
+		else:
+			removeFollower()
 	prayTimer.wait_time = ritual.time
 	prayTimer.start()
 
@@ -169,3 +174,9 @@ func on_Pray_Over():
 		apply_effect(i, rewardDic[i])
 	timer.hasPrayed=true
 	print("[PRAY] wood: ", wood, ", supplies: ", supplies, ", faith: ", faith)
+
+func removeFollower():
+	var followerList = get_tree().get_nodes_in_group("Followers")
+	var pickedFollower = followerList.pick_random()
+	pickedFollower.queue_free()
+	total_followers -=1
