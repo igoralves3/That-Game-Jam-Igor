@@ -26,7 +26,11 @@ var wander_target: Vector2
 @export var alojamento = null
 @export var capela = null
 
+@export var dialogo = null
+
+
 func _ready():
+	dialogo = get_tree().get_first_node_in_group("Canvas")
 	cur_state=SeguidorState.Entering
 	#await wait_for_navigation_ready()
 	#cur_state = SeguidorState.Wander
@@ -128,11 +132,16 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			#if Global.currentFollower != self 
-			Global.currentFollower = self
+			
 			if cur_state == SeguidorState.Stopped:	
-				cur_state = SeguidorState.Wander
-				enter_wander()
-				print(str(Global.currentFollower))
+				Global.currentFollower = self
+				open_dialog()
+				
+				#cur_state = SeguidorState.Wander
+				#enter_wander()
+				#print(str(Global.currentFollower))
+			
+			
 			#elif cur_state == SeguidorState.Wander:
 				
 			#else:
@@ -210,7 +219,6 @@ func enter_inside_alojamento():
 
 
 func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
-	
 	cur_state=SeguidorState.Stopped
 	#enter_wander()
 	
@@ -242,3 +250,10 @@ func process_go_praying():
 func process_praying():
 	visible = false
 	print('praying at ' + str(capela))
+	
+func open_dialog():
+	dialogo.follower = self
+	dialogo.open()
+	
+	
+	

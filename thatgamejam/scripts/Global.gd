@@ -180,5 +180,7 @@ func on_Pray_Over():
 func removeFollower():
 	var followerList = get_tree().get_nodes_in_group("Followers")
 	var pickedFollower = followerList.pick_random()
+	
+	
 	pickedFollower.queue_free()
 	total_followers -=1
