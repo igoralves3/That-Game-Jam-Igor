@@ -1,11 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://baat8na2lyha5"]
+[gd_scene load_steps=6 format=3 uid="uid://baat8na2lyha5"]
 
-[ext_resource type="Texture2D" uid="uid://buarupxhvua07" path="res://Assets/UI Components/CLEAN MENUS/clean ui_clean menu-06.png" id="1_6xgq1"]
+[ext_resource type="StyleBox" uid="uid://bl0sk7l858r3o" path="res://prefabs/UI/Option_style.tres" id="1_6xgq1"]
 [ext_resource type="Script" uid="uid://c21aiqn0lp87y" path="res://prefabs/UI/Rituals/ritual_button.gd" id="1_76105"]
 [ext_resource type="Texture2D" uid="uid://cbj30mqjibh0h" path="res://icon.svg" id="3_ipm74"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iumwv"]
-texture = ExtResource("1_6xgq1")
 
 [sub_resource type="LabelSettings" id="LabelSettings_o7ocf"]
 font_size = 24
@@ -17,7 +14,7 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 96.0
 grow_horizontal = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_iumwv")
+theme_override_styles/panel = ExtResource("1_6xgq1")
 script = ExtResource("1_76105")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]

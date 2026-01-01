@@ -1,0 +1,8 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://bb4tcpovrwga6"]
+
+[ext_resource type="Texture2D" uid="uid://nslqneqn3bg6" path="res://Assets/UI Components/CLEAN MENUS/clean ui_clean menu-09.png" id="1_40xxy"]
+
+[resource]
+texture = ExtResource("1_40xxy")
+texture_margin_left = 20.0
+texture_margin_right = 20.0

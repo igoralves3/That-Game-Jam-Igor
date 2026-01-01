@@ -155,7 +155,9 @@ func apply_effect(effect_name: String, value) -> void:
 		"happiness":
 			happiness = clamp(happiness + float(value), 0.0, 1.0)
 		"total_followers":
-			total_followers = max(total_followers + int(value), 0)
+			var current_followers = max(total_followers + int(value), 0)
+			if current_followers < total_followers:
+				removeFollower()
 
 func beginRitual(ritual:Ritual):
 	print(ritual)
