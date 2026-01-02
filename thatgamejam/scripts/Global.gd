@@ -159,6 +159,30 @@ func apply_effect(effect_name: String, value) -> void:
 			if current_followers < total_followers:
 				removeFollower()
 
+func can_apply_effects(effects: Dictionary) -> bool:
+	for key in effects.keys():
+		var value = effects[key]
+		match key:
+			"wood":
+				if wood + value < 0:
+					return false
+			"supplies":
+				if supplies + value < 0:
+					return false
+			"money":
+				if money + value < 0:
+					return false
+			"faith":
+				if faith + value < 0:
+					return false
+			"happines":
+				if happiness + value < 0:
+					return false
+			"total_followers":
+				if total_followers + value < 0:
+					return false
+	return true
+
 func beginRitual(ritual:Ritual):
 	print(ritual)
 	currentRitual = ritual

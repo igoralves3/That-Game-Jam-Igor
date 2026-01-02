@@ -25,20 +25,23 @@ func schedule_daily_event(day: int, week: int):
 	if pool.is_empty():
 		return
 	
-	pending_event = pool.pick_random()
+	pending_event = pool.pick_random().duplicate(true)
 	
 	pending_hour = randi_range(0, 23)
 	
 	print ("Evento agendado: ", pending_event.title, "às ", pending_hour)
 
 func check_event_time(current_hour: int):
+	print("check_event_time | hora:", current_hour, "evento:", pending_hour)
 	if event_triggered_today:
 		return
 	
 	if pending_event == null:
+		print("Evento nulo")
 		return
 	
 	if current_hour >= pending_hour:
+		print("Trigger no evento")
 		trigger_event()
 		
 func trigger_event():
