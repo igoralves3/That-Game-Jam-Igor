@@ -72,5 +72,5 @@ func effects_to_tooltip(effects: Dictionary) -> String:
 	for key in effects.keys():
 		var value = effects[key]
 		var sign = "+" if value > 0 else ""
-		lines.append("%s: %s%s" % [key.capitalize, sign, value])
+		lines.append("%s: %s%s" % [key.capitalize(), sign, value])
 	return "/n".join(lines)
