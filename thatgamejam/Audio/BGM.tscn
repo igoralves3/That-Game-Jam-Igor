@@ -1,12 +1,12 @@
 [gd_scene load_steps=3 format=3 uid="uid://bgga35xqcvf"]
 
-[ext_resource type="AudioStream" uid="uid://djdbahs2k10t3" path="res://Audio/mixkit-under-gods-grace-918.mp3" id="1_qust2"]
+[ext_resource type="AudioStream" uid="uid://ofb46fj4j2yl" path="res://Audio/BG.ogg" id="1_yn7le"]
 [ext_resource type="Script" uid="uid://ovr5f3ub4v8d" path="res://Audio/audio_stream_player_2d.gd" id="2_yn7le"]
 
 [node name="Bgm" type="Node2D"]
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("1_qust2")
+stream = ExtResource("1_yn7le")
 volume_db = -10.0
 autoplay = true
 bus = &"Music"
