@@ -1,5 +1,6 @@
 extends Area2D
 
+@export var max_workers := 5
 @export var workers := 0
 @export var resource_type := ""
 @export var production_per_worker := 1
