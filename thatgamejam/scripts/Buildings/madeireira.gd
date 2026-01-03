@@ -4,6 +4,8 @@ class_name Madeireira
 
 const capacidade_maxima = 10
 
+var currentWorkers = 0
+
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.pressed:
@@ -22,6 +24,11 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 			Global.currentFollower.agent.target_position = global_position
 			Global.currentFollower.cur_state = Builder.SeguidorState.Woodwork#Builder.SeguidorState.Working
 
+func _process(delta):
+	if currentWorkers > 0:
+		$AnimationPlayer.play("active")
+	else:
+		self.scale = Vector2(1, 1)
 
 func _ready():
 	super()

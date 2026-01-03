@@ -1,9 +1,48 @@
-[gd_scene load_steps=4 format=3 uid="uid://q7qr8yhx454a"]
+[gd_scene load_steps=7 format=3 uid="uid://q7qr8yhx454a"]
 
 [ext_resource type="Script" uid="uid://bcwd2uor0frlc" path="res://scripts/Buildings/madeireira.gd" id="1_mwo5r"]
-[ext_resource type="Texture2D" uid="uid://cbj30mqjibh0h" path="res://icon.svg" id="2_uas0p"]
+[ext_resource type="Texture2D" uid="uid://byauxsbwo5o2g" path="res://Assets/Buildings/millBase.png" id="2_uas0p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uas0p"]
+size = Vector2(35.6, 35.8)
+
+[sub_resource type="Animation" id="Animation_uas0p"]
+resource_name = "active"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 0.95), Vector2(0.95, 1.1), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_p4jdl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gncl3"]
+_data = {
+&"RESET": SubResource("Animation_p4jdl"),
+&"active": SubResource("Animation_uas0p")
+}
 
 [node name="Madeireira" type="Area2D" groups=["Constructions"]]
 script = ExtResource("1_mwo5r")
@@ -14,7 +53,14 @@ wood_cost = 100
 texture = ExtResource("2_uas0p")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 21.5)
 scale = Vector2(5, 5)
 shape = SubResource("RectangleShape2D_uas0p")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+&"": SubResource("AnimationLibrary_gncl3")
+}
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]

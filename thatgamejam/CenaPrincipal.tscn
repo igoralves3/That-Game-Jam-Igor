@@ -28,21 +28,26 @@ cur_state = 2
 
 [node name="Alojamento" parent="." instance=ExtResource("3_a34lh")]
 position = Vector2(191, 389)
+scale = Vector2(0.5, 0.5)
 
 [node name="Fazenda" parent="." instance=ExtResource("4_1pqct")]
 position = Vector2(150, 224)
+scale = Vector2(0.5, 0.5)
 workers = 1
 
 [node name="Madeireira" parent="." instance=ExtResource("5_7la10")]
 position = Vector2(951, 230)
+scale = Vector2(0.5, 0.5)
 workers = 2
 
 [node name="Minas" parent="." instance=ExtResource("6_5vuhn")]
 position = Vector2(750, 302)
+scale = Vector2(0.5, 0.5)
 workers = 3
 
 [node name="Capela" parent="." instance=ExtResource("9_5vuhn")]
 position = Vector2(600, 192)
+scale = Vector2(0.5, 0.5)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -72,5 +77,6 @@ offset_bottom = 470.0
 
 [node name="Alojamento2" parent="." instance=ExtResource("3_a34lh")]
 position = Vector2(1132, 416)
+scale = Vector2(0.5, 0.5)
 
 [connection signal="capela_clicada" from="Capela" to="CanvasLayer/RitualModal" method="_on_capela_capela_clicada"]

@@ -1,21 +1,63 @@
-[gd_scene load_steps=4 format=3 uid="uid://bdugp0dnpca0u"]
+[gd_scene load_steps=7 format=3 uid="uid://bdugp0dnpca0u"]
 
 [ext_resource type="Script" uid="uid://c3448ni4yhrg4" path="res://scripts/Buildings/capela.gd" id="1_1dcqa"]
-[ext_resource type="Texture2D" uid="uid://cbj30mqjibh0h" path="res://icon.svg" id="2_m3n3m"]
+[ext_resource type="Texture2D" uid="uid://bvr5lrywamecn" path="res://Assets/Buildings/Monastery.png" id="2_m3n3m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iy7yq"]
-size = Vector2(31, 30.2)
+size = Vector2(31, 49.8)
+
+[sub_resource type="Animation" id="Animation_m3n3m"]
+resource_name = "InSession"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 0.95), Vector2(0.95, 1.1), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_iy7yq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c7ncc"]
+_data = {
+&"InSession": SubResource("Animation_m3n3m"),
+&"RESET": SubResource("Animation_iy7yq")
+}
 
 [node name="Capela" type="Area2D"]
 script = ExtResource("1_1dcqa")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1, 0, 0, 1)
 texture = ExtResource("2_m3n3m")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1.5, 2.5)
+position = Vector2(1.5, 15.5)
 scale = Vector2(5, 5)
 shape = SubResource("RectangleShape2D_iy7yq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_c7ncc")
+}
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]

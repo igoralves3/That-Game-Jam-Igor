@@ -199,6 +199,7 @@ func on_Pray_Over():
 	for i in rewardDic.keys():
 		apply_effect(i, rewardDic[i])
 	timer.hasPrayed=true
+	currentRitual = null
 	print("[PRAY] wood: ", wood, ", supplies: ", supplies, ", faith: ", faith)
 
 func removeFollower():

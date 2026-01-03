@@ -5,8 +5,6 @@ func _ready() -> void:
 	timer.start_game_time()
 
 func _unhandled_input(event: InputEvent) -> void:
-	
-	
 	if event is InputEventMouseButton and event.pressed:
 		print("Clicou em área vazia")
 			
@@ -30,7 +28,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			Global.wood = Global.wood- 150
 			
 			current = preload("res://prefabs/Buildings/Fazenda.tscn")
-
+			
 		if current != null:
 			var b = current.instantiate()
 			b.global_position = get_global_mouse_position()

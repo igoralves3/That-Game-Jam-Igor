@@ -21,6 +21,12 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 			capela_clicada.emit()
 			Global.currentCapela = self
 
+func _process(delta):
+	if Global.currentRitual != null:
+		$AnimationPlayer.play("InSession")
+	else:
+		self.scale = Vector2(1, 1)
+
 func get_save_data():
 	return {
 		"filename" : get_scene_file_path(), # Caminho da cena para recriar depois
