@@ -6,6 +6,21 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uas0p"]
 size = Vector2(35.6, 35.8)
 
+[sub_resource type="Animation" id="Animation_p4jdl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_uas0p"]
 resource_name = "active"
 length = 0.6
@@ -23,21 +38,6 @@ tracks/0/keys = {
 "values": [Vector2(1, 1), Vector2(1.1, 0.95), Vector2(0.95, 1.1), Vector2(1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_p4jdl"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gncl3"]
 _data = {
 &"RESET": SubResource("Animation_p4jdl"),
@@ -45,6 +45,7 @@ _data = {
 }
 
 [node name="Madeireira" type="Area2D" groups=["Constructions"]]
+scale = Vector2(0.5, 0.5)
 script = ExtResource("1_mwo5r")
 resource_type = "wood"
 wood_cost = 100
