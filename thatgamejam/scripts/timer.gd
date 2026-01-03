@@ -1,15 +1,15 @@
 extends Node2D
 enum Turno {Manha, Tarde, Noite}
 const TURN_DURATION := {
-	Turno.Manha: 4.0,
-	Turno.Tarde: 8.0,
-	Turno.Noite: 4.0
+	Turno.Manha: 60.0,
+	Turno.Tarde: 180.0,
+	Turno.Noite: 60.0
 }
 signal production_tick
 signal day_changed(day, week)
 signal pause_changed(paused)
 signal speed_changed(speed)
-@export var tick_interval := 2
+@export var tick_interval := 10
 var turnoAtual = Turno.Manha
 var is_day := true
 var ticking := false
