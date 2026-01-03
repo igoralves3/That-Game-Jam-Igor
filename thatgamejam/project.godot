@@ -31,6 +31,10 @@ window/size/viewport_height=720
 
 Constructions=""
 
+[gui]
+
+theme/custom_font="uid://db3qjku0enqkh"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

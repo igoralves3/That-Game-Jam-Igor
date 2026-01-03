@@ -24,6 +24,7 @@ navigation_polygon = SubResource("NavigationPolygon_l7207")
 
 [node name="Builder" parent="." groups=["Followers"] instance=ExtResource("2_11bju")]
 position = Vector2(475, 215)
+cur_state = 2
 
 [node name="Alojamento" parent="." instance=ExtResource("3_a34lh")]
 position = Vector2(296, 180)

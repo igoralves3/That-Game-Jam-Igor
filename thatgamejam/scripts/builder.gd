@@ -7,10 +7,10 @@ Working, Woodwork, Minework, Farmwork,
 Sleeping, Praying, Hidden, InsideAlojamento,
 GoPraying}
 
-@export var cur_state = SeguidorState.Wander
+@export var cur_state = SeguidorState.Entering
 
 @export var wander_radius := 100.0
-@export var wander_speed := 20.0
+@export var wander_speed := 60.0
 
 @onready var agent = $NavigationAgent2D
 
@@ -18,6 +18,7 @@ GoPraying}
 var wander_target: Vector2
 
 @onready var timer = $Timer
+@onready var sprite = $Sprite2D
 
 @export var building = null
 
@@ -28,14 +29,48 @@ var wander_target: Vector2
 
 @export var dialogo = null
 
+var color: String
+var possibleColors = ["BLACK", "BLUE", "PURPLE", "RED", "YELLOW"]
+
 
 func _ready():
+	velocity = Vector2.ZERO 
 	dialogo = get_tree().get_first_node_in_group("Canvas")
-	cur_state=SeguidorState.Entering
-	#await wait_for_navigation_ready()
-	#cur_state = SeguidorState.Wander
-	#enter_wander()
+	color = possibleColors.pick_random()
 	
+
+func animation_controller():
+	var anim_name = ""
+	var state_suffix = "idle"
+	var tool_suffix = ""
+
+	if velocity.length() > 0:
+		print(velocity.length())
+		state_suffix = "run"
+	else:
+		state_suffix = "idle"
+
+	match cur_state:
+		SeguidorState.Minework:
+			tool_suffix = "_pickaxe"
+		SeguidorState.Woodwork:
+			tool_suffix = "_axe"
+		SeguidorState.Farmwork:
+			tool_suffix = "_knife"
+
+	if state_suffix == "idle":
+		anim_name = color.to_lower() + "_" + state_suffix
+	else:
+		anim_name = color.to_lower() + "_" + state_suffix + tool_suffix
+
+	if sprite.sprite_frames.has_animation(anim_name):
+		sprite.play(anim_name)
+		print("[ANIM] ", anim_name)
+	else:
+		print("[ERRO] NÃO EXISTE: ", anim_name)
+	
+	if velocity.x != 0:
+		sprite.flip_h = velocity.x < 0
 
 func wait_for_navigation_ready():
 	while NavigationServer2D.map_get_iteration_id(
@@ -44,9 +79,9 @@ func wait_for_navigation_ready():
 		await get_tree().physics_frame
 
 func _physics_process(delta):
+	print("[ESTADO] ",cur_state)
 	if cur_state == SeguidorState.Entering:
 		process_entering()
-	
 	elif cur_state == SeguidorState.Wander:
 		process_wander()
 	elif cur_state == SeguidorState.Working:
@@ -67,6 +102,7 @@ func _physics_process(delta):
 		process_go_praying()
 	elif cur_state == SeguidorState.Praying:
 		process_praying()
+	animation_controller()
 
 func process_entering():
 	if global_position.x > get_viewport().get_visible_rect().size.x/2:
@@ -254,6 +290,3 @@ func process_praying():
 func open_dialog():
 	dialogo.follower = self
 	dialogo.open()
-	
-	
-	
