@@ -27,6 +27,10 @@ EventManagertscn="*res://EventManager.tscn"
 window/size/viewport_width=1280
 window/size/viewport_height=720
 
+[global_group]
+
+Constructions=""
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

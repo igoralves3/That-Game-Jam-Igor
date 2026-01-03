@@ -20,3 +20,10 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 		if !timer.hasPrayed:
 			capela_clicada.emit()
 			Global.currentCapela = self
+
+func get_save_data():
+	return {
+		"filename" : get_scene_file_path(), # Caminho da cena para recriar depois
+		"pos_x" : global_position.x,
+		"pos_y" : global_position.y,
+	}

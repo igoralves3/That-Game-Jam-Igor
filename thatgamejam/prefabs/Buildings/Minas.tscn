@@ -5,7 +5,7 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a58me"]
 
-[node name="Minas" type="Area2D"]
+[node name="Minas" type="Area2D" groups=["Constructions"]]
 script = ExtResource("1_i1wpe")
 resource_type = "money"
 wood_cost = 200

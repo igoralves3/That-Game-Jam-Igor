@@ -10,3 +10,10 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.pressed:
 		print("Clicou no Control")
 		
+
+func get_save_data():
+	return {
+		"filename" : get_scene_file_path(), # Caminho da cena para recriar depois
+		"pos_x" : global_position.x,
+		"pos_y" : global_position.y,
+	}

@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1buae"]
 size = Vector2(27.6, 28.6)
 
-[node name="Fazenda" type="Area2D"]
+[node name="Fazenda" type="Area2D" groups=["Constructions"]]
 script = ExtResource("1_wn0f5")
 resource_type = "supplies"
 wood_cost = 150

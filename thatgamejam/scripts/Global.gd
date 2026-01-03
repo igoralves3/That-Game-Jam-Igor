@@ -204,7 +204,62 @@ func on_Pray_Over():
 func removeFollower():
 	var followerList = get_tree().get_nodes_in_group("Followers")
 	var pickedFollower = followerList.pick_random()
-	
-	
 	pickedFollower.queue_free()
 	total_followers -=1
+
+func salvar_jogo():
+	var save_dict = {
+		"status": {
+		"money": money,
+		"wood": wood,
+		"faith": faith,
+		"supplies": supplies,
+		"religionLvl": religionLvl,
+		"followers": total_followers,
+		"week": timer.week,
+		"day": timer.day,
+		},
+		"constructions": []
+	}
+
+	# Pega os dados de cada prédio no mapa
+	var construcoes = get_tree().get_nodes_in_group("Constructions")
+	for predio in construcoes:
+		save_dict["constructions"].append(predio.get_save_data())
+
+	# Escreve no disco (user:// é a pasta segura de save)
+	var file = FileAccess.open("user://savegame.save", FileAccess.WRITE)
+	var json_string = JSON.stringify(save_dict)
+	file.store_line(json_string)
+
+func carregar_jogo():
+	if not FileAccess.file_exists("user://savegame.save"):
+		return
+
+	var file = FileAccess.open("user://savegame.save", FileAccess.READ)
+	var json_string = file.get_as_text()
+	var data = JSON.parse_string(json_string)
+
+	# 1. Carrega os valores globais
+	var s = data["status"]
+	money = s["money"]
+	wood = s["wood"]
+	faith = s["faith"]
+	supplies = s["supplies"]
+	religionLvl = s["religionLvl"]
+	total_followers = s["followers"]
+	timer.week = s["week"]
+	timer.day = s["day"]
+	# ... carregar os outros valores de tempo e recursos
+
+	# 2. Limpa o mapa atual antes de recriar
+	var predios_atuais = get_tree().get_nodes_in_group("Constructions")
+	for p in predios_atuais:
+		p.queue_free()
+
+	# 3. Recria as construções
+	for p_data in data["constructions"]:
+		var nova_cena = load(p_data["filename"]).instantiate()
+		get_tree().root.get_node("Node2D").add_child(nova_cena) # Ajuste o caminho se necessário
+		nova_cena.global_position = Vector2(p_data["pos_x"], p_data["pos_y"])
+		nova_cena.num_trabalhadores = p_data["trabalhadores"]

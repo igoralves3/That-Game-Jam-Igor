@@ -22,6 +22,12 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 			Global.currentFollower.agent.target_position = global_position
 			Global.currentFollower.cur_state = Builder.SeguidorState.Minework#Builder.SeguidorState.Working
 
+func get_save_data():
+	return {
+		"filename" : get_scene_file_path(), # Caminho da cena para recriar depois
+		"pos_x" : global_position.x,
+		"pos_y" : global_position.y,
+	}
 
 func _ready():
 	super()
