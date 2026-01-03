@@ -23,11 +23,11 @@ script = ExtResource("1_nj3ej")
 navigation_polygon = SubResource("NavigationPolygon_l7207")
 
 [node name="Builder" parent="." groups=["Followers"] instance=ExtResource("2_11bju")]
-position = Vector2(475, 215)
+position = Vector2(947, 447)
 cur_state = 2
 
 [node name="Alojamento" parent="." instance=ExtResource("3_a34lh")]
-position = Vector2(296, 180)
+position = Vector2(191, 389)
 
 [node name="Fazenda" parent="." instance=ExtResource("4_1pqct")]
 position = Vector2(150, 224)
@@ -69,5 +69,8 @@ offset_left = 253.0
 offset_top = 170.0
 offset_right = 953.0
 offset_bottom = 470.0
+
+[node name="Alojamento2" parent="." instance=ExtResource("3_a34lh")]
+position = Vector2(1132, 416)
 
 [connection signal="capela_clicada" from="Capela" to="CanvasLayer/RitualModal" method="_on_capela_capela_clicada"]
