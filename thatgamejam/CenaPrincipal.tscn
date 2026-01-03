@@ -23,7 +23,7 @@ script = ExtResource("1_nj3ej")
 navigation_polygon = SubResource("NavigationPolygon_l7207")
 
 [node name="Builder" parent="." groups=["Followers"] instance=ExtResource("2_11bju")]
-position = Vector2(947, 447)
+position = Vector2(565, 400)
 cur_state = 2
 
 [node name="Alojamento" parent="." instance=ExtResource("3_a34lh")]

@@ -29,6 +29,9 @@ var wander_target: Vector2
 
 @export var dialogo = null
 
+@export var comecou_na_tela = true
+@export var following = false
+
 var color: String
 var possibleColors = ["BLACK", "BLUE", "PURPLE", "RED", "YELLOW"]
 
@@ -38,6 +41,8 @@ func _ready():
 	dialogo = get_tree().get_first_node_in_group("Canvas")
 	color = possibleColors.pick_random()
 	
+	
+		
 
 func animation_controller():
 	var anim_name = ""
@@ -102,6 +107,7 @@ func _physics_process(delta):
 		process_go_praying()
 	elif cur_state == SeguidorState.Praying:
 		process_praying()
+	
 	animation_controller()
 
 func process_entering():
@@ -186,6 +192,41 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 			#else:
 			#	Global.currentFollower = null
 
+func enter_working():
+	timer.stop()
+	if alojamento != null:
+		if alojamento.seguidores_alocados > 0:
+			alojamento.seguidores_alocados = alojamento.seguidores_alocados - 1
+		alojamento = null
+		
+	
+	var nearest = null
+	var min_dist := INF
+	
+	for c in get_tree().get_nodes_in_group("Constructions"):
+		if c is Fazenda or c is Madeireira or c is Minas:
+			if c.workers < c.max_workers:		
+				var dist = global_position.distance_to(c.global_position)
+				if dist < min_dist:
+					min_dist = dist
+					nearest = c
+			
+	if nearest == null:
+		queue_free()		
+	
+	building = nearest
+	agent.target_position = nearest.global_position
+	
+	if building is Fazenda:
+						
+		cur_state = Builder.SeguidorState.Farmwork
+	elif building is Minas:
+						
+		cur_state = Builder.SeguidorState.Minework
+	elif building is Madeireira:
+						
+		cur_state = Builder.SeguidorState.Woodwork
+
 func process_working():
 	if building is Fazenda:
 		print('working at farm')
@@ -196,11 +237,18 @@ func process_working():
 	#print('working')
 	if  global_position.distance_to(building.global_position) < 10.0:
 	
-		velocity = Vector2.ZERO
-		#move_and_slide()
+		if building.workers < building.max_workers:
+			building.workers = building.workers + 1
+	
+			velocity = Vector2.ZERO
+			#move_and_slide()
 		
 		
-		cur_state = SeguidorState.Hidden
+			cur_state = SeguidorState.Hidden
+			
+			return
+		
+		enter_working()
 		return
 	
 	var next_point = agent.get_next_path_position()
@@ -217,12 +265,15 @@ func process_sleeping():
 	print(str(self) + ' is sleeping')
 	
 	if  global_position.distance_to(alojamento.global_position) < 10.0:
-	
-		velocity = Vector2.ZERO
-		#move_and_slide()
+		if alojamento.max_seguidores > alojamento.seguidores_alocados:
+			alojamento.seguidores_alocados = alojamento.seguidores_alocados + 1
+			velocity = Vector2.ZERO
+			#move_and_slide()
 		
-		
-		cur_state = SeguidorState.InsideAlojamento
+			
+			cur_state = SeguidorState.InsideAlojamento
+			return
+		enter_sleeping()
 		return
 	
 	var next_point = agent.get_next_path_position()
@@ -232,17 +283,26 @@ func process_sleeping():
 	move_and_slide()
 	
 func enter_sleeping():
+	timer.stop()
+	if building != null:
+		if building.workers > 0:
+			building.workers = building.workers- 1
+		building = null
 	
 	var nearest = null
 	var min_dist := INF
 	
 	for a in get_tree().get_nodes_in_group("Alojamento"):
-		var dist = global_position.distance_to(a.global_position)
-		if dist < min_dist:
-			min_dist = dist
-			nearest = a
+		if a is Alojamento:
+			if a.seguidores_alocados < a.max_seguidores:		
+				var dist = global_position.distance_to(a.global_position)
+				if dist < min_dist:
+					min_dist = dist
+					nearest = a
 			
-			
+	if nearest == null:
+		queue_free()		
+	
 	alojamento = nearest
 	agent.target_position = nearest.global_position
 	
@@ -255,8 +315,14 @@ func enter_inside_alojamento():
 
 
 func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
-	cur_state=SeguidorState.Stopped
-	#enter_wander()
+	if comecou_na_tela == false:
+		comecou_na_tela=true	
+		cur_state=SeguidorState.Stopped
+	else:
+		if following == false: 
+			following = true
+			cur_state=SeguidorState.Wander
+			enter_wander()
 	
 
 func enter_praying():

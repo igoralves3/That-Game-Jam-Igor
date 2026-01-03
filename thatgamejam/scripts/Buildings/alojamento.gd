@@ -1,7 +1,9 @@
 extends Area2D
 
+class_name Alojamento
+
 @export var total_construido = 1
-var seguidores_alocados = 0
+@export var seguidores_alocados = 0
 @export var max_seguidores = 3
 @export var custo_madeira = 150
 

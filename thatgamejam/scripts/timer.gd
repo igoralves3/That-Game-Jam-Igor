@@ -1,9 +1,9 @@
 extends Node2D
 enum Turno {Manha, Tarde, Noite}
 const TURN_DURATION := {
-	Turno.Manha: 60.0,
-	Turno.Tarde: 180.0,
-	Turno.Noite: 60.0
+	Turno.Manha: 10,#60.0,
+	Turno.Tarde: 1,#180.0,
+	Turno.Noite: 1#60.0
 }
 signal production_tick
 signal day_changed(day, week)
@@ -145,6 +145,12 @@ func _change_turn() -> void:
 		
 		for f in get_tree().get_nodes_in_group("Followers"):
 			if f is Builder:
+				if f.following == false:
+					continue
+				
+				if f.cur_state == Builder.SeguidorState.Hidden:
+					f.building.workers = f.building.workers - 1
+				
 				f.visible = true
 				
 				f.agent.target_position = f.global_position
@@ -171,9 +177,15 @@ func _change_turn() -> void:
 			
 		for f in follower_lst:
 			if f is Builder:
+				if f.following == false:
+					continue
+				if f.cur_state == Builder.SeguidorState.InsideAlojamento:
+					f.alojamento.seguidores_alocados = f.alojamento.seguidores_alocados - 1
+				
 				f.visible = true
 				if f.working:
-					
+					f.enter_working()
+					"""
 					if f.building != null:
 						if f.building is Fazenda:
 							f.cur_state = Builder.SeguidorState.Farmwork
@@ -183,11 +195,19 @@ func _change_turn() -> void:
 							f.cur_state = Builder.SeguidorState.Woodwork
 						#f.cur_state = Builder.SeguidorState.Working
 						f.agent.target_position = f.building.global_position
+					"""
 				else:
-					f.cur_state = Builder.SeguidorState.Wander
-					f.enter_wander()
+					f.working = true
 					
-		for i in range(0,randi_range(1,5)):
+					f.enter_working()#.enter_wander()
+					
+					#f.cur_state = Builder.SeguidorState.Working#Builder.SeguidorState.Wander
+					
+				
+		var vagas = total_vagas()		
+			
+		
+		for i in range(0,randi_range(1,vagas)):
 			spawn_followers()
 
 func _start_tick_loop():
@@ -216,5 +236,19 @@ func spawn_followers():
 	
 		var agente := preload("res://prefabs/Builder.tscn").instantiate()
 		agente.global_position = ponto
+		agente.comecou_na_tela=false
 		add_child(agente)
 		agente.add_to_group("Followers")
+
+func total_vagas() -> int:
+	var vagas = 0
+	var alojamentos = get_tree().get_nodes_in_group("Alojamento")
+	for a in alojamentos:
+		if a is Alojamento:
+			var alocados = a.max_seguidores-a.seguidores_alocados
+			if alocados > 0:
+				vagas = vagas + alocados
+	return vagas
+			
+			
+	
