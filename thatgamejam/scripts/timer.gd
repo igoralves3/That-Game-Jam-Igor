@@ -162,6 +162,7 @@ func _change_turn() -> void:
 	elif turnoAtual == Turno.Noite:
 		turnoAtual = Turno.Manha
 		Global.estimate_happiness()
+		Global.tick_temporal_effects()
 		is_day = true
 		hasPrayed = false
 		current_turn_duration = TURN_DURATION[turnoAtual]
@@ -217,6 +218,7 @@ func _start_tick_loop():
 			continue
 		if is_day:
 			emit_signal("production_tick")
+			Global.process_all_production()
 			
 func spawn_followers():
 	if Global.happiness > 0.5:

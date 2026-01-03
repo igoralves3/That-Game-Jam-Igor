@@ -4,6 +4,9 @@ enum GameState {MENU, PLAYING, PAUSED}
 
 var state := GameState.MENU
 
+var producers := {}
+var production_modifiers := {}
+
 var total_followers: int = 0
 var total_buildings: int = 0
 var wood: int = 0
@@ -264,3 +267,27 @@ func carregar_jogo():
 		get_tree().root.get_node("Node2D").add_child(nova_cena) # Ajuste o caminho se necessário
 		nova_cena.global_position = Vector2(p_data["pos_x"], p_data["pos_y"])
 		nova_cena.num_trabalhadores = p_data["trabalhadores"]
+
+var active_temporal_effects: Array[TemporalEffect] = []
+
+func add_temporal_effects(effect: TemporalEffect):
+	var new_effect = effect.duplicate(true)
+	new_effect.activate()
+	active_temporal_effects.append(new_effect)
+
+func tick_temporal_effects():
+	var expired = []
+	
+	for effect in active_temporal_effects:
+		if effect.tick_day():
+			expired.append(effect)
+	for effect in expired:
+		active_temporal_effects.erase(effect)
+
+func get_active_effects_description() -> String:
+	if active_temporal_effects.is_empty():
+		return ("No active effects")
+	var text = "Active effects: \n"
+	for effect in active_temporal_effects:
+		text += "• %s (%d days)\n" % [effect.effect_name, effect.remaining_days]
+	return text

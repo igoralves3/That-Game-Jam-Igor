@@ -37,4 +37,8 @@ func _process(delta):
 		self.scale = Vector2(1, 1)
 
 func _ready():
-	super()
+	if resource_type != "":
+		Global.register_producer(self)
+	
+func _exit_tree():
+	Global.unregister_producer(self)

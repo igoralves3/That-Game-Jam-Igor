@@ -50,3 +50,17 @@ func trigger_event():
 	
 	pending_event = null
 	pending_hour = -1
+
+func apply_event_option(option: EventOption):
+	for key in option.effects.keys():
+		Global.apply_effect(key, option.effects[key])
+	
+	for temporal_effect in option.temporal_effects:
+		Global.add_temporal_effects(temporal_effect)
+	
+	if option.duration_days > 0:
+		var temp_effect = TemporalEffect.new()
+		temp_effect.effect_name = "Event name"
+		temp_effect.effects = option.effects.duplicate()
+		temp_effect.duration_days = option.duration_days
+		Global.add_temporal_effects(temp_effect)
