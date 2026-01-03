@@ -7,7 +7,7 @@ class_name ModalConversao
 @export var follower=null
 
 func _ready():
-	correct_index = randi() % 3
+	correct_index = 0#randi() % 3
 
 
 func open():
@@ -19,6 +19,7 @@ func close():
 func _on_panel_container_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed:
 		if correct_index == 0:
+			follower.following = true
 			follower.cur_state = Builder.SeguidorState.Wander
 			follower.enter_wander()
 			close()
@@ -31,6 +32,7 @@ func _on_panel_container_gui_input(event: InputEvent) -> void:
 func _on_panel_container_2_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed:
 		if correct_index == 1:
+			follower.following = true
 			follower.cur_state = Builder.SeguidorState.Wander
 			follower.enter_wander()
 			close()
@@ -43,6 +45,7 @@ func _on_panel_container_2_gui_input(event: InputEvent) -> void:
 func _on_panel_container_3_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed:
 		if correct_index == 2:
+			follower.following = true
 			follower.cur_state = Builder.SeguidorState.Wander
 			follower.enter_wander()
 			close()
