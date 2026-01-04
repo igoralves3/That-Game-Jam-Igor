@@ -30,6 +30,13 @@ func _process(delta):
 	else:
 		self.scale = Vector2(1, 1)
 
+func get_save_data():
+	return {
+		"filename" : get_scene_file_path(), # Caminho da cena para recriar depois
+		"pos_x" : global_position.x,
+		"pos_y" : global_position.y,
+	}
+
 func _ready():
 	if resource_type != "":
 		Global.register_producer(self)

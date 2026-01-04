@@ -29,6 +29,7 @@ extends Control
 @onready var pauseButton = $TopPanel/MarginContainer/TopTab/TimerController/Pause
 @onready var xButton = $"TopPanel/MarginContainer/TopTab/TimerController/HBoxContainer/1x"
 @onready var xxButton = $"TopPanel/MarginContainer/TopTab/TimerController/HBoxContainer/2x"
+@onready var save_Button = $TopPanel/MarginContainer/TopTab/Buttons/SaveButton
 
 @onready var alojamento_construction = $Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/Grid/TextureButtonAlojamento
 @onready var madeireira_construction = $Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/Grid/TextureButtonMadeireira
@@ -191,6 +192,7 @@ func _generate_resource_tooltip(resource_type: String) -> String:
 	else :
 		tooltip += "No active buildings"
 	return tooltip
+
 func _on_pause_pressed():
 	if timer.paused:
 		Global.resume_game()
@@ -259,3 +261,7 @@ func _on_texture_button_pressed_capela() -> void:
 #seleciona fazenda
 func _on_texture_button_pressed_fazenda() -> void:
 	Global.currentBuildType = "Fazenda"
+
+func _on_menu_pressed() -> void:
+	print("JOGO SALVO")
+	Global.salvar_jogo()

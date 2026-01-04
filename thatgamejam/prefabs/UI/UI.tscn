@@ -11,8 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://dwa3awy4y0fwl" path="res://Assets/Icons/icons/axe.png" id="7_tethd"]
 [ext_resource type="Texture2D" uid="uid://ctc8041is4op0" path="res://Assets/Icons/beer_mug.png" id="8_juusu"]
 [ext_resource type="Texture2D" uid="uid://yj6fvjvdlrf6" path="res://Assets/Icons/icons/tent_leather.png" id="9_w4m0a"]
-[ext_resource type="Texture2D" uid="uid://b3ccrwon7l78f" path="res://Assets/UI Components/KEY ICONS/clean ui_key icon-07.png" id="10_4ctr4"]
 [ext_resource type="Texture2D" uid="uid://iifn3hmtdy8h" path="res://Assets/UI Components/UI ICONS/UI ICONS/white icons/ui icons_wht-12.png" id="12_juusu"]
+[ext_resource type="Texture2D" uid="uid://ka2k4wvp2nxq" path="res://Assets/UI ICONS/UI ICONS/white icons/ui icons_wht-34.png" id="13_igoy7"]
 [ext_resource type="Texture2D" uid="uid://de7re5y7gey2x" path="res://Assets/UI Components/UI ICONS/UI ICONS/white icons/ui icons_wht-07.png" id="13_w4m0a"]
 [ext_resource type="Texture2D" uid="uid://bt3dxm0nam0er" path="res://Assets/UI Components/UI ICONS/UI ICONS/white icons/ui icons_wht-08.png" id="14_4ctr4"]
 [ext_resource type="Texture2D" uid="uid://t6yynskgy3u8" path="res://Assets/Buildings/House1.png" id="15_igoy7"]
@@ -270,11 +270,11 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "0"
 
-[node name="Menu" type="TextureButton" parent="TopPanel/MarginContainer/TopTab/Buttons"]
+[node name="SaveButton" type="TextureButton" parent="TopPanel/MarginContainer/TopTab/Buttons"]
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 focus_mode = 0
-texture_normal = ExtResource("10_4ctr4")
+texture_normal = ExtResource("13_igoy7")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -1642,7 +1642,7 @@ layout_mode = 1
 [connection signal="pressed" from="TopPanel/MarginContainer/TopTab/TimerController/Pause" to="." method="_on_pause_pressed"]
 [connection signal="pressed" from="TopPanel/MarginContainer/TopTab/TimerController/HBoxContainer/1x" to="." method="_on_1x_pressed"]
 [connection signal="pressed" from="TopPanel/MarginContainer/TopTab/TimerController/HBoxContainer/2x" to="." method="_on_2x_pressed"]
-[connection signal="pressed" from="TopPanel/MarginContainer/TopTab/Buttons/Menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="TopPanel/MarginContainer/TopTab/Buttons/SaveButton" to="." method="_on_menu_pressed"]
 [connection signal="pressed" from="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/Grid/TextureButtonAlojamento" to="." method="_on_texture_button_pressed_alojamento"]
 [connection signal="pressed" from="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/Grid/TextureButtonMadeireira" to="." method="_on_texture_button_pressed_madeireira"]
 [connection signal="pressed" from="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/Grid/TextureButtonMinas" to="." method="_on_texture_button_pressed_minas"]
