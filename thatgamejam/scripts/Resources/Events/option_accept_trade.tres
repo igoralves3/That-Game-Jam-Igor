@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="EventOption" load_steps=2 format=3 uid="uid://tgtsowf0ny7h"]
+[gd_resource type="Resource" script_class="EventOption" load_steps=3 format=3 uid="uid://tgtsowf0ny7h"]
 
 [ext_resource type="Script" uid="uid://s0gd0ykgbhjp" path="res://scripts/Resources/EventOption.gd" id="1_wuwfd"]
+[ext_resource type="Script" uid="uid://chxarc4fhqx8o" path="res://scripts/Resources/TemporalEffect.gd" id="2_olxlo"]
 
 [resource]
 script = ExtResource("1_wuwfd")
@@ -8,3 +9,5 @@ text = "Aceitar Comércio"
 effects = {
 &"money": 150
 }
+temporal_effects = Array[ExtResource("2_olxlo")]([])
+duration_days = 0

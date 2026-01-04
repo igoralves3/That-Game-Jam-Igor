@@ -291,3 +291,52 @@ func get_active_effects_description() -> String:
 	for effect in active_temporal_effects:
 		text += "• %s (%d days)\n" % [effect.effect_name, effect.remaining_days]
 	return text
+
+func register_producer(producer):
+	var res_type = producer.resource_type
+	if not producers.has(res_type):
+		producers[res_type] = []
+	producers[res_type].append(producer)
+
+func unregister_producer(producer):
+	var res_type = producer.resource_type
+	if producers.has(res_type):
+		producers[res_type].erase(producer)
+
+func set_production_modifier(resource_type: String, modifier: float):
+	production_modifiers[resource_type] = modifier
+
+func get_production_modifier(resource_type: String) -> float:
+	return production_modifiers.get(resource_type, 1.0)
+
+func calculate_total_production(resource_type: String) -> int:
+	if not producers.has(resource_type):
+		return 0
+	
+	var base_total := 0
+	for producer in producers[resource_type]:
+		if producer.workers > 0:
+			base_total += producer.workers * producer.production_per_worker
+	
+	var modifier = get_production_modifier(resource_type)
+	return int(base_total * modifier)
+
+func process_all_production():
+	var production_summary := {}
+	
+	for res_type in producers.keys():
+		var total = calculate_total_production(res_type)
+		if total > 0:
+			add_resource(res_type, total)
+			production_summary[res_type] = total
+	
+	if production_summary.size() > 0:
+		print("[Production Tick] ", production_summary)
+	
+	return production_summary
+
+func get_all_production_preview() -> Dictionary:
+	var totals := {}
+	for res_type in producers.keys():
+		totals[res_type] = calculate_total_production(res_type)
+	return totals

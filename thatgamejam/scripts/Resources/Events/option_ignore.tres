@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="EventOption" load_steps=2 format=3 uid="uid://darwuxtktrs42"]
+[gd_resource type="Resource" script_class="EventOption" load_steps=3 format=3 uid="uid://darwuxtktrs42"]
 
 [ext_resource type="Script" uid="uid://s0gd0ykgbhjp" path="res://scripts/Resources/EventOption.gd" id="1_jgksm"]
+[ext_resource type="Script" uid="uid://chxarc4fhqx8o" path="res://scripts/Resources/TemporalEffect.gd" id="2_ppgyh"]
 
 [resource]
 script = ExtResource("1_jgksm")
@@ -8,3 +9,5 @@ text = "Ignorar"
 effects = {
 "money": -100
 }
+temporal_effects = Array[ExtResource("2_ppgyh")]([])
+duration_days = 0

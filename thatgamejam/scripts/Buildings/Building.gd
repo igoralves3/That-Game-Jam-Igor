@@ -10,15 +10,12 @@ extends Area2D
 
 func _ready():
 	timer.production_tick.connect(_on_production_tick)
-	
+	Global.register_producer(self)
 
 func _on_production_tick():
-	if workers <= 0:
-		return
-		
-	var total = workers * production_per_worker
-	Global.add_resource(resource_type, total)
-	
+	pass
+
 func _exit_tree():
 	if timer.production_tick.is_connected(_on_production_tick):
 		timer.production_tick.disconnect(_on_production_tick)
+	Global.unregister_producer(self)
