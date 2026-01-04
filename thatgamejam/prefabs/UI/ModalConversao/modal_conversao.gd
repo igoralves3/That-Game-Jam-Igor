@@ -7,13 +7,16 @@ class_name ModalConversao
 @export var follower=null
 
 func _ready():
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	correct_index = 0#randi() % 3
 
 
 func open():
+	Global.pause_game()
 	visible = true
 	
 func close():
+	Global.resume_game()
 	visible = false
 
 func _on_panel_container_gui_input(event: InputEvent) -> void:
