@@ -30,6 +30,11 @@ extends Control
 @onready var xButton = $"TopPanel/MarginContainer/TopTab/TimerController/HBoxContainer/1x"
 @onready var xxButton = $"TopPanel/MarginContainer/TopTab/TimerController/HBoxContainer/2x"
 
+@onready var alojamento_construction = $Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/Grid/TextureButtonAlojamento
+@onready var madeireira_construction = $Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/Grid/TextureButtonMadeireira
+@onready var minas_construction = $Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/Grid/TextureButtonMinas
+@onready var fazenda_construction = $Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/Grid/TextureButtonFazenda
+
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	timer.day_changed.connect(_update_weekday)
@@ -91,6 +96,15 @@ func _update_tooltips():
 	
 	if pop_counter:
 		pop_counter.tooltip_text = _generate_tooltip("pop")
+	
+	if alojamento_construction:
+		alojamento_construction.tooltip_text = _generate_tooltip_construction("alojamento")
+	if madeireira_construction:
+		madeireira_construction.tooltip_text = _generate_tooltip_construction("madeireira")
+	if minas_construction:
+		minas_construction.tooltip_text = _generate_tooltip_construction("mina")
+	if fazenda_construction:
+		fazenda_construction.tooltip_text = _generate_tooltip_construction("fazenda")
 
 func _generate_tooltip(counter_name: String) -> String:
 	var name = ""
@@ -99,18 +113,42 @@ func _generate_tooltip(counter_name: String) -> String:
 	match counter_name:
 		"faith":
 			counter_name = "Faith"
-			description = "Spiritual power of your religion"
+			description = "The spiritual power of your religion"
 		"happiness":
 			counter_name = "Happiness"
-			description = "General happiness of your followers \n Below 50%, followers start leaving"
+			description = "Overall happiness of your followers \n Below 50%, followers start leaving"
 		"religion_lvl":
 			counter_name = "Religion Level"
-			description = "Indicate how big is your religion"
+			description = "Indicate how large is your religion"
 		"pop":
 			counter_name = "Followers"
 			description = "Total number of followers"
-		
 	var tooltip = "%s\n%s\n" % [counter_name,description]
+	return tooltip
+
+func _generate_tooltip_construction(counter_name: String) -> String:
+	var name = ""
+	var description = ""
+	var cost = ""
+	
+	match counter_name:
+		"alojamento":
+			counter_name = "Housing"
+			description = "Followers live here\n Build to increase the followers cap"
+			cost = "Wood: -150"
+		"mina":
+			counter_name = "Mine"
+			description = "Build to generate money"
+			cost = "Wood: -200"
+		"fazenda":
+			counter_name = "Farm"
+			description = "Build to generate supplies"
+			cost = "Wood: -150"
+		"madeireira":
+			counter_name = "Lumber Mill"
+			description = "Build to generate wood"
+			cost = "Wood: -100"
+	var tooltip = "%s\n%s\n%s" % [counter_name,description, cost]
 	return tooltip
 
 func _generate_resource_tooltip(resource_type: String) -> String:
@@ -120,13 +158,13 @@ func _generate_resource_tooltip(resource_type: String) -> String:
 	match resource_type:
 		"wood":
 			resource_name = "Wood"
-			description = "Basic resource used for construction"
+			description = "A basic resource used for construction"
 		"supplies":
 			resource_name = "Supplies"
-			description = "Used to feed your followers (2 per follower/day) and perform rituals"
+			description = "Used to feed your followers (2 per follower per day) and to perform rituals"
 		"money":
 			resource_name = "Money"
-			description = "Used for commerce and construction"
+			description = "Used for commerce and rituals"
 		
 	var production = Global.calculate_total_production(resource_type)
 	var modifier = Global.get_production_modifier(resource_type)
