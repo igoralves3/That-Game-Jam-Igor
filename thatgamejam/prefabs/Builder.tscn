@@ -1,6 +1,7 @@
-[gd_scene load_steps=193 format=3 uid="uid://di3myjruys03y"]
+[gd_scene load_steps=212 format=3 uid="uid://di3myjruys03y"]
 
 [ext_resource type="Script" uid="uid://dfnq36e1m05kn" path="res://scripts/builder.gd" id="1_hhugm"]
+[ext_resource type="Script" uid="uid://pggqqr4h81b1" path="res://scripts/Resources/Conversion/story.gd" id="2_n26oh"]
 [ext_resource type="Texture2D" uid="uid://ddw2eojil5ibw" path="res://Assets/Builders/Black/Pawn_Idle.png" id="2_t1bg2"]
 [ext_resource type="Texture2D" uid="uid://csrq2k8swcw72" path="res://Assets/Builders/Black/Pawn_Run Axe.png" id="3_am77k"]
 [ext_resource type="Texture2D" uid="uid://emqjwbwb8xf1" path="res://Assets/Builders/Black/Pawn_Run.png" id="3_xubmv"]
@@ -27,6 +28,206 @@
 [ext_resource type="Texture2D" uid="uid://c37tk7wtti6wr" path="res://Assets/Builders/Yellow/Pawn_Run Knife.png" id="25_kr521"]
 [ext_resource type="Texture2D" uid="uid://bjj17ot818m0t" path="res://Assets/Builders/Yellow/Pawn_Run Pickaxe.png" id="26_elbge"]
 [ext_resource type="Script" uid="uid://di0qcvmkfd7q" path="res://scripts/area_2d_builder.gd" id="27_o8xjp"]
+
+[sub_resource type="Resource" id="Resource_kr521"]
+script = ExtResource("2_n26oh")
+story = "My village was burned to ash. I have walked for weeks with nothing but the clothes on my back. I am TIRED and ALONE. What does your group offer to one who has LOST EVERYTHING?"
+answer = 0
+answerHuman = "We offer a WARM bed and a FAMILY that cares"
+answerReligious = "You must THANK the gods for your survival"
+answerRational = "We provide a WORKBENCH and a role in our system"
+answerCurse = "Nothing to your wretched soul!"
+metadata/_custom_type_script = "uid://pggqqr4h81b1"
+
+[sub_resource type="Resource" id="Resource_elbge"]
+script = ExtResource("2_n26oh")
+story = "I was the only survivor of a plague that took my whole parish. I feel the weight of GUILT every day. Why did I live while the HOLY ones died? How can I find PEACE?"
+answer = 1
+answerHuman = "We will help you FORGET the pain of the past"
+answerReligious = "Your life was SPARED for a SACRED purpose"
+answerRational = "You survived because of your superior IMMUNE system"
+answerCurse = "By dying alone!"
+metadata/_custom_type_script = "uid://pggqqr4h81b1"
+
+[sub_resource type="Resource" id="Resource_3qpfs"]
+script = ExtResource("2_n26oh")
+story = "I spent decades researching a cure, but my lab was seized by a corrupt lord. My KNOWLEDGE is rotting in my head while people die. Why should I dedicate my MIND to your cause?"
+answer = 2
+answerHuman = "You will find KINDNESS and love here"
+answerReligious = "It was the WILL of the creator to stop you"
+answerRational = "We provide the TOOLS to finish your WORK"
+answerCurse = "Go to Hell!"
+metadata/_custom_type_script = "uid://pggqqr4h81b1"
+
+[sub_resource type="Resource" id="Resource_g5ihw"]
+script = ExtResource("2_n26oh")
+story = "My partner of twenty years abandoned me for a younger merchant. Now, I have no home and no one to share my meals with. I feel UNLOVED and FORGOTTEN. Why should I join your circle?"
+answer = 0
+answerHuman = "We offer a HOME where you are VALUED"
+answerReligious = "It is your DESTINY to suffer this trial"
+answerRational = "We provide a SYSTEM to optimize your time"
+answerCurse = "And unloved you should be!"
+metadata/_custom_type_script = "uid://pggqqr4h81b1"
+
+[sub_resource type="Resource" id="Resource_n26oh"]
+script = ExtResource("2_n26oh")
+story = "I saw a DARK SHADOW in my dreams that told me my time is short. I fear my SOUL is marked for something terrible after death. Can your cult protect my SPIRIT?"
+answer = 1
+answerHuman = "We will give you FRIENDS to ease your fear"
+answerReligious = "Our RITES will CLEANSE your eternal soul"
+answerRational = "Shadows are just BIOLOGICAL reactions to stress"
+answerCurse = "I hope it's the Devil..."
+metadata/_custom_type_script = "uid://pggqqr4h81b1"
+
+[sub_resource type="Resource" id="Resource_8llke"]
+script = ExtResource("2_n26oh")
+story = "A rival merchant used a legal LOOPHOLE to seize my warehouses. I have the SKILLS to lead, but no CAPITAL or soldiers to fight back. What can your organization do for my AMBITION?"
+answer = 2
+answerHuman = "We offer SYMPATHY for your great loss"
+answerReligious = "You must PRAY for the greed to leave your heart"
+answerRational = "We have the INFLUENCE and POWER to restore you"
+answerCurse = "We have no place for the corrupts!"
+metadata/_custom_type_script = "uid://pggqqr4h81b1"
+
+[sub_resource type="Resource" id="Resource_og4do"]
+script = ExtResource("2_n26oh")
+story = "My brother was MURDERED for a few silver coins. The killer walks free while my HEART is filled with BITTERNESS. I have no peace. Can you give me a reason to keep living?"
+answer = 0
+answerHuman = "Join us to find COMFORT and a new FAMILY"
+answerReligious = "The gods will JUDGE his soul in the end"
+answerRational = "Vengeance is a POOR use of your time"
+answerCurse = "Go and get him!"
+metadata/_custom_type_script = "uid://pggqqr4h81b1"
+
+[sub_resource type="Resource" id="Resource_1b58m"]
+script = ExtResource("2_n26oh")
+story = "I found a GLOWING mark on my skin after the eclipse. People call me a CURSE, but I feel a strange CALLING. Is this a SIGN from a higher power?"
+answer = 1
+answerHuman = "We will ACCEPT you exactly as you are"
+answerReligious = "You are CHOSEN for a HOLY mission"
+answerRational = "It is just a rare SKIN condition"
+answerCurse = "YOU ARE THE DEVIL!"
+metadata/_custom_type_script = "uid://pggqqr4h81b1"
+
+[sub_resource type="Resource" id="Resource_uf6k2"]
+script = ExtResource("2_n26oh")
+story = "The enemy army burned my farm. I have the LABOR and the KNOWLEDGE to build, but I need a SECURE place to survive the winter. Why should I serve you?"
+answer = 2
+answerHuman = "You will find KINDNESS in our group"
+answerReligious = "FAITH is the only wall you need"
+answerRational = "We offer PROTECTION for your valuable SKILLS"
+answerCurse = "We don't want you, leave!"
+metadata/_custom_type_script = "uid://pggqqr4h81b1"
+
+[sub_resource type="Resource" id="Resource_23x0n"]
+script = ExtResource("2_n26oh")
+story = "My own family cast me out because I loved the wrong person. Now I have NOBODY and I am ASHAMED to show my face. Is there a place for someone so LONELY?"
+answer = 0
+answerHuman = "We offer LOVE and a FAMILY that never judges"
+answerReligious = "You must REPENT for your past sins"
+answerRational = "We have a BUNKER and a role for you"
+answerCurse = "Yes, Hell!"
+metadata/_custom_type_script = "uid://pggqqr4h81b1"
+
+[sub_resource type="Resource" id="Resource_qqwhs"]
+script = ExtResource("2_n26oh")
+story = "My favorite CAT ran away because I forgot to close the window. I feel so EMPTY and SAD. Can your group help me feel WHOLE again?"
+answer = 0
+answerHuman = "We offer FRIENDSHIP and a place to HEAL"
+answerReligious = "The SPIRITS have claimed your pet"
+answerRational = "A new cat is a LOGICAL replacement"
+answerCurse = "There is no place for a pet lover!"
+metadata/_custom_type_script = "uid://pggqqr4h81b1"
+
+[sub_resource type="Resource" id="Resource_myr05"]
+script = ExtResource("2_n26oh")
+story = "I dropped my only HAMMER and it snapped. Now I cannot fix my roof and my PRODUCTIVITY is zero. How can you fix my PROBLEM?"
+answer = 2
+answerHuman = "We offer COZY rooms where it never rains"
+answerReligious = "It was a MESSAGE from the creator"
+answerRational = "We have the EQUIPMENT to restore your OUTPUT"
+answerCurse = "We are a religious group, not a workshop"
+metadata/_custom_type_script = "uid://pggqqr4h81b1"
+
+[sub_resource type="Resource" id="Resource_n5c80"]
+script = ExtResource("2_n26oh")
+story = "I found a piece of toast that looks exactly like a CROWN. I believe it is a PROPHETIC message about my GLORY. Do you agree?"
+answer = 1
+answerHuman = "That sounds like a CUTE story"
+answerReligious = "It is a SACRED sign of your DESTINY"
+answerRational = "It is just a RANDOM pattern in the bread"
+answerCurse = "Greediness is a sin, bud"
+metadata/_custom_type_script = "uid://pggqqr4h81b1"
+
+[sub_resource type="Resource" id="Resource_6oxyv"]
+script = ExtResource("2_n26oh")
+story = "I ruined the family stew and everyone LAUGHED at me. I feel like a FAILURE and I just want to be WANTED and accepted."
+answer = 0
+answerHuman = "Here, you are LOVED regardless of your SKILLS"
+answerReligious = "Your hunger is a TEST of faith"
+answerRational = "We have RECIPES to improve your cooking"
+answerCurse = "HAHAHAHAHA"
+metadata/_custom_type_script = "uid://pggqqr4h81b1"
+
+[sub_resource type="Resource" id="Resource_5a8ea"]
+script = ExtResource("2_n26oh")
+story = "I lost my LUCKY coin in the well. Now I feel my CHANCES of success have dropped. How will I get my ADVANTAGE back?"
+answer = 2
+answerHuman = "We will give you a HUG to feel better"
+answerReligious = "The well is a SHRINE for your sacrifice"
+answerRational = "We provide a STRATEGY to ensure your SUCCESS"
+answerCurse = "By jumping head first inside the well"
+metadata/_custom_type_script = "uid://pggqqr4h81b1"
+
+[sub_resource type="Resource" id="Resource_tse4q"]
+script = ExtResource("2_n26oh")
+story = "It rained on my wedding day. My mother says it is an OMEN of DOOM. Is my FUTURE cursed forever?"
+answer = 1
+answerHuman = "We offer COMFORT during the storms"
+answerReligious = "Our PRAYERS can break any CURSE"
+answerRational = "Rain is just MOISTURE in the air"
+answerCurse = "Sit down kid"
+metadata/_custom_type_script = "uid://pggqqr4h81b1"
+
+[sub_resource type="Resource" id="Resource_nv01b"]
+script = ExtResource("2_n26oh")
+story = "My neighbor said my new tunic looks HIDEOUS. I am so EMBARRASSED I can't leave my house. Can you help me feel BEAUTIFUL?"
+answer = 0
+answerHuman = "You are WONDERFUL in the eyes of our FAMILY"
+answerReligious = "Only the INNER soul matters to the divine"
+answerRational = "We have a UNIFORM for better efficiency"
+answerCurse = "HAHAHAHAHAHA"
+metadata/_custom_type_script = "uid://pggqqr4h81b1"
+
+[sub_resource type="Resource" id="Resource_y0n7a"]
+script = ExtResource("2_n26oh")
+story = "I woke up late because my rooster died. I lost my JOB and my ROUTINE is ruined. How can I get back to WORK?"
+answer = 0
+answerHuman = "We will be your FRIENDS in this hard time"
+answerReligious = "The rooster’s death was a MIRACLE"
+answerRational = "We have a SCHEDULE and RESOURCES for you"
+answerCurse = "Buy a clock next time"
+metadata/_custom_type_script = "uid://pggqqr4h81b1"
+
+[sub_resource type="Resource" id="Resource_8evks"]
+script = ExtResource("2_n26oh")
+story = "I have a persistent ITCH on my elbow that started during the FESTIVAL. Is this a PLAGUE or a PUNISHMENT for my thoughts?"
+answer = 1
+answerHuman = "We have OINTMENT and kind hands to help"
+answerReligious = "It is a TRIAL sent to test your DEVOTION"
+answerRational = "It is a SIMPLE allergic reaction"
+answerCurse = "It's a sign of blasphemy"
+metadata/_custom_type_script = "uid://pggqqr4h81b1"
+
+[sub_resource type="Resource" id="Resource_cf1rh"]
+script = ExtResource("2_n26oh")
+story = "Nobody remembered my birthday. I feel INVISIBLE and ALONE in this world. Does anyone CARE about me?"
+answer = 0
+answerHuman = "We CELEBRATE you and offer our AFFECTION"
+answerReligious = "Your CREATOR remembers every moment"
+answerRational = "Birthdays are INEFFICIENT celebrations"
+answerCurse = "Nope!"
+metadata/_custom_type_script = "uid://pggqqr4h81b1"
 [ext_resource type="AudioStream" uid="uid://luvijajfou1b" path="res://Assets/SFX/modalOpenSFX.ogg" id="28_n26oh"]
 [ext_resource type="AudioStream" uid="uid://1cv1d4x6ggsj" path="res://Assets/SFX/modalCloseSFX.ogg" id="29_kr521"]
 
@@ -1293,6 +1494,7 @@ wander_speed = null
 working = null
 comecou_na_tela = null
 following = null
+dilemaList = Array[ExtResource("2_n26oh")]([SubResource("Resource_kr521"), SubResource("Resource_elbge"), SubResource("Resource_3qpfs"), SubResource("Resource_g5ihw"), SubResource("Resource_n26oh"), SubResource("Resource_8llke"), SubResource("Resource_og4do"), SubResource("Resource_1b58m"), SubResource("Resource_uf6k2"), SubResource("Resource_23x0n"), SubResource("Resource_qqwhs"), SubResource("Resource_myr05"), SubResource("Resource_n5c80"), SubResource("Resource_6oxyv"), SubResource("Resource_5a8ea"), SubResource("Resource_tse4q"), SubResource("Resource_nv01b"), SubResource("Resource_y0n7a"), SubResource("Resource_8evks"), SubResource("Resource_cf1rh")])
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_1b58m")

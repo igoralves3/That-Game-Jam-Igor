@@ -14,6 +14,9 @@ GoPraying}
 
 @onready var agent = $NavigationAgent2D
 
+@export var dilemaList: Array[Story]
+var currentDilema: Story
+
 
 var wander_target: Vector2
 
@@ -32,19 +35,14 @@ var wander_target: Vector2
 @export var comecou_na_tela = true
 @export var following = false
 
-
-
 var color: String
 var possibleColors = ["BLACK", "BLUE", "PURPLE", "RED", "YELLOW"]
 
-
 func _ready():
+	currentDilema = dilemaList.pick_random()
 	velocity = Vector2.ZERO 
 	dialogo = get_tree().get_first_node_in_group("Canvas")
 	color = possibleColors.pick_random()
-	
-	
-		
 
 func animation_controller():
 	var anim_name = ""
@@ -163,7 +161,6 @@ func enter_wander():
 func _on_timer_timeout() -> void:
 	enter_wander()
 	
-
 
 func _on_navigation_agent_2d_navigation_finished() -> void:
 	enter_wander()
@@ -373,4 +370,5 @@ func process_praying():
 	
 func open_dialog():
 	dialogo.follower = self
+	dialogo.dilema = currentDilema
 	dialogo.open()

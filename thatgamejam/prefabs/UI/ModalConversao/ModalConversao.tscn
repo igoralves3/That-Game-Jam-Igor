@@ -2,9 +2,11 @@
 
 [ext_resource type="Texture2D" uid="uid://c56tbw4o5k3nu" path="res://Assets/UI elems 2.0/Banner_Vertical.png" id="1_6pc47"]
 [ext_resource type="Script" uid="uid://ri8hovf6r2ox" path="res://prefabs/UI/ModalConversao/modal_conversao.gd" id="1_gfxco"]
-[ext_resource type="Texture2D" uid="uid://bltigtomowbq1" path="res://Assets/UI elems 2.0/Carved_3Slides.png" id="3_hf0dh"]
+[ext_resource type="StyleBox" uid="uid://b1q0csf56v7d0" path="res://prefabs/UI/Option_style_disabled.tres" id="4_40obx"]
+[ext_resource type="StyleBox" uid="uid://1e4v4cmqh3my" path="res://prefabs/UI/Option_style_hover.tres" id="5_ma3mr"]
+[ext_resource type="StyleBox" uid="uid://bl0sk7l858r3o" path="res://prefabs/UI/Option_style.tres" id="6_bt5nv"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6fcsf"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6pc47"]
 texture = ExtResource("1_6pc47")
 texture_margin_left = 64.0
 texture_margin_top = 64.0
@@ -12,93 +14,86 @@ texture_margin_right = 64.0
 texture_margin_bottom = 64.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_40obx"]
-font_color = Color(0, 0, 0, 1)
+font_size = 24
+font_color = Color(0.128906, 0.063446, 0.063446, 1)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ma3mr"]
-texture = ExtResource("3_hf0dh")
-texture_margin_left = 16.0
-texture_margin_top = 8.0
-texture_margin_right = 16.0
-texture_margin_bottom = 8.0
-modulate_color = Color(0.825856, 0.603473, 0.282578, 1)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bt5nv"]
-texture = ExtResource("3_hf0dh")
-texture_margin_left = 16.0
-texture_margin_top = 8.0
-texture_margin_right = 16.0
-texture_margin_bottom = 8.0
-modulate_color = Color(0.827451, 0.603922, 0.282353, 1)
-
-[node name="ModalConversao" type="PanelContainer"]
-offset_right = 250.0
-offset_bottom = 200.0
-theme_override_styles/panel = SubResource("StyleBoxTexture_6fcsf")
+[node name="ModalConversao" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_gfxco")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0.140201, 0.120505, 0.0940734, 0.517647)
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 449.0
+offset_top = 172.0
+offset_right = 831.0
+offset_bottom = 548.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_6pc47")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 32
-theme_override_constants/margin_top = 32
-theme_override_constants/margin_right = 32
-theme_override_constants/margin_bottom = 32
+size_flags_vertical = 3
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_constants/separation = 32
+theme_override_constants/separation = 80
 
-[node name="Title" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="Title" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Problema do tipo Inteligente"
 label_settings = SubResource("LabelSettings_40obx")
 horizontal_alignment = 1
+autowrap_mode = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="Human" type="Button" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_ma3mr")
+theme_override_styles/disabled = ExtResource("4_40obx")
+theme_override_styles/hover = ExtResource("5_ma3mr")
+theme_override_styles/normal = ExtResource("6_bt5nv")
+text = "May God curse you!"
 
-[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/PanelContainer"]
+[node name="Religious" type="Button" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
-text = "Resposta Inteligente"
-horizontal_alignment = 1
+theme_override_styles/disabled = ExtResource("4_40obx")
+theme_override_styles/hover = ExtResource("5_ma3mr")
+theme_override_styles/normal = ExtResource("6_bt5nv")
+text = "May God curse you!"
 
-[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="Rational" type="Button" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_bt5nv")
+theme_override_styles/disabled = ExtResource("4_40obx")
+theme_override_styles/hover = ExtResource("5_ma3mr")
+theme_override_styles/normal = ExtResource("6_bt5nv")
+text = "May God curse you!"
 
-[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/PanelContainer2"]
+[node name="Refusal" type="Button" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
-text = "Resposta Religiosa"
-horizontal_alignment = 1
+theme_override_styles/disabled = ExtResource("4_40obx")
+theme_override_styles/hover = ExtResource("5_ma3mr")
+theme_override_styles/normal = ExtResource("6_bt5nv")
+text = "May God curse you!"
 
-[node name="PanelContainer3" type="PanelContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_bt5nv")
-
-[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/PanelContainer3"]
-layout_mode = 2
-text = "Resposta Humana"
-horizontal_alignment = 1
-
-[node name="PanelContainer4" type="PanelContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_bt5nv")
-
-[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/PanelContainer4"]
-layout_mode = 2
-text = "Resposta Humana"
-horizontal_alignment = 1
-
-[connection signal="gui_input" from="VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/PanelContainer" to="." method="_on_panel_container_gui_input"]
-[connection signal="gui_input" from="VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/PanelContainer2" to="." method="_on_panel_container_2_gui_input"]
-[connection signal="gui_input" from="VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/PanelContainer3" to="." method="_on_panel_container_3_gui_input"]
-[connection signal="gui_input" from="VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/PanelContainer4" to="." method="_on_panel_container_3_gui_input"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/Human" to="." method="_on_human_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/Religious" to="." method="_on_religious_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/Rational" to="." method="_on_rational_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/Refusal" to="." method="_on_refusal_pressed"]
