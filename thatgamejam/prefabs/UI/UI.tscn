@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://d3fefgqtdhori"]
+[gd_scene load_steps=22 format=3 uid="uid://d3fefgqtdhori"]
 
 [ext_resource type="Script" uid="uid://b7vko2yn7j5nr" path="res://prefabs/UI/ui.gd" id="1_fw6kh"]
 [ext_resource type="StyleBox" uid="uid://bb4tcpovrwga6" path="res://prefabs/UI/UI_Style.tres" id="2_juusu"]
@@ -15,13 +15,17 @@
 [ext_resource type="Texture2D" uid="uid://iifn3hmtdy8h" path="res://Assets/UI Components/UI ICONS/UI ICONS/white icons/ui icons_wht-12.png" id="12_juusu"]
 [ext_resource type="Texture2D" uid="uid://de7re5y7gey2x" path="res://Assets/UI Components/UI ICONS/UI ICONS/white icons/ui icons_wht-07.png" id="13_w4m0a"]
 [ext_resource type="Texture2D" uid="uid://bt3dxm0nam0er" path="res://Assets/UI Components/UI ICONS/UI ICONS/white icons/ui icons_wht-08.png" id="14_4ctr4"]
+[ext_resource type="Texture2D" uid="uid://t6yynskgy3u8" path="res://Assets/Buildings/House1.png" id="15_igoy7"]
 [ext_resource type="PackedScene" uid="uid://dy21qjlrln5qb" path="res://prefabs/UI/Events/EventModal.tscn" id="15_tethd"]
+[ext_resource type="Texture2D" uid="uid://byauxsbwo5o2g" path="res://Assets/Buildings/millBase.png" id="16_1tbnb"]
+[ext_resource type="Texture2D" uid="uid://dwyq4lhnyeasl" path="res://Assets/Buildings/GoldMine_Active.png" id="17_c6nnc"]
+[ext_resource type="Texture2D" uid="uid://mkjljkpvj3gj" path="res://Assets/Buildings/FarmBase.png" id="18_pynmq"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_igoy7"]
 texture = ExtResource("2_u7etd")
-texture_margin_left = 8.0
+texture_margin_left = 32.0
 texture_margin_top = 8.0
-texture_margin_right = 8.0
+texture_margin_right = 32.0
 texture_margin_bottom = 8.0
 
 [node name="Ui" type="Control"]
@@ -31,9 +35,10 @@ script = ExtResource("1_fw6kh")
 
 [node name="TopPanel" type="PanelContainer" parent="."]
 layout_mode = 0
-offset_right = 1280.0
-offset_bottom = 96.0
-scale = Vector2(0.998839, 1)
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 1272.0
+offset_bottom = 72.0
 theme_override_styles/panel = ExtResource("2_juusu")
 
 [node name="MarginContainer" type="MarginContainer" parent="TopPanel"]
@@ -154,6 +159,7 @@ custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+toggle_mode = true
 texture_normal = ExtResource("12_juusu")
 ignore_texture_size = true
 stretch_mode = 5
@@ -175,6 +181,7 @@ custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+toggle_mode = true
 texture_normal = ExtResource("13_w4m0a")
 ignore_texture_size = true
 stretch_mode = 5
@@ -184,6 +191,7 @@ custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+toggle_mode = true
 texture_normal = ExtResource("14_4ctr4")
 ignore_texture_size = true
 stretch_mode = 5
@@ -272,9 +280,10 @@ stretch_mode = 5
 
 [node name="Controller" type="VBoxContainer" parent="."]
 layout_mode = 2
-offset_top = 541.0
-offset_right = 1280.0
-offset_bottom = 720.0
+offset_left = 8.0
+offset_top = 590.0
+offset_right = 340.0
+offset_bottom = 712.0
 
 [node name="BaseController" type="PanelContainer" parent="Controller"]
 layout_mode = 2
@@ -283,21 +292,70 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_igoy7")
 
 [node name="MarginContainer" type="MarginContainer" parent="Controller/BaseController"]
 layout_mode = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 16
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_bottom = 8
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Controller/BaseController/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Controller/BaseController/MarginContainer"]
 layout_mode = 2
 
-[node name="TabContainer" type="TabContainer" parent="Controller/BaseController/MarginContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="Controller/BaseController/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Constructions"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Controller/BaseController/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Grid" type="GridContainer" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/h_separation = 4
+columns = 33
+
+[node name="TextureButtonAlojamento" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/Grid"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("15_igoy7")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButtonMadeireira" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/Grid"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("16_1tbnb")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButtonMinas" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/Grid"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("17_c6nnc")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButtonFazenda" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/Grid"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("18_pynmq")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TabContainer" type="TabContainer" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 current_tab = 0
 all_tabs_in_front = true
 
-[node name="Constructions" type="MarginContainer" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer"]
+[node name="Constructions" type="MarginContainer" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
@@ -305,14 +363,14 @@ theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 metadata/_tab_index = 0
 
-[node name="Grid" type="GridContainer" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions"]
+[node name="Grid" type="GridContainer" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Constructions"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 theme_override_constants/h_separation = 4
 columns = 33
 
-[node name="TextureButtonAlojamento" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+[node name="TextureButtonAlojamento" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Constructions/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -321,7 +379,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButtonMadeireira" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+[node name="TextureButtonMadeireira" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Constructions/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -330,7 +388,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButtonMinas" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+[node name="TextureButtonMinas" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Constructions/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -339,7 +397,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButtonFazenda" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+[node name="TextureButtonFazenda" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Constructions/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -348,7 +406,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton5" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+[node name="TextureButton5" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Constructions/Grid"]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -358,7 +416,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton6" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+[node name="TextureButton6" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Constructions/Grid"]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -368,7 +426,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton7" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+[node name="TextureButton7" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Constructions/Grid"]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -378,7 +436,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton8" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+[node name="TextureButton8" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Constructions/Grid"]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -388,7 +446,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton9" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+[node name="TextureButton9" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Constructions/Grid"]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -398,7 +456,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton10" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+[node name="TextureButton10" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Constructions/Grid"]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -408,7 +466,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton11" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+[node name="TextureButton11" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Constructions/Grid"]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -418,7 +476,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton12" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+[node name="TextureButton12" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Constructions/Grid"]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -428,7 +486,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton13" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+[node name="TextureButton13" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Constructions/Grid"]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -438,7 +496,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton14" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+[node name="TextureButton14" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Constructions/Grid"]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -448,7 +506,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton15" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+[node name="TextureButton15" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Constructions/Grid"]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -458,7 +516,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton16" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+[node name="TextureButton16" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Constructions/Grid"]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -468,7 +526,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton17" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+[node name="TextureButton17" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Constructions/Grid"]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -478,7 +536,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton18" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+[node name="TextureButton18" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Constructions/Grid"]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -488,7 +546,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton19" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+[node name="TextureButton19" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Constructions/Grid"]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -498,7 +556,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton20" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+[node name="TextureButton20" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Constructions/Grid"]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -508,7 +566,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton21" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+[node name="TextureButton21" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Constructions/Grid"]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -518,7 +576,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton22" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+[node name="TextureButton22" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Constructions/Grid"]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -528,7 +586,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton23" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+[node name="TextureButton23" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Constructions/Grid"]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -538,7 +596,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton24" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+[node name="TextureButton24" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Constructions/Grid"]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -548,7 +606,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton25" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+[node name="TextureButton25" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Constructions/Grid"]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -558,7 +616,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton26" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+[node name="TextureButton26" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Constructions/Grid"]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -568,7 +626,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton27" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+[node name="TextureButton27" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Constructions/Grid"]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -578,7 +636,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton28" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+[node name="TextureButton28" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Constructions/Grid"]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -588,7 +646,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton29" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+[node name="TextureButton29" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Constructions/Grid"]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -598,7 +656,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton30" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+[node name="TextureButton30" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Constructions/Grid"]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -608,7 +666,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton31" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+[node name="TextureButton31" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Constructions/Grid"]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -618,7 +676,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton32" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+[node name="TextureButton32" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Constructions/Grid"]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -628,7 +686,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton33" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+[node name="TextureButton33" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Constructions/Grid"]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -638,7 +696,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton34" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+[node name="TextureButton34" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Constructions/Grid"]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -648,7 +706,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton35" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+[node name="TextureButton35" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Constructions/Grid"]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -658,7 +716,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton36" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+[node name="TextureButton36" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Constructions/Grid"]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -668,7 +726,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton37" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+[node name="TextureButton37" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Constructions/Grid"]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -678,7 +736,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton38" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+[node name="TextureButton38" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Constructions/Grid"]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -688,7 +746,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton39" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+[node name="TextureButton39" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Constructions/Grid"]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -698,7 +756,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton40" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+[node name="TextureButton40" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Constructions/Grid"]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -708,7 +766,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton41" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+[node name="TextureButton41" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Constructions/Grid"]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -718,7 +776,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton42" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+[node name="TextureButton42" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Constructions/Grid"]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -728,7 +786,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton43" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+[node name="TextureButton43" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Constructions/Grid"]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -738,7 +796,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton44" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+[node name="TextureButton44" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Constructions/Grid"]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -748,7 +806,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton45" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+[node name="TextureButton45" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Constructions/Grid"]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -758,7 +816,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton46" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+[node name="TextureButton46" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Constructions/Grid"]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -768,7 +826,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton47" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+[node name="TextureButton47" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Constructions/Grid"]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -778,7 +836,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton48" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+[node name="TextureButton48" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Constructions/Grid"]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -788,7 +846,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton49" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+[node name="TextureButton49" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Constructions/Grid"]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -798,7 +856,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton50" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+[node name="TextureButton50" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Constructions/Grid"]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -808,7 +866,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton51" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+[node name="TextureButton51" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Constructions/Grid"]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -818,7 +876,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton52" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+[node name="TextureButton52" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Constructions/Grid"]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -828,7 +886,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton53" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+[node name="TextureButton53" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Constructions/Grid"]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -838,7 +896,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton54" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+[node name="TextureButton54" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Constructions/Grid"]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -848,7 +906,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton55" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+[node name="TextureButton55" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Constructions/Grid"]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -858,7 +916,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton56" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+[node name="TextureButton56" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Constructions/Grid"]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -868,7 +926,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton57" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+[node name="TextureButton57" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Constructions/Grid"]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -878,7 +936,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton58" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+[node name="TextureButton58" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Constructions/Grid"]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -888,7 +946,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton59" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+[node name="TextureButton59" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Constructions/Grid"]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -898,7 +956,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton60" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+[node name="TextureButton60" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Constructions/Grid"]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -908,7 +966,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton61" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+[node name="TextureButton61" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Constructions/Grid"]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -918,7 +976,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton62" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+[node name="TextureButton62" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Constructions/Grid"]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -928,7 +986,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton63" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+[node name="TextureButton63" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Constructions/Grid"]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -938,7 +996,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton64" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+[node name="TextureButton64" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Constructions/Grid"]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -948,7 +1006,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton65" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+[node name="TextureButton65" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Constructions/Grid"]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -958,7 +1016,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton66" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid"]
+[node name="TextureButton66" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Constructions/Grid"]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -968,7 +1026,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Upgrades" type="MarginContainer" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer"]
+[node name="Upgrades" type="MarginContainer" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer"]
 visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 16
@@ -977,13 +1035,13 @@ theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 metadata/_tab_index = 1
 
-[node name="Grid" type="GridContainer" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades"]
+[node name="Grid" type="GridContainer" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Upgrades"]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_constants/h_separation = 4
 columns = 33
 
-[node name="TextureButton" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
+[node name="TextureButton" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -992,7 +1050,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton2" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
+[node name="TextureButton2" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1001,7 +1059,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton3" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
+[node name="TextureButton3" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1010,7 +1068,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton4" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
+[node name="TextureButton4" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1019,7 +1077,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton5" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
+[node name="TextureButton5" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1028,7 +1086,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton6" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
+[node name="TextureButton6" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1037,7 +1095,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton7" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
+[node name="TextureButton7" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1046,7 +1104,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton8" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
+[node name="TextureButton8" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1055,7 +1113,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton9" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
+[node name="TextureButton9" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1064,7 +1122,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton10" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
+[node name="TextureButton10" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1073,7 +1131,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton11" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
+[node name="TextureButton11" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1082,7 +1140,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton12" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
+[node name="TextureButton12" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1091,7 +1149,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton13" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
+[node name="TextureButton13" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1100,7 +1158,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton14" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
+[node name="TextureButton14" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1109,7 +1167,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton15" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
+[node name="TextureButton15" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1118,7 +1176,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton16" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
+[node name="TextureButton16" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1127,7 +1185,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton17" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
+[node name="TextureButton17" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1136,7 +1194,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton18" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
+[node name="TextureButton18" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1145,7 +1203,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton19" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
+[node name="TextureButton19" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1154,7 +1212,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton20" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
+[node name="TextureButton20" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1163,7 +1221,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton21" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
+[node name="TextureButton21" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1172,7 +1230,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton22" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
+[node name="TextureButton22" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1181,7 +1239,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton23" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
+[node name="TextureButton23" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1190,7 +1248,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton24" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
+[node name="TextureButton24" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1199,7 +1257,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton25" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
+[node name="TextureButton25" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1208,7 +1266,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton26" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
+[node name="TextureButton26" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1217,7 +1275,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton27" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
+[node name="TextureButton27" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1226,7 +1284,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton28" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
+[node name="TextureButton28" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1235,7 +1293,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton29" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
+[node name="TextureButton29" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1244,7 +1302,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton30" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
+[node name="TextureButton30" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1253,7 +1311,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton31" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
+[node name="TextureButton31" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1262,7 +1320,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton32" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
+[node name="TextureButton32" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1271,7 +1329,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton33" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
+[node name="TextureButton33" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1280,7 +1338,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton34" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
+[node name="TextureButton34" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1289,7 +1347,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton35" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
+[node name="TextureButton35" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1298,7 +1356,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton36" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
+[node name="TextureButton36" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1307,7 +1365,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton37" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
+[node name="TextureButton37" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1316,7 +1374,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton38" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
+[node name="TextureButton38" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1325,7 +1383,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton39" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
+[node name="TextureButton39" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1334,7 +1392,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton40" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
+[node name="TextureButton40" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1343,7 +1401,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton41" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
+[node name="TextureButton41" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1352,7 +1410,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton42" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
+[node name="TextureButton42" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1361,7 +1419,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton43" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
+[node name="TextureButton43" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1370,7 +1428,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton44" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
+[node name="TextureButton44" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1379,7 +1437,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton45" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
+[node name="TextureButton45" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1388,7 +1446,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton46" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
+[node name="TextureButton46" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1397,7 +1455,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton47" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
+[node name="TextureButton47" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1406,7 +1464,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton48" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
+[node name="TextureButton48" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1415,7 +1473,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton49" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
+[node name="TextureButton49" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1424,7 +1482,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton50" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
+[node name="TextureButton50" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1433,7 +1491,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton51" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
+[node name="TextureButton51" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1442,7 +1500,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton52" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
+[node name="TextureButton52" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1451,7 +1509,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton53" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
+[node name="TextureButton53" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1460,7 +1518,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton54" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
+[node name="TextureButton54" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1469,7 +1527,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton55" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
+[node name="TextureButton55" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1478,7 +1536,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton56" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
+[node name="TextureButton56" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1487,7 +1545,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton57" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
+[node name="TextureButton57" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1496,7 +1554,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton58" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
+[node name="TextureButton58" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1505,7 +1563,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton59" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
+[node name="TextureButton59" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1514,7 +1572,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton60" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
+[node name="TextureButton60" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1523,7 +1581,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton61" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
+[node name="TextureButton61" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1532,7 +1590,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton62" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
+[node name="TextureButton62" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1541,7 +1599,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton63" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
+[node name="TextureButton63" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1550,7 +1608,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton64" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
+[node name="TextureButton64" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1559,7 +1617,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton65" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
+[node name="TextureButton65" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1568,7 +1626,7 @@ texture_normal = ExtResource("6_w6nql")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton66" type="TextureButton" parent="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
+[node name="TextureButton66" type="TextureButton" parent="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Upgrades/Grid"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1585,8 +1643,12 @@ layout_mode = 1
 [connection signal="pressed" from="TopPanel/MarginContainer/TopTab/TimerController/HBoxContainer/1x" to="." method="_on_1x_pressed"]
 [connection signal="pressed" from="TopPanel/MarginContainer/TopTab/TimerController/HBoxContainer/2x" to="." method="_on_2x_pressed"]
 [connection signal="pressed" from="TopPanel/MarginContainer/TopTab/Buttons/Menu" to="." method="_on_menu_pressed"]
-[connection signal="pressed" from="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/TextureButtonAlojamento" to="." method="_on_texture_button_pressed_alojamento"]
-[connection signal="pressed" from="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/TextureButtonMadeireira" to="." method="_on_texture_button_pressed_madeireira"]
-[connection signal="pressed" from="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/TextureButtonMinas" to="." method="_on_texture_button_pressed_minas"]
-[connection signal="pressed" from="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Constructions/Grid/TextureButtonFazenda" to="." method="_on_texture_button_pressed_fazenda"]
-[connection signal="pressed" from="Controller/BaseController/MarginContainer/HBoxContainer/TabContainer/Upgrades/Grid/TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/Grid/TextureButtonAlojamento" to="." method="_on_texture_button_pressed_alojamento"]
+[connection signal="pressed" from="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/Grid/TextureButtonMadeireira" to="." method="_on_texture_button_pressed_madeireira"]
+[connection signal="pressed" from="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/Grid/TextureButtonMinas" to="." method="_on_texture_button_pressed_minas"]
+[connection signal="pressed" from="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/Grid/TextureButtonFazenda" to="." method="_on_texture_button_pressed_fazenda"]
+[connection signal="pressed" from="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Constructions/Grid/TextureButtonAlojamento" to="." method="_on_texture_button_pressed_alojamento"]
+[connection signal="pressed" from="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Constructions/Grid/TextureButtonMadeireira" to="." method="_on_texture_button_pressed_madeireira"]
+[connection signal="pressed" from="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Constructions/Grid/TextureButtonMinas" to="." method="_on_texture_button_pressed_minas"]
+[connection signal="pressed" from="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Constructions/Grid/TextureButtonFazenda" to="." method="_on_texture_button_pressed_fazenda"]
+[connection signal="pressed" from="Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Upgrades/Grid/TextureButton" to="." method="_on_texture_button_pressed"]

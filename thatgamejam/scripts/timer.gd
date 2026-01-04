@@ -1,9 +1,9 @@
 extends Node2D
 enum Turno {Manha, Tarde, Noite}
 const TURN_DURATION := {
-	Turno.Manha: 20,#60.0,
-	Turno.Tarde: 1,#180.0,
-	Turno.Noite: 1#60.0
+	Turno.Manha: 10,#60.0,
+	Turno.Tarde: 10,#180.0,
+	Turno.Noite: 10#60.0
 }
 signal production_tick
 signal day_changed(day, week)
@@ -23,6 +23,8 @@ var current_turn_duration := 0.0
 var day_changed_this_night := false
 
 var hasPrayed: bool = false
+
+@onready var gradientColor: Gradient = preload("res://scripts/dayAndNightCycle/day&night.tres")
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_PAUSABLE
@@ -103,6 +105,20 @@ func _process(delta: float) -> void:
 		var canLvlUp:= Global.check_level_up()
 		if canLvlUp:
 			Global.level_up()
+
+func get_day_progress() -> float:
+	var total_duration = TURN_DURATION[Turno.Manha] + TURN_DURATION[Turno.Tarde] + TURN_DURATION[Turno.Noite]
+	var accumulated_time = 0.0
+	
+	# Soma o tempo dos turnos que já passaram
+	if turnoAtual == Turno.Tarde:
+		accumulated_time += TURN_DURATION[Turno.Manha]
+	elif turnoAtual == Turno.Noite:
+		accumulated_time += TURN_DURATION[Turno.Manha] + TURN_DURATION[Turno.Tarde]
+	# Soma o tempo decorrido no turno atual
+	accumulated_time += elapsed_turn_time
+	
+	return accumulated_time / total_duration
 
 func get_current_time() -> Vector2:
 	if !ticking:

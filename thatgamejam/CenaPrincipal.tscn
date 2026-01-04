@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=4 uid="uid://b4ty43kpbs2hv"]
+[gd_scene load_steps=16 format=4 uid="uid://b4ty43kpbs2hv"]
 
 [ext_resource type="Script" uid="uid://ddmka282u5qlo" path="res://scripts/Gameplay.gd" id="1_nj3ej"]
 [ext_resource type="Texture2D" uid="uid://ckp6o7u1j3oje" path="res://Assets/tilemap/Tilemap_color5.png" id="2_10qyw"]
 [ext_resource type="PackedScene" uid="uid://di3myjruys03y" path="res://prefabs/Builder.tscn" id="2_11bju"]
+[ext_resource type="Script" uid="uid://cau42t1d8xqse" path="res://sky.gd" id="2_yhd83"]
 [ext_resource type="PackedScene" uid="uid://2le3c1dfyjy6" path="res://prefabs/Buildings/Alojamento.tscn" id="3_a34lh"]
 [ext_resource type="PackedScene" uid="uid://d3fefgqtdhori" path="res://prefabs/UI/UI.tscn" id="3_nj3ej"]
 [ext_resource type="PackedScene" uid="uid://cy6qtr3ifo84y" path="res://prefabs/Buildings/Fazenda.tscn" id="4_1pqct"]
@@ -195,12 +196,15 @@ tile_size = Vector2i(32, 32)
 sources/1 = SubResource("TileSetAtlasSource_yhd83")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_l7207"]
-vertices = PackedVector2Array(1673.95, 520.07, -293.953, 534.922, -292.039, 109.969, 1672.04, 105.023)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-302, 100, 1682, 95, 1684, 530, -304, 545)])
+vertices = PackedVector2Array(-270.461, 573.07, -294.5, 78.9609, 1675.74, 72.0313, 351.25, 578.078, 1660.23, 707.93, 348.25, 699.063)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(3, 2, 4, 5)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-305, 69, 1686, 62, 1670, 718, 338, 709, 341, 588, -280, 583)])
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_nj3ej")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+script = ExtResource("2_yhd83")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 z_index = -1
@@ -261,6 +265,7 @@ offset_bottom = 470.0
 
 [node name="Builder" parent="." groups=["Followers"] instance=ExtResource("2_11bju")]
 position = Vector2(565, 400)
+motion_mode = 1
 cur_state = 2
 
 [connection signal="capela_clicada" from="Capela" to="CanvasLayer/RitualModal" method="_on_capela_capela_clicada"]

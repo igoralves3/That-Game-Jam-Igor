@@ -1,8 +1,7 @@
 [gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://1e4v4cmqh3my"]
 
-[ext_resource type="Texture2D" uid="uid://buarupxhvua07" path="res://Assets/UI Components/CLEAN MENUS/clean ui_clean menu-06.png" id="1_jdgoj"]
+[ext_resource type="Texture2D" uid="uid://bltigtomowbq1" path="res://Assets/UI elems 2.0/Carved_3Slides.png" id="1_jdgoj"]
 
 [resource]
 texture = ExtResource("1_jdgoj")
-region_rect = Rect2(0, 0, 1013, 202)
-modulate_color = Color(1, 1, 1, 0.309)
+modulate_color = Color(0.827451, 0.603922, 0.282353, 1)

@@ -1,10 +1,39 @@
-[gd_scene load_steps=2 format=3 uid="uid://buvrvp2yej1x3"]
+[gd_scene load_steps=8 format=3 uid="uid://buvrvp2yej1x3"]
 
+[ext_resource type="Texture2D" uid="uid://c56tbw4o5k3nu" path="res://Assets/UI elems 2.0/Banner_Vertical.png" id="1_6pc47"]
 [ext_resource type="Script" uid="uid://ri8hovf6r2ox" path="res://prefabs/UI/ModalConversao/modal_conversao.gd" id="1_gfxco"]
+[ext_resource type="Texture2D" uid="uid://bltigtomowbq1" path="res://Assets/UI elems 2.0/Carved_3Slides.png" id="3_hf0dh"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6fcsf"]
+texture = ExtResource("1_6pc47")
+texture_margin_left = 64.0
+texture_margin_top = 64.0
+texture_margin_right = 64.0
+texture_margin_bottom = 64.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_40obx"]
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ma3mr"]
+texture = ExtResource("3_hf0dh")
+texture_margin_left = 16.0
+texture_margin_top = 8.0
+texture_margin_right = 16.0
+texture_margin_bottom = 8.0
+modulate_color = Color(0.825856, 0.603473, 0.282578, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bt5nv"]
+texture = ExtResource("3_hf0dh")
+texture_margin_left = 16.0
+texture_margin_top = 8.0
+texture_margin_right = 16.0
+texture_margin_bottom = 8.0
+modulate_color = Color(0.827451, 0.603922, 0.282353, 1)
 
 [node name="ModalConversao" type="PanelContainer"]
-offset_right = 700.0
-offset_bottom = 300.0
+offset_right = 250.0
+offset_bottom = 200.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_6fcsf")
 script = ExtResource("1_gfxco")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -12,43 +41,64 @@ layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 3
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
 
-[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-horizontal_scroll_mode = 0
+size_flags_vertical = 4
+theme_override_constants/separation = 32
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/ScrollContainer"]
-custom_minimum_size = Vector2(0, 300)
-layout_mode = 2
-alignment = 1
-
-[node name="Title" type="Label" parent="VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="Title" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Problema do tipo Inteligente"
+label_settings = SubResource("LabelSettings_40obx")
+horizontal_alignment = 1
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 8
 
-[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer/PanelContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ma3mr")
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/PanelContainer"]
 layout_mode = 2
 text = "Resposta Inteligente"
+horizontal_alignment = 1
 
-[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_bt5nv")
 
-[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer/PanelContainer2"]
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/PanelContainer2"]
 layout_mode = 2
 text = "Resposta Religiosa"
+horizontal_alignment = 1
 
-[node name="PanelContainer3" type="PanelContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="PanelContainer3" type="PanelContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_bt5nv")
 
-[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer/PanelContainer3"]
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/PanelContainer3"]
 layout_mode = 2
 text = "Resposta Humana"
+horizontal_alignment = 1
 
-[connection signal="gui_input" from="VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer/PanelContainer" to="." method="_on_panel_container_gui_input"]
-[connection signal="gui_input" from="VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer/PanelContainer2" to="." method="_on_panel_container_2_gui_input"]
-[connection signal="gui_input" from="VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer/PanelContainer3" to="." method="_on_panel_container_3_gui_input"]
+[node name="PanelContainer4" type="PanelContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_bt5nv")
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/PanelContainer4"]
+layout_mode = 2
+text = "Resposta Humana"
+horizontal_alignment = 1
+
+[connection signal="gui_input" from="VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/PanelContainer" to="." method="_on_panel_container_gui_input"]
+[connection signal="gui_input" from="VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/PanelContainer2" to="." method="_on_panel_container_2_gui_input"]
+[connection signal="gui_input" from="VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/PanelContainer3" to="." method="_on_panel_container_3_gui_input"]
+[connection signal="gui_input" from="VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/PanelContainer4" to="." method="_on_panel_container_3_gui_input"]

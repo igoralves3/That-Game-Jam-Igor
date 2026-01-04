@@ -24,6 +24,12 @@ extends Control
 @onready var religion_lvl_counter = $TopPanel/MarginContainer/TopTab/Buttons/ReligionLvl
 @onready var happiness_counter = $TopPanel/MarginContainer/TopTab/Buttons/HappinessCounter
 
+@onready var selectedVelocity = 1
+
+@onready var pauseButton = $TopPanel/MarginContainer/TopTab/TimerController/Pause
+@onready var xButton = $"TopPanel/MarginContainer/TopTab/TimerController/HBoxContainer/1x"
+@onready var xxButton = $"TopPanel/MarginContainer/TopTab/TimerController/HBoxContainer/2x"
+
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	timer.day_changed.connect(_update_weekday)
@@ -31,6 +37,9 @@ func _ready():
 	timer.speed_changed.connect(_update_speed_buttons)
 	EventManagertscn.event_triggered.connect($EventModal.show_event)
 	_update_speed_buttons(timer.speed)
+	xButton.modulate = Color("#ffdb00")
+	pauseButton.modulate = Color("#ffffff")
+	xxButton.modulate = Color("#ffffff")
 
 func _process(delta: float) -> void:
 	var time := timer.get_current_time()
@@ -148,20 +157,32 @@ func _on_pause_pressed():
 	if timer.paused:
 		Global.resume_game()
 		timer.resume()
+		xButton.modulate = Color("#ffdb00")
+		pauseButton.modulate = Color("#ffffff")
+		xxButton.modulate = Color("#ffffff")
 	else:
 		Global.pause_game()
 		timer.pause()
+		pauseButton.modulate = Color("#ffdb00")
+		xButton.modulate = Color("#ffffff")
+		xxButton.modulate = Color("#ffffff")
 
 func _on_1x_pressed():
 	if timer.paused:
 		Global.resume_game()
 		timer.resume()
+	xButton.modulate = Color("#ffdb00")
+	pauseButton.modulate = Color("#ffffff")
+	xxButton.modulate = Color("#ffffff")
 	timer.set_speed(1.0)
 
 func _on_2x_pressed():
 	if timer.paused:
 		Global.resume_game()
 		timer.resume()
+	xxButton.modulate = Color("#ffdb00")
+	pauseButton.modulate = Color("#ffffff")
+	xButton.modulate = Color("#ffffff")
 	timer.set_speed(2.0)
 
 
