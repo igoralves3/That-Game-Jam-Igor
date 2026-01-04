@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dfucmaamm4jhv"]
+[gd_scene load_steps=3 format=3 uid="uid://dfucmaamm4jhv"]
 
 [ext_resource type="Script" uid="uid://jw2m8yd0at51" path="res://scripts/menu_principal.gd" id="1_0oe1n"]
+[ext_resource type="AudioStream" uid="uid://cexnxedtm7cwx" path="res://Assets/SFX/buttonSFX.ogg" id="2_ba235"]
 
 [node name="MenuPrincipal" type="Control"]
 layout_mode = 3
@@ -43,6 +44,12 @@ offset_bottom = 358.0
 scale = Vector2(3.56, 1.76)
 text = "Options"
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_ba235")
+volume_db = -10.0
+bus = &"SFX"
+
 [connection signal="pressed" from="ButtonStart" to="." method="_on_button_start_pressed"]
 [connection signal="pressed" from="ButtonExit" to="." method="_on_button_exit_pressed"]
 [connection signal="pressed" from="ButtonOptions" to="." method="_on_button_options_pressed"]
+[connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]

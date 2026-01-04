@@ -226,7 +226,8 @@ func enter_working():
 	nearest = constructions.pick_random()
 	
 	while nearest.max_workers <= nearest.workers:
-			nearest = constructions.pick_random()
+		nearest = constructions.pick_random()
+		
 		
 	if nearest == null:
 		queue_free()		

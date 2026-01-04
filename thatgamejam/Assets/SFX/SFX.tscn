@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvom4qgt1xgcd"]
+
+[ext_resource type="Script" uid="uid://vg07ewh2nchp" path="res://Assets/SFX/sfx.gd" id="1_dxj8n"]
+
+[node name="Sfx" type="Node2D"]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+volume_db = -10.0
+bus = &"SFX"
+script = ExtResource("1_dxj8n")

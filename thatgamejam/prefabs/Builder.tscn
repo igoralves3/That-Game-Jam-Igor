@@ -1,4 +1,4 @@
-[gd_scene load_steps=191 format=3 uid="uid://di3myjruys03y"]
+[gd_scene load_steps=193 format=3 uid="uid://di3myjruys03y"]
 
 [ext_resource type="Script" uid="uid://dfnq36e1m05kn" path="res://scripts/builder.gd" id="1_hhugm"]
 [ext_resource type="Texture2D" uid="uid://ddw2eojil5ibw" path="res://Assets/Builders/Black/Pawn_Idle.png" id="2_t1bg2"]
@@ -27,6 +27,8 @@
 [ext_resource type="Texture2D" uid="uid://c37tk7wtti6wr" path="res://Assets/Builders/Yellow/Pawn_Run Knife.png" id="25_kr521"]
 [ext_resource type="Texture2D" uid="uid://bjj17ot818m0t" path="res://Assets/Builders/Yellow/Pawn_Run Pickaxe.png" id="26_elbge"]
 [ext_resource type="Script" uid="uid://di0qcvmkfd7q" path="res://scripts/area_2d_builder.gd" id="27_o8xjp"]
+[ext_resource type="AudioStream" uid="uid://luvijajfou1b" path="res://Assets/SFX/modalOpenSFX.ogg" id="28_n26oh"]
+[ext_resource type="AudioStream" uid="uid://1cv1d4x6ggsj" path="res://Assets/SFX/modalCloseSFX.ogg" id="29_kr521"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7aq23"]
 atlas = ExtResource("2_t1bg2")
@@ -1312,6 +1314,16 @@ one_shot = true
 autostart = true
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="OpenSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("28_n26oh")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="CloseSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("29_kr521")
+volume_db = -10.0
+bus = &"SFX"
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
