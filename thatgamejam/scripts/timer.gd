@@ -178,7 +178,6 @@ func _change_turn() -> void:
 	elif turnoAtual == Turno.Noite:
 		turnoAtual = Turno.Manha
 		Global.estimate_happiness()
-		Global.tick_temporal_effects()
 		is_day = true
 		hasPrayed = false
 		current_turn_duration = TURN_DURATION[turnoAtual]

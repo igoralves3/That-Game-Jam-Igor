@@ -148,13 +148,13 @@ func add_resource(type: String, amount: int):
 func apply_effect(effect_name: String, value) -> void:
 	match effect_name: 
 		"wood":
-			wood = max(wood + int(value), 0)
+			wood = max(wood + int(value), -999)
 		"supplies":
-			supplies = max(supplies + int(value), 0)
+			supplies = max(supplies + int(value), -999)
 		"money":
-			money = max(money + int(value), 0)
+			money = max(money + int(value), -999)
 		"faith":
-			faith = max(faith + int(value), 0)
+			faith = max(faith + int(value), -999)
 		"happiness":
 			happiness = clamp(happiness + float(value), 0.0, 1.0)
 		"total_followers":
@@ -162,29 +162,29 @@ func apply_effect(effect_name: String, value) -> void:
 			if current_followers < total_followers:
 				removeFollower()
 
-func can_apply_effects(effects: Dictionary) -> bool:
-	for key in effects.keys():
-		var value = effects[key]
-		match key:
-			"wood":
-				if wood + value < 0:
-					return false
-			"supplies":
-				if supplies + value < 0:
-					return false
-			"money":
-				if money + value < 0:
-					return false
-			"faith":
-				if faith + value < 0:
-					return false
-			"happines":
-				if happiness + value < 0:
-					return false
-			"total_followers":
-				if total_followers + value < 0:
-					return false
-	return true
+#func can_apply_effects(effects: Dictionary) -> bool:
+	#for key in effects.keys():
+		#var value = effects[key]
+		#match key:
+			#"wood":
+				#if wood + value < 0:
+					#return false
+			#"supplies":
+				#if supplies + value < 0:
+					#return false
+			#"money":
+				#if money + value < 0:
+					#return false
+			#"faith":
+				#if faith + value < 0:
+					#return false
+			#"happines":
+				#if happiness + value < 0:
+					#return false
+			#"total_followers":
+				#if total_followers + value < 0:
+					#return false
+	#return true
 
 func beginRitual(ritual:Ritual):
 	print(ritual)
@@ -267,30 +267,6 @@ func carregar_jogo():
 		get_tree().root.get_node("Node2D").add_child(nova_cena) # Ajuste o caminho se necessário
 		nova_cena.global_position = Vector2(p_data["pos_x"], p_data["pos_y"])
 		nova_cena.num_trabalhadores = p_data["trabalhadores"]
-
-var active_temporal_effects: Array[TemporalEffect] = []
-
-func add_temporal_effects(effect: TemporalEffect):
-	var new_effect = effect.duplicate(true)
-	new_effect.activate()
-	active_temporal_effects.append(new_effect)
-
-func tick_temporal_effects():
-	var expired = []
-	
-	for effect in active_temporal_effects:
-		if effect.tick_day():
-			expired.append(effect)
-	for effect in expired:
-		active_temporal_effects.erase(effect)
-
-func get_active_effects_description() -> String:
-	if active_temporal_effects.is_empty():
-		return ("No active effects")
-	var text = "Active effects: \n"
-	for effect in active_temporal_effects:
-		text += "• %s (%d days)\n" % [effect.effect_name, effect.remaining_days]
-	return text
 
 func register_producer(producer):
 	var res_type = producer.resource_type

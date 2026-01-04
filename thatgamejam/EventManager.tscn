@@ -1,10 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://bkfe7bv3601x"]
+[gd_scene load_steps=2 format=3 uid="uid://bkfe7bv3601x"]
 
 [ext_resource type="Script" uid="uid://cadl6h3bci52l" path="res://scripts/EventManager.gd" id="1_6exa3"]
-[ext_resource type="Script" uid="uid://denprqbcdb1ds" path="res://scripts/Resources/GameEvent.gd" id="2_4j2tn"]
-[ext_resource type="Resource" uid="uid://4t1wf3ey8vx8" path="res://scripts/Resources/Events/good_event_caravan.tres" id="3_ixnal"]
 
 [node name="EventManager" type="Node"]
 script = ExtResource("1_6exa3")
-good_events = Array[ExtResource("2_4j2tn")]([ExtResource("3_ixnal")])
-bad_events = Array[ExtResource("2_4j2tn")]([ExtResource("3_ixnal")])

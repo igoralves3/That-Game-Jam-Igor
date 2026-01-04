@@ -44,12 +44,12 @@ func show_event(event: GameEvent):
 		button.add_theme_stylebox_override("focus", OPTIONS_STYLEBOX)
 		button.add_theme_stylebox_override("disabled", OPTIONS_STYLEBOX_DISABLED)
 		
-		var can_choose = Global.can_apply_effects(option.effects)
-		button.disabled = not can_choose
+		#var can_choose = Global.can_apply_effects(option.effects)
+		#button.disabled = not can_choose
 		
-		if not can_choose:
-			button.tooltip_text = button.tooltip_text + "\nInsufficient resources"
-			button.modulate = Color(1, 1, 1, 0.5)
+		#if not can_choose:
+			#button.tooltip_text = button.tooltip_text + "\nInsufficient resources"
+			#button.modulate = Color(1, 1, 1, 0.5)
 		
 		button.pressed.connect(_on_option_selected.bind(option)) 
 		options_box.add_child(button)
@@ -58,8 +58,8 @@ func show_event(event: GameEvent):
 	Global.pause_game()
 
 func _on_option_selected(option: EventOption):
-	if not Global.can_apply_effects(option.effects):
-		return
+	#if not Global.can_apply_effects(option.effects):
+		#return
 	apply_effects(option.effects)
 	
 	Global.resume_game()
@@ -75,4 +75,4 @@ func effects_to_tooltip(effects: Dictionary) -> String:
 		var value = effects[key]
 		var sign = "+" if value > 0 else ""
 		lines.append("%s: %s%s" % [key.capitalize(), sign, value])
-	return "/n".join(lines)
+	return "\n".join(lines)

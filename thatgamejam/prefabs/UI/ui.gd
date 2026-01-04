@@ -99,7 +99,7 @@ func _generate_tooltip(counter_name: String) -> String:
 	match counter_name:
 		"faith":
 			counter_name = "Faith"
-			description = "Spiritual power of your religion \nUsed for upgrades"
+			description = "Spiritual power of your religion"
 		"happiness":
 			counter_name = "Happiness"
 			description = "General happiness of your followers \n Below 50%, followers start leaving"
