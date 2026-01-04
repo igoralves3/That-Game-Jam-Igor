@@ -32,6 +32,8 @@ var wander_target: Vector2
 @export var comecou_na_tela = true
 @export var following = false
 
+
+
 var color: String
 var possibleColors = ["BLACK", "BLUE", "PURPLE", "RED", "YELLOW"]
 
@@ -111,12 +113,15 @@ func _physics_process(delta):
 	animation_controller()
 
 func process_entering():
+	
 	if global_position.x > get_viewport().get_visible_rect().size.x/2:
 		velocity.x = -50
-		
+
 	else:
 		velocity.x = 50
+	print('follower entering ' + str(self))
 	move_and_slide()
+	
 
 func process_wander():
 	
@@ -170,12 +175,15 @@ func _on_navigation_agent_2d_navigation_finished() -> void:
 #			print("Clicou no personagem!")
 
 
+
 func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton:
+		z_index=0
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			#if Global.currentFollower != self 
-			
-			if cur_state == SeguidorState.Stopped:	
+			Global.currentFollower = self
+			#if cur_state == SeguidorState.Stopped:	
+			if following == false:
 				Global.currentFollower = self
 				open_dialog()
 				

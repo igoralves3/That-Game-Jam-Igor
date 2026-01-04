@@ -1,4 +1,4 @@
-[gd_scene load_steps=190 format=3 uid="uid://di3myjruys03y"]
+[gd_scene load_steps=191 format=3 uid="uid://di3myjruys03y"]
 
 [ext_resource type="Script" uid="uid://dfnq36e1m05kn" path="res://scripts/builder.gd" id="1_hhugm"]
 [ext_resource type="Texture2D" uid="uid://ddw2eojil5ibw" path="res://Assets/Builders/Black/Pawn_Idle.png" id="2_t1bg2"]
@@ -26,6 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://jsvjxrqno1jj" path="res://Assets/Builders/Yellow/Pawn_Run Axe.png" id="24_n26oh"]
 [ext_resource type="Texture2D" uid="uid://c37tk7wtti6wr" path="res://Assets/Builders/Yellow/Pawn_Run Knife.png" id="25_kr521"]
 [ext_resource type="Texture2D" uid="uid://bjj17ot818m0t" path="res://Assets/Builders/Yellow/Pawn_Run Pickaxe.png" id="26_elbge"]
+[ext_resource type="Script" uid="uid://di0qcvmkfd7q" path="res://scripts/area_2d_builder.gd" id="27_o8xjp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7aq23"]
 atlas = ExtResource("2_t1bg2")
@@ -1275,10 +1276,10 @@ animations = [{
 "speed": 12.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hhugm"]
-size = Vector2(48, 72)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mlsma"]
+size = Vector2(84.1463, 113.415)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hhugm"]
 size = Vector2(48, 72)
 
 [node name="Builder" type="CharacterBody2D"]
@@ -1288,6 +1289,15 @@ script = ExtResource("1_hhugm")
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_1b58m")
 animation = &"black_idle"
+
+[node name="Area2D" type="Area2D" parent="."]
+z_index = 1
+scale = Vector2(1.64, 1.64)
+script = ExtResource("27_o8xjp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.609755, -1.82927)
+shape = SubResource("RectangleShape2D_mlsma")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_hhugm")
@@ -1301,15 +1311,12 @@ wait_time = 180.0
 one_shot = true
 autostart = true
 
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_mlsma")
-
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="input_event" from="Area2D" to="Area2D" method="_on_input_event"]
 [connection signal="navigation_finished" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_navigation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
 [connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]

@@ -1,7 +1,7 @@
 extends Node2D
 enum Turno {Manha, Tarde, Noite}
 const TURN_DURATION := {
-	Turno.Manha: 10,#60.0,
+	Turno.Manha: 20,#60.0,
 	Turno.Tarde: 1,#180.0,
 	Turno.Noite: 1#60.0
 }
@@ -231,14 +231,18 @@ func spawn_followers():
 		)
 		print("ponto: " + str(ponto))
 		if ponto.x > get_viewport().get_visible_rect().size.x/2:
-			ponto.x = -100
+			ponto.x = 50
 		else:
-			ponto.x = get_viewport().get_visible_rect().size.x + 100
+			ponto.x = get_viewport().get_visible_rect().size.x-50
 	
 	
 		var agente := preload("res://prefabs/Builder.tscn").instantiate()
 		agente.global_position = ponto
+		
 		agente.comecou_na_tela=false
+		agente.cur_state = Builder.SeguidorState.Entering
+		
+		agente.visible=true
 		add_child(agente)
 		agente.add_to_group("Followers")
 
@@ -251,6 +255,7 @@ func total_vagas() -> int:
 			if alocados > 0:
 				vagas = vagas + alocados
 	return vagas
+
 			
 			
 	
