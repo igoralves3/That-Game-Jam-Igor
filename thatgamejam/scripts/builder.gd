@@ -225,7 +225,7 @@ func enter_working():
 	
 	nearest = constructions.pick_random()
 	
-	while nearest.max_workers <= nearest.workers:
+	while nearest is not Building or nearest.max_workers <= nearest.workers:
 		nearest = constructions.pick_random()
 		
 		

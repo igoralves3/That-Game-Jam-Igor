@@ -1287,6 +1287,12 @@ size = Vector2(48, 72)
 [node name="Builder" type="CharacterBody2D"]
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_hhugm")
+cur_state = null
+wander_radius = null
+wander_speed = null
+working = null
+comecou_na_tela = null
+following = null
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_1b58m")

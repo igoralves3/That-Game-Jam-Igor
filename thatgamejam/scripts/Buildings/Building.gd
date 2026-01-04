@@ -1,5 +1,7 @@
 extends Area2D
 
+class_name Building
+
 @export var max_workers := 5
 @export var workers := 0
 @export var resource_type := ""
