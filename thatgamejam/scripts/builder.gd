@@ -211,6 +211,9 @@ func enter_working():
 	var nearest = null
 	var min_dist := INF
 	
+	var constructions = get_tree().get_nodes_in_group("Constructions")
+	
+	"""
 	for c in get_tree().get_nodes_in_group("Constructions"):
 		if c is Fazenda or c is Madeireira or c is Minas:
 			if c.workers < c.max_workers:		
@@ -218,7 +221,13 @@ func enter_working():
 				if dist < min_dist:
 					min_dist = dist
 					nearest = c
-			
+	"""
+	
+	nearest = constructions.pick_random()
+	
+	while nearest.max_workers <= nearest.workers:
+			nearest = constructions.pick_random()
+		
 	if nearest == null:
 		queue_free()		
 	
