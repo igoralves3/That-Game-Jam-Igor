@@ -368,7 +368,7 @@ func process_go_praying():
 	var next_point = agent.get_next_path_position()
 	var direction = (next_point - global_position).normalized()
 	
-	velocity = direction * 10.0
+	velocity = direction * wander_speed
 	move_and_slide()
 	
 func process_praying():
