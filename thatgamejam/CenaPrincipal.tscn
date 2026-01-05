@@ -196,9 +196,9 @@ tile_size = Vector2i(32, 32)
 sources/1 = SubResource("TileSetAtlasSource_yhd83")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_l7207"]
-vertices = PackedVector2Array(-270.461, 573.07, -294.5, 78.9609, 1675.74, 72.0313, 351.25, 578.078, 1660.23, 707.93, 348.25, 699.063)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(3, 2, 4, 5)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-305, 69, 1686, 62, 1670, 718, 338, 709, 341, 588, -280, 583)])
+vertices = PackedVector2Array(1328.95, 705.922, 348.25, 699.07, 351.242, 578.273, 1326.04, 79.0781, -51.2734, 90.9063, -64.7109, 567.258)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 3, 2, 5)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-61, 81, 1336, 69, 1339, 716, 338, 709, 341, 588, -75, 577)])
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_nj3ej")
@@ -216,7 +216,6 @@ navigation_polygon = SubResource("NavigationPolygon_l7207")
 
 [node name="Alojamento" parent="." groups=["Constructions"] instance=ExtResource("3_a34lh")]
 position = Vector2(191, 389)
-scale = Vector2(0.5, 0.5)
 
 [node name="Fazenda" parent="." instance=ExtResource("4_1pqct")]
 position = Vector2(150, 224)
@@ -232,7 +231,6 @@ position = Vector2(600, 192)
 
 [node name="Alojamento2" parent="." groups=["Constructions"] instance=ExtResource("3_a34lh")]
 position = Vector2(1132, 416)
-scale = Vector2(0.5, 0.5)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -241,21 +239,20 @@ scale = Vector2(0.5, 0.5)
 [node name="RitualModal" parent="CanvasLayer" instance=ExtResource("8_7la10")]
 process_mode = 3
 visible = false
-offset_left = 440.0
-offset_top = 60.0
-offset_right = 840.0
-offset_bottom = 660.0
 
 [node name="ModalConversao" parent="CanvasLayer" groups=["Canvas"] instance=ExtResource("10_s1yko")]
 visible = false
-offset_left = 253.0
-offset_top = 170.0
-offset_right = 953.0
-offset_bottom = 470.0
+offset_right = 700.0
+offset_bottom = 300.0
 
 [node name="Builder" parent="." groups=["Followers"] instance=ExtResource("2_11bju")]
 position = Vector2(565, 400)
 motion_mode = 1
 cur_state = 2
+wander_radius = null
+wander_speed = null
+working = null
+comecou_na_tela = false
+following = null
 
 [connection signal="capela_clicada" from="Capela" to="CanvasLayer/RitualModal" method="_on_capela_capela_clicada"]

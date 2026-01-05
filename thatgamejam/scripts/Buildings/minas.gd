@@ -3,7 +3,6 @@ extends "res://scripts/Buildings/Building.gd"
 class_name Minas
 
 const capacidade_maxima = 10
-var currentWorkers = 0
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.pressed:
@@ -31,9 +30,10 @@ func get_save_data():
 	}
 	
 func _process(delta):
-	if currentWorkers > 0:
+	if workers > 0:
 		$AnimationPlayer.play("active")
 	else:
+		$AnimationPlayer.stop()
 		self.scale = Vector2(1, 1)
 
 func _ready():

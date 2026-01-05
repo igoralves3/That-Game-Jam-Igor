@@ -9,11 +9,11 @@ var production_modifiers := {}
 
 var total_followers: int = 0
 var total_buildings: int = 0
-var wood: int = 0
-var faith: int = 0
-var supplies: int = 0
+var wood: int = 100
+var faith: int = 100
+var supplies: int = 100
 var happiness: float = 1.0
-var money: int = 0
+var money: int = 100
 
 var religionLvl: int = 1
 var requirementsToLvlUp: Array[Dictionary] = [{"pop": 5}, {"pop": 10}, {"pop": 15}, {"pop": 25}, {"pop": 40}, {"pop":65}, {"pop": 105}, {"pop": 170}, {"pop": 275}, {"pop": 445}, {"pop": 720}, {"pop": 1000}]
@@ -42,6 +42,8 @@ var modal_open_sfx = preload("res://Assets/SFX/modalOpenSFX.ogg")
 
 
 
+signal game_over
+
 func _ready():
 	prayTimer = Timer.new()
 	add_child(prayTimer)
@@ -60,10 +62,10 @@ func start_game():
 
 func reset_game():
 	total_buildings = 0
-	wood = 0
-	faith = 0
-	supplies = 0
-	money = 0
+	wood = 100
+	faith = 100
+	supplies = 100
+	money = 100
 	happiness = 1.0
 	religionLvl = 1
 	currentRitual = null
@@ -176,6 +178,8 @@ func apply_effect(effect_name: String, value) -> void:
 			var current_followers = max(total_followers + int(value), 0)
 			if current_followers < total_followers:
 				removeFollower()
+		"victory":
+			game_over.emit()
 
 #func can_apply_effects(effects: Dictionary) -> bool:
 	#for key in effects.keys():
@@ -337,3 +341,13 @@ func play_open_modal_sfx():
 	
 func play_close_modal_sfx():
 	SFXManager.play_close()
+
+func can_pay_ritual_cost(ritual: Ritual) -> bool:
+	for cost_key in ritual.cost.keys():
+		var cost_value = ritual.cost[cost_key]
+		var current_resource = getResource(cost_key)
+
+		if current_resource < cost_value:
+			return false
+
+	return true

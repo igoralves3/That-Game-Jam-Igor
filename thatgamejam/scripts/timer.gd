@@ -31,6 +31,12 @@ func _ready() -> void:
 	var follower_lst = get_tree().get_nodes_in_group("Followers")
 	Global.total_followers = follower_lst.size()
 	day_changed.connect(EventManagertscn.schedule_daily_event)
+	Global.game_over.connect(on_game_over)
+	
+
+func on_game_over():
+	stop_game_time()
+	pause()
 
 func start_game_time():
 	if ticking:

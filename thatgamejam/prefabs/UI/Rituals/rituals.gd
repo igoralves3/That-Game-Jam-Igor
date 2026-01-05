@@ -21,8 +21,6 @@ func atualizar_menu_rituais():
 	limpar_lista()
 	
 	for ritual in lista_de_rituais:
-		# CONDIÇÃO: Só cria o botão se o nível do jogador for 
-		# suficiente ou estiver perto do necessário.
 		if Global.religionLvl >= (ritual.level - nivel_visibilidade):
 			var novo_btn = ritual_button_prefab.instantiate()
 			buttonContainer.add_child(novo_btn)
@@ -31,10 +29,11 @@ func atualizar_menu_rituais():
 			novo_btn.connect("ritual_selecionado", on_selected_ritual, 0)
 
 func on_selected_ritual(ritual: Ritual):
-	if ritual.single:
-		lista_de_rituais.erase(ritual)
-	Global.beginRitual(ritual)
-	fechar_modal()
+	if Global.can_pay_ritual_cost(ritual):
+		if ritual.single:
+			lista_de_rituais.erase(ritual)
+		Global.beginRitual(ritual)
+		fechar_modal()
 
 func limpar_lista():
 	for child in buttonContainer.get_children():
