@@ -44,6 +44,9 @@ func _on_gui_input(event):
 		
 		#acrescentado por igor
 		timer.resume()
+		
+		Global.play_close_modal_sfx()
+		
 		followers_go_to_capela()
 
 func _on_mouse_entered() -> void:
