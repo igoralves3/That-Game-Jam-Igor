@@ -43,6 +43,12 @@ func _ready():
 	velocity = Vector2.ZERO 
 	dialogo = get_tree().get_first_node_in_group("Canvas")
 	color = possibleColors.pick_random()
+	
+	if comecou_na_tela and not following:
+		await wait_for_navigation_ready()
+		following = true
+		working = true
+		enter_working()
 
 func animation_controller():
 	var anim_name = ""

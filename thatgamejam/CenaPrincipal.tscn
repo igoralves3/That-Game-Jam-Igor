@@ -220,15 +220,12 @@ scale = Vector2(0.5, 0.5)
 
 [node name="Fazenda" parent="." instance=ExtResource("4_1pqct")]
 position = Vector2(150, 224)
-workers = 1
 
 [node name="Madeireira" parent="." instance=ExtResource("5_7la10")]
 position = Vector2(951, 230)
-workers = 2
 
 [node name="Minas" parent="." instance=ExtResource("6_5vuhn")]
 position = Vector2(750, 302)
-workers = 3
 
 [node name="Capela" parent="." instance=ExtResource("9_5vuhn")]
 position = Vector2(600, 192)
