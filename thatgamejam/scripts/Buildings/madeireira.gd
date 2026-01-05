@@ -7,12 +7,9 @@ const capacidade_maxima = 10
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.pressed:
-		print("Clicou na madeireira")
 		Global.currentBuilding = self
 		
 		if Global.currentFollower != null:
-			print('indo')
-			
 			Global.currentFollower.building = self
 			
 			Global.currentFollower.timer.stop()
@@ -23,7 +20,6 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 			Global.currentFollower.cur_state = Builder.SeguidorState.Woodwork#Builder.SeguidorState.Working
 
 func _process(delta):
-	print("workes: ",workers)
 	if workers > 0:
 		$AnimationPlayer.play("active")
 	else:

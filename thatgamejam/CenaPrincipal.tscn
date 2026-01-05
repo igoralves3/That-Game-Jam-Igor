@@ -196,9 +196,9 @@ tile_size = Vector2i(32, 32)
 sources/1 = SubResource("TileSetAtlasSource_yhd83")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_l7207"]
-vertices = PackedVector2Array(1328.95, 705.922, 348.25, 699.07, 351.242, 578.273, 1326.04, 79.0781, -51.2734, 90.9063, -64.7109, 567.258)
+vertices = PackedVector2Array(1328.95, 705.922, 348.25, 699.07, 351.25, 578.031, 1326.04, 79.0781, -50.9609, 90.9063, -49.0313, 577.023)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 3, 2, 5)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-61, 81, 1336, 69, 1339, 716, 338, 709, 341, 588, -75, 577)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-61, 81, 1336, 69, 1339, 716, 338, 709, 341, 588, -59, 587)])
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_nj3ej")

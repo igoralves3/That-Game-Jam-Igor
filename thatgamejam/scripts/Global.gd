@@ -7,8 +7,8 @@ var state := GameState.MENU
 var producers := {}
 var production_modifiers := {}
 
-var total_followers: int = 0
-var total_buildings: int = 0
+var total_followers: int = 1
+var total_buildings: int = 5
 var wood: int = 100
 var faith: int = 100
 var supplies: int = 100
@@ -55,13 +55,11 @@ func _ready():
 
 func start_game():
 	state = GameState.PLAYING
-	
-	
-	
 	reset_game()
 
 func reset_game():
-	total_buildings = 0
+	total_buildings = 5
+	total_followers = 1
 	wood = 100
 	faith = 100
 	supplies = 100
@@ -87,7 +85,6 @@ func _process(delta: float) -> void:
 func level_up() -> void:
 	religionLvl+=1
 	requirementIndex+=1
-	print("[LvlUp] subiu de nível: ", religionLvl, " reqs: ", requirementsToLvlUp[requirementIndex])
 	happinessGainBonus += 0.01
 
 func check_level_up() -> bool:
@@ -128,20 +125,16 @@ func estimate_happiness() -> float:
 	if suppliesRequired <= supplies:
 		add_resource("supplies", -suppliesRequired)
 		estimatedHappiness = clamp(estimatedHappiness + supplydemandFufilled, min, max)
-		print("[Happy] Seguidores alimentados com sucesso + 5% ", estimatedHappiness)
 	else: 
 		var followersFed = floor(supplies/total_followers)
 		var followersUnfed = total_followers - followersFed
 		add_resource("supplies", -(followersFed*2))
 		estimatedHappiness = clamp(estimatedHappiness - (lackOfSupply * followersUnfed), min, max)
-		print("[Happy] Seguidores não alimentados ", followersUnfed, ", -2% por seguidor subnutrido ", estimatedHappiness)
 	
 	if timer.hasPrayed:
 		estimatedHappiness = clamp(estimatedHappiness + faithFufilled, min, max)
-		print("[Happy] Seguidores rezaram com sucesso + 5% ", estimatedHappiness)
 	else:
 		estimatedHappiness = clamp(estimatedHappiness - (lackOfFaith * total_followers), min, max)
-		print("[Happy] Seguidores não rezaram ", estimatedHappiness)
 		
 	happiness = estimatedHappiness
 	return estimatedHappiness
@@ -206,7 +199,6 @@ func apply_effect(effect_name: String, value) -> void:
 	#return true
 
 func beginRitual(ritual:Ritual):
-	print(ritual)
 	currentRitual = ritual
 	for cost in ritual.cost.keys():
 		if cost != "pop" || cost!= "total_followers":
@@ -222,7 +214,6 @@ func on_Pray_Over():
 		apply_effect(i, rewardDic[i])
 	timer.hasPrayed=true
 	currentRitual = null
-	print("[PRAY] wood: ", wood, ", supplies: ", supplies, ", faith: ", faith)
 
 func removeFollower():
 	var followerList = get_tree().get_nodes_in_group("Followers")
@@ -283,7 +274,7 @@ func carregar_jogo():
 	# 3. Recria as construções
 	for p_data in data["constructions"]:
 		var nova_cena = load(p_data["filename"]).instantiate()
-		get_tree().root.get_node("Node2D").add_child(nova_cena) # Ajuste o caminho se necessário
+		get_tree().root.get_node("Node2D").add_child(nova_cena)
 		nova_cena.global_position = Vector2(p_data["pos_x"], p_data["pos_y"])
 		nova_cena.num_trabalhadores = p_data["trabalhadores"]
 
@@ -324,10 +315,7 @@ func process_all_production():
 		if total > 0:
 			add_resource(res_type, total)
 			production_summary[res_type] = total
-	
-	if production_summary.size() > 0:
-		print("[Production Tick] ", production_summary)
-	
+		
 	return production_summary
 
 func get_all_production_preview() -> Dictionary:

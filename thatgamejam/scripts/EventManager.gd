@@ -18,7 +18,7 @@ func schedule_daily_event(day: int, week: int):
 	if good_events.is_empty() and bad_events.is_empty():
 		return
 	
-	if randf() < 0.2:
+	if randf() < 0.6:
 		return
 	
 	var is_good = randf() < 0.5

@@ -1,9 +1,9 @@
 extends Node2D
 enum Turno {Manha, Tarde, Noite}
 const TURN_DURATION := {
-	Turno.Manha: 10,#60.0,
-	Turno.Tarde: 10,#180.0,
-	Turno.Noite: 10#60.0
+	Turno.Manha: 120.0,
+	Turno.Tarde: 120.0,
+	Turno.Noite: 60.0
 }
 signal production_tick
 signal day_changed(day, week)
@@ -75,12 +75,10 @@ func set_speed(multiplier: float):
 	speed = multiplier
 	Engine.time_scale = speed
 	emit_signal("speed_changed", speed)
-	print("Speed changed to:", speed, " | time_scale:", Engine.time_scale)
 
 func _process(delta: float) -> void:
 	var current_scene = get_tree().current_scene
 	if current_scene == null:
-		print("[ERRO] Cena atual é null!")
 		return
 
 	if current_scene.name == "Main":
@@ -109,7 +107,6 @@ func _process(delta: float) -> void:
 				week += 1
 			emit_signal("day_changed", day, week)
 			day_changed_this_night = true
-			print("Novo dia:", day, "semana:", week)
 	
 	if elapsed_turn_time >= current_turn_duration:
 		elapsed_turn_time = 0.0
@@ -164,14 +161,12 @@ func _change_turn() -> void:
 	if turnoAtual == Turno.Manha:
 		turnoAtual = Turno.Tarde
 		current_turn_duration = TURN_DURATION[turnoAtual]
-		print('tarde')
 	
 	elif turnoAtual == Turno.Tarde:
 		turnoAtual = Turno.Noite
 		current_turn_duration = TURN_DURATION[turnoAtual]
 		is_day = false
 		day_changed_this_night = false  
-		print('noite')
 		
 		for f in get_tree().get_nodes_in_group("Followers"):
 			if f is Builder:
@@ -195,7 +190,6 @@ func _change_turn() -> void:
 		is_day = true
 		hasPrayed = false
 		current_turn_duration = TURN_DURATION[turnoAtual]
-		print('manha')
 		var follower_lst = get_tree().get_nodes_in_group("Followers")
 		
 		if Global.happiness < 0.5:
@@ -262,7 +256,6 @@ func spawn_followers():
 			1,  # camada de navegação
 			false
 		)
-		print("ponto: " + str(ponto))
 		if ponto.x > get_viewport().get_visible_rect().size.x/2:
 			ponto.x = 50
 		else:

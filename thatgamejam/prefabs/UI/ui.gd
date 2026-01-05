@@ -36,6 +36,8 @@ extends Control
 @onready var minas_construction = $Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/Grid/TextureButtonMinas
 @onready var fazenda_construction = $Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer/Grid/TextureButtonFazenda
 
+var showingConst := true
+
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	timer.day_changed.connect(_update_weekday)
@@ -223,7 +225,7 @@ func _on_2x_pressed():
 	xxButton.modulate = Color("#ffdb00")
 	pauseButton.modulate = Color("#ffffff")
 	xButton.modulate = Color("#ffffff")
-	timer.set_speed(2.0)
+	timer.set_speed(5.0)
 
 
 func _update_pause_button(is_paused):
@@ -263,5 +265,9 @@ func _on_texture_button_pressed_fazenda() -> void:
 	Global.currentBuildType = "Fazenda"
 
 func _on_menu_pressed() -> void:
-	print("JOGO SALVO")
 	Global.salvar_jogo()
+
+
+func _on_texture_button_pressed():
+	$Controller/BaseController/MarginContainer/VBoxContainer/HBoxContainer.visible = !showingConst
+	showingConst = !showingConst

@@ -21,7 +21,7 @@ reward = {
 "faith": 100
 }
 single = false
-time = 2.0
+time = 10.0
 metadata/_custom_type_script = "uid://e1s4bkec4hxa"
 
 [sub_resource type="Resource" id="Resource_fxt4u"]
@@ -37,7 +37,7 @@ reward = {
 "faith": 200
 }
 single = true
-time = 5.0
+time = 15.0
 metadata/_custom_type_script = "uid://e1s4bkec4hxa"
 
 [sub_resource type="Resource" id="Resource_a1npl"]
@@ -55,7 +55,7 @@ reward = {
 "wood": 50
 }
 single = false
-time = 10.0
+time = 15.0
 metadata/_custom_type_script = "uid://e1s4bkec4hxa"
 
 [sub_resource type="Resource" id="Resource_bpuiq"]
@@ -71,7 +71,7 @@ reward = {
 "money": 200
 }
 single = false
-time = 10.0
+time = 20.0
 metadata/_custom_type_script = "uid://e1s4bkec4hxa"
 
 [sub_resource type="Resource" id="Resource_5sdwv"]
@@ -86,7 +86,7 @@ cost = {
 }
 reward = {}
 single = false
-time = 2.0
+time = 15.0
 metadata/_custom_type_script = "uid://e1s4bkec4hxa"
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fxt4u"]

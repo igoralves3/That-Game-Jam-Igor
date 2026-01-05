@@ -58,7 +58,6 @@ func animation_controller():
 	var tool_suffix = ""
 
 	if velocity.length() > 0:
-		print(velocity.length())
 		state_suffix = "run"
 	else:
 		state_suffix = "idle"
@@ -78,9 +77,6 @@ func animation_controller():
 
 	if sprite.sprite_frames.has_animation(anim_name):
 		sprite.play(anim_name)
-		print("[ANIM] ", anim_name)
-	else:
-		print("[ERRO] NÃO EXISTE: ", anim_name)
 	
 	if velocity.x != 0:
 		sprite.flip_h = velocity.x < 0
@@ -92,7 +88,6 @@ func wait_for_navigation_ready():
 		await get_tree().physics_frame
 
 func _physics_process(delta):
-	print("[ESTADO] ",cur_state)
 	if cur_state == SeguidorState.Entering:
 		process_entering()
 	elif cur_state == SeguidorState.Wander:
@@ -125,7 +120,6 @@ func process_entering():
 
 	else:
 		velocity.x = 50
-	print('follower entering ' + str(self))
 	move_and_slide()
 	
 
@@ -159,7 +153,6 @@ func get_random_wander_point() -> Vector2:
 	
 func enter_wander():
 	wander_target = get_random_wander_point()
-	print(wander_target)
 	agent.target_position = wander_target
 	
 	timer.wait_time = randi_range(1,10)
@@ -253,13 +246,6 @@ func enter_working():
 
 func process_working():
 	$CollisionShape2D.disabled = false
-	if building is Fazenda:
-		print('working at farm')
-	elif building is Minas:
-		print('working at mines')
-	elif building is Madeireira:
-		print('working at wood')
-	#print('working')
 	if  global_position.distance_to(building.global_position) < 10.0:
 	
 		if building.workers < building.max_workers:
@@ -285,11 +271,9 @@ func process_working():
 func process_hidden():
 	$CollisionShape2D.disabled = true
 	visible = false
-	print('working and visible = ' + str(visible))
 	
 func process_sleeping():
 	$CollisionShape2D.disabled = false
-	print(str(self) + ' is sleeping')
 	
 	if  global_position.distance_to(alojamento.global_position) < 10.0:
 		if alojamento.max_seguidores > alojamento.seguidores_alocados:
@@ -361,7 +345,6 @@ func enter_praying():
 	
 func process_go_praying():
 	$CollisionShape2D.disabled = false
-	print('going to capela ' + str(capela))
 	
 	if  global_position.distance_to(capela.global_position) < 20.0:
 	

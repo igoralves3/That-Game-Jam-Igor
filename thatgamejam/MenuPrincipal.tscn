@@ -55,9 +55,10 @@ layout_mode = 2
 theme_override_styles/disabled = ExtResource("2_ectly")
 theme_override_styles/hover = ExtResource("3_knros")
 theme_override_styles/normal = ExtResource("4_oh4jq")
-text = "New Game"
+text = "Start Game"
 
 [node name="ButtonLoad" type="Button" parent="VBoxContainer/PanelContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 theme_override_styles/disabled = ExtResource("2_ectly")
 theme_override_styles/hover = ExtResource("3_knros")

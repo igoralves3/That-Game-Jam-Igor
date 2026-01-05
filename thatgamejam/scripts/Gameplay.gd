@@ -8,7 +8,6 @@ func _ready() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed:
-		print("Clicou em área vazia")
 			
 		var current = null
 			

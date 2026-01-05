@@ -73,6 +73,4 @@ func check_cost(data: Dictionary) -> bool:
 func followers_go_to_capela():
 	var followers =  get_tree().get_nodes_in_group("Followers")
 	for f in followers:
-		
-			print(str(f))
 			f.enter_praying()
