@@ -252,7 +252,6 @@ cur_state = 2
 wander_radius = null
 wander_speed = null
 working = null
-comecou_na_tela = false
 following = null
 
 [connection signal="capela_clicada" from="Capela" to="CanvasLayer/RitualModal" method="_on_capela_capela_clicada"]
