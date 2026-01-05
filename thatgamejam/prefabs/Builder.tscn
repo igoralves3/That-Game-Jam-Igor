@@ -1,5 +1,7 @@
 [gd_scene load_steps=212 format=3 uid="uid://di3myjruys03y"]
 
+[ext_resource type="AudioStream" uid="uid://luvijajfou1b" path="res://Assets/SFX/modalOpenSFX.ogg" id="28_n26oh"]
+[ext_resource type="AudioStream" uid="uid://1cv1d4x6ggsj" path="res://Assets/SFX/modalCloseSFX.ogg" id="29_kr521"]
 [ext_resource type="Script" uid="uid://dfnq36e1m05kn" path="res://scripts/builder.gd" id="1_hhugm"]
 [ext_resource type="Script" uid="uid://pggqqr4h81b1" path="res://scripts/Resources/Conversion/story.gd" id="2_n26oh"]
 [ext_resource type="Texture2D" uid="uid://ddw2eojil5ibw" path="res://Assets/Builders/Black/Pawn_Idle.png" id="2_t1bg2"]
@@ -228,8 +230,6 @@ answerReligious = "Your CREATOR remembers every moment"
 answerRational = "Birthdays are INEFFICIENT celebrations"
 answerCurse = "Nope!"
 metadata/_custom_type_script = "uid://pggqqr4h81b1"
-[ext_resource type="AudioStream" uid="uid://luvijajfou1b" path="res://Assets/SFX/modalOpenSFX.ogg" id="28_n26oh"]
-[ext_resource type="AudioStream" uid="uid://1cv1d4x6ggsj" path="res://Assets/SFX/modalCloseSFX.ogg" id="29_kr521"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7aq23"]
 atlas = ExtResource("2_t1bg2")

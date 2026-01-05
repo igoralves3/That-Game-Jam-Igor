@@ -1,7 +1,6 @@
 extends Control
 
-var cena = preload("res://CenaPrincipal.tscn")
-var cenaOptions = preload("res://Options.tscn")
+@onready var cena = preload("res://CenaPrincipal.tscn")
 
 #var button_audio = preload("res://Assets/SFX/buttonSFX.ogg")
 

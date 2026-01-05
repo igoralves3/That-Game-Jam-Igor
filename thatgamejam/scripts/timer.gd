@@ -72,8 +72,14 @@ func set_speed(multiplier: float):
 	print("Speed changed to:", speed, " | time_scale:", Engine.time_scale)
 
 func _process(delta: float) -> void:
-	if get_tree().current_scene.name == "Main":
+	var current_scene = get_tree().current_scene
+	if current_scene == null:
+		print("[ERRO] Cena atual é null!")
 		return
+
+	if current_scene.name == "Main":
+		return
+
 	if !ticking or paused:
 		return
 	
@@ -272,7 +278,3 @@ func total_vagas() -> int:
 			if alocados > 0:
 				vagas = vagas + alocados
 	return vagas
-
-			
-			
-	
