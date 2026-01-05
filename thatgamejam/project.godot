@@ -22,6 +22,7 @@ timer="*res://scripts/timer.gd"
 Bgm="*res://Audio/BGM.tscn"
 EventManagertscn="*res://EventManager.tscn"
 EventsDatabase="*res://scripts/EventsDatabase.gd"
+SFXManager="*res://Assets/SFX/SFXManager.tscn"
 
 [display]
 

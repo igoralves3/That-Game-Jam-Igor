@@ -18,12 +18,19 @@ func _ready():
 
 
 func open():
+	
 	Global.pause_game()
+	
 	visible = true
 	setup()
 	
+	SFXManager.play_open()
+	
 func close():
 	Global.resume_game()
+	
+	Global.play_close_modal_sfx()
+	
 	visible = false
 	
 

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvom4qgt1xgcd"]
+
+[ext_resource type="Script" uid="uid://vg07ewh2nchp" path="res://Assets/SFX/sfx.gd" id="1_v7m2s"]
+[ext_resource type="AudioStream" uid="uid://luvijajfou1b" path="res://Assets/SFX/modalOpenSFX.ogg" id="2_8vl0f"]
+[ext_resource type="AudioStream" uid="uid://1cv1d4x6ggsj" path="res://Assets/SFX/modalCloseSFX.ogg" id="3_heipn"]
+
+[node name="SFXManager" type="Node"]
+script = ExtResource("1_v7m2s")
+
+[node name="SFXModalOpen" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_8vl0f")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="SFXModalClose" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_heipn")
+volume_db = -10.0
+bus = &"SFX"

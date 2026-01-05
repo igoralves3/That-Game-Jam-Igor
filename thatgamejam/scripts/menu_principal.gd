@@ -4,9 +4,14 @@ extends Control
 
 #var button_audio = preload("res://Assets/SFX/buttonSFX.ogg")
 
-@onready var sfx = $AudioStreamPlayer2D
+@onready var sfx := $AudioStreamPlayer2D
+
+@onready var sfx_bus = AudioServer.get_bus_index("SFX")
 
 var current_action = 0
+
+func _ready():
+	sfx.volume_db=  Global.sfx_volume
 
 func _on_button_start_pressed() -> void:
 	sfx.play()

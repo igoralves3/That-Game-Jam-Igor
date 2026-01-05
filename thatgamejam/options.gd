@@ -30,3 +30,6 @@ func load_volume():
 	if config.load("user://settings.cfg") == OK:
 		$MusicSlider.value = config.get_value("audio", "music", 1.0)
 		$SFXSlider.value = config.get_value("audio", "sfx", 1.0)
+		
+		Global.bgm_volume = $MusicSlider.value
+		Global.sfx_volume = $SFXSlider.value

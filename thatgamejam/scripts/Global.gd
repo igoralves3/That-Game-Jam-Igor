@@ -32,15 +32,30 @@ var currentBuildType = null
 
 var currentCapela = null
 
+var bgm_volume = 0
+var sfx_volume = 0
+
+var button_audio = preload("res://Assets/SFX/buttonSFX.ogg")
+var modal_close_sfx = preload("res://Assets/SFX/modalCloseSFX.ogg")
+var modal_open_sfx = preload("res://Assets/SFX/modalOpenSFX.ogg")
+
+
+
+
 func _ready():
 	prayTimer = Timer.new()
 	add_child(prayTimer)
 	prayTimer.one_shot = true
 	prayTimer.autostart = false
 	prayTimer.timeout.connect(on_Pray_Over)
+	
+	
 
 func start_game():
 	state = GameState.PLAYING
+	
+	
+	
 	reset_game()
 
 func reset_game():
@@ -316,3 +331,9 @@ func get_all_production_preview() -> Dictionary:
 	for res_type in producers.keys():
 		totals[res_type] = calculate_total_production(res_type)
 	return totals
+
+func play_open_modal_sfx():
+	SFXManager.play_open()
+	
+func play_close_modal_sfx():
+	SFXManager.play_close()
