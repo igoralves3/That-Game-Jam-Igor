@@ -203,23 +203,18 @@ tile_set = SubResource("TileSet_fos0i")
 
 [node name="Alojamento" parent="." groups=["Constructions"] instance=ExtResource("3_lgr22")]
 position = Vector2(191, 389)
-scale = Vector2(0.5, 0.5)
 
 [node name="Fazenda" parent="." instance=ExtResource("4_trn2v")]
 position = Vector2(150, 224)
-workers = 1
 
 [node name="Madeireira" parent="." instance=ExtResource("5_03owx")]
 position = Vector2(951, 230)
-workers = 2
 
 [node name="Minas" parent="." instance=ExtResource("6_wkp8b")]
 position = Vector2(750, 302)
-workers = 3
 
 [node name="Capela" parent="." instance=ExtResource("7_20pc6")]
 position = Vector2(600, 192)
 
 [node name="Alojamento2" parent="." groups=["Constructions"] instance=ExtResource("3_lgr22")]
 position = Vector2(1132, 416)
-scale = Vector2(0.5, 0.5)

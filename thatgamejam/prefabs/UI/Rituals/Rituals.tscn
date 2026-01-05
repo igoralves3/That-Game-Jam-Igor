@@ -21,7 +21,7 @@ reward = {
 "faith": 100
 }
 single = false
-time = 15.0
+time = 2.0
 metadata/_custom_type_script = "uid://e1s4bkec4hxa"
 
 [sub_resource type="Resource" id="Resource_fxt4u"]
@@ -37,7 +37,7 @@ reward = {
 "faith": 200
 }
 single = true
-time = 15.0
+time = 5.0
 metadata/_custom_type_script = "uid://e1s4bkec4hxa"
 
 [sub_resource type="Resource" id="Resource_a1npl"]
@@ -55,14 +55,14 @@ reward = {
 "wood": 50
 }
 single = false
-time = 15.0
+time = 10.0
 metadata/_custom_type_script = "uid://e1s4bkec4hxa"
 
 [sub_resource type="Resource" id="Resource_bpuiq"]
 script = ExtResource("3_jd1kl")
 title = "Ritual of Greed"
 icon = ExtResource("7_fxt4u")
-level = 12
+level = 8
 cost = {
 "faith": 200,
 "pop": 5
@@ -71,21 +71,22 @@ reward = {
 "money": 200
 }
 single = false
-time = 15.0
+time = 10.0
 metadata/_custom_type_script = "uid://e1s4bkec4hxa"
 
-[sub_resource type="Resource" id="Resource_hhdu8"]
+[sub_resource type="Resource" id="Resource_5sdwv"]
 script = ExtResource("3_jd1kl")
-title = "Ritual of Happiness"
-icon = ExtResource("6_jo6vy")
-level = 1
-cost = {}
-reward = {
-"faith": 50,
-"happiness": 0.15
+title = "Become God"
+icon = ExtResource("7_fxt4u")
+level = 12
+cost = {
+"faith": 1000,
+"money": 1000,
+"wood": 1000
 }
+reward = {}
 single = false
-time = 15.0
+time = 2.0
 metadata/_custom_type_script = "uid://e1s4bkec4hxa"
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fxt4u"]
@@ -105,7 +106,7 @@ anchors_preset = 0
 offset_right = 1280.0
 offset_bottom = 720.0
 script = ExtResource("2_dd0kr")
-lista_de_rituais = Array[ExtResource("3_jd1kl")]([SubResource("Resource_jo6vy"), SubResource("Resource_fxt4u"), SubResource("Resource_a1npl"), SubResource("Resource_bpuiq"), SubResource("Resource_hhdu8")])
+lista_de_rituais = Array[ExtResource("3_jd1kl")]([SubResource("Resource_jo6vy"), SubResource("Resource_fxt4u"), SubResource("Resource_a1npl"), SubResource("Resource_bpuiq"), SubResource("Resource_5sdwv")])
 ritual_button_prefab = ExtResource("3_dd0kr")
 ItemBoxObject = ExtResource("7_fggcg")
 

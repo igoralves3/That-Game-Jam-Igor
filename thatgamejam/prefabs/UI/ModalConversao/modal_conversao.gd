@@ -63,3 +63,4 @@ func _on_rational_pressed():
 
 func _on_refusal_pressed():
 	follower.queue_free()
+	close()
