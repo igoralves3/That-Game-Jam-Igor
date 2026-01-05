@@ -63,6 +63,9 @@ func _on_option_selected(option: EventOption):
 	apply_effects(option.effects)
 	
 	Global.resume_game()
+	
+	Global.play_close_modal_sfx()
+	
 	visible = false
 	
 func apply_effects(effects: Dictionary):
