@@ -1509,6 +1509,10 @@ shape = SubResource("RectangleShape2D_hhugm")
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 2.0
 target_desired_distance = 4.0
+avoidance_enabled = true
+neighbor_distance = 100.0
+time_horizon_agents = 3.0
+time_horizon_obstacles = 3.0
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 180.0

@@ -44,6 +44,8 @@ func _ready():
 	dialogo = get_tree().get_first_node_in_group("Canvas")
 	color = possibleColors.pick_random()
 	
+	agent.velocity_computed.connect(_on_velocity_computed)
+	
 	if comecou_na_tela and not following:
 		await wait_for_navigation_ready()
 		following = true
@@ -117,7 +119,7 @@ func _physics_process(delta):
 	animation_controller()
 
 func process_entering():
-	
+	$CollisionShape2D.disabled = false
 	if global_position.x > get_viewport().get_visible_rect().size.x/2:
 		velocity.x = -50
 
@@ -128,7 +130,7 @@ func process_entering():
 	
 
 func process_wander():
-	
+	$CollisionShape2D.disabled = false
 
 	var next_position = agent.get_next_path_position()
 	var direction = (next_position - global_position).normalized()
@@ -250,6 +252,7 @@ func enter_working():
 		cur_state = Builder.SeguidorState.Woodwork
 
 func process_working():
+	$CollisionShape2D.disabled = false
 	if building is Fazenda:
 		print('working at farm')
 	elif building is Minas:
@@ -280,10 +283,12 @@ func process_working():
 	move_and_slide()
 
 func process_hidden():
+	$CollisionShape2D.disabled = true
 	visible = false
 	print('working and visible = ' + str(visible))
 	
 func process_sleeping():
+	$CollisionShape2D.disabled = false
 	print(str(self) + ' is sleeping')
 	
 	if  global_position.distance_to(alojamento.global_position) < 10.0:
@@ -305,6 +310,7 @@ func process_sleeping():
 	move_and_slide()
 	
 func enter_sleeping():
+	$CollisionShape2D.disabled = false
 	timer.stop()
 	if building != null:
 		if building.workers > 0:
@@ -354,6 +360,7 @@ func enter_praying():
 	
 	
 func process_go_praying():
+	$CollisionShape2D.disabled = false
 	print('going to capela ' + str(capela))
 	
 	if  global_position.distance_to(capela.global_position) < 20.0:
@@ -372,6 +379,7 @@ func process_go_praying():
 	move_and_slide()
 	
 func process_praying():
+	$CollisionShape2D.disabled = true
 	visible = false
 	print('praying at ' + str(capela))
 	
@@ -379,3 +387,7 @@ func open_dialog():
 	dialogo.follower = self
 	dialogo.dilema = currentDilema
 	dialogo.open()
+
+func _on_velocity_computed(safe_velocity: Vector2):
+	velocity = safe_velocity
+	move_and_slide()
