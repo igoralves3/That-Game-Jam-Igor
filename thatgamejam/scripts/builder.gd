@@ -175,12 +175,13 @@ func _on_navigation_agent_2d_navigation_finished() -> void:
 
 func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton:
-		z_index=0
+		#z_index=0
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			#if Global.currentFollower != self 
 			Global.currentFollower = self
 			#if cur_state == SeguidorState.Stopped:	
 			if following == false:
+				following = true
 				Global.currentFollower = self
 				open_dialog()
 				

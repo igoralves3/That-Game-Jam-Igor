@@ -1,7 +1,5 @@
-[gd_scene load_steps=212 format=3 uid="uid://di3myjruys03y"]
+[gd_scene load_steps=214 format=3 uid="uid://di3myjruys03y"]
 
-[ext_resource type="AudioStream" uid="uid://luvijajfou1b" path="res://Assets/SFX/modalOpenSFX.ogg" id="28_n26oh"]
-[ext_resource type="AudioStream" uid="uid://1cv1d4x6ggsj" path="res://Assets/SFX/modalCloseSFX.ogg" id="29_kr521"]
 [ext_resource type="Script" uid="uid://dfnq36e1m05kn" path="res://scripts/builder.gd" id="1_hhugm"]
 [ext_resource type="Script" uid="uid://pggqqr4h81b1" path="res://scripts/Resources/Conversion/story.gd" id="2_n26oh"]
 [ext_resource type="Texture2D" uid="uid://ddw2eojil5ibw" path="res://Assets/Builders/Black/Pawn_Idle.png" id="2_t1bg2"]
@@ -30,6 +28,8 @@
 [ext_resource type="Texture2D" uid="uid://c37tk7wtti6wr" path="res://Assets/Builders/Yellow/Pawn_Run Knife.png" id="25_kr521"]
 [ext_resource type="Texture2D" uid="uid://bjj17ot818m0t" path="res://Assets/Builders/Yellow/Pawn_Run Pickaxe.png" id="26_elbge"]
 [ext_resource type="Script" uid="uid://di0qcvmkfd7q" path="res://scripts/area_2d_builder.gd" id="27_o8xjp"]
+[ext_resource type="AudioStream" uid="uid://luvijajfou1b" path="res://Assets/SFX/modalOpenSFX.ogg" id="28_n26oh"]
+[ext_resource type="AudioStream" uid="uid://1cv1d4x6ggsj" path="res://Assets/SFX/modalCloseSFX.ogg" id="29_kr521"]
 
 [sub_resource type="Resource" id="Resource_kr521"]
 script = ExtResource("2_n26oh")
@@ -1488,12 +1488,6 @@ size = Vector2(48, 72)
 [node name="Builder" type="CharacterBody2D"]
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_hhugm")
-cur_state = null
-wander_radius = null
-wander_speed = null
-working = null
-comecou_na_tela = null
-following = null
 dilemaList = Array[ExtResource("2_n26oh")]([SubResource("Resource_kr521"), SubResource("Resource_elbge"), SubResource("Resource_3qpfs"), SubResource("Resource_g5ihw"), SubResource("Resource_n26oh"), SubResource("Resource_8llke"), SubResource("Resource_og4do"), SubResource("Resource_1b58m"), SubResource("Resource_uf6k2"), SubResource("Resource_23x0n"), SubResource("Resource_qqwhs"), SubResource("Resource_myr05"), SubResource("Resource_n5c80"), SubResource("Resource_6oxyv"), SubResource("Resource_5a8ea"), SubResource("Resource_tse4q"), SubResource("Resource_nv01b"), SubResource("Resource_y0n7a"), SubResource("Resource_8evks"), SubResource("Resource_cf1rh")])
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
