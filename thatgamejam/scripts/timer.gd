@@ -234,11 +234,15 @@ func _change_turn() -> void:
 					#f.cur_state = Builder.SeguidorState.Working#Builder.SeguidorState.Wander
 					
 				
-		var vagas = total_vagas()		
-			
-		
-		for i in range(0,randi_range(1,vagas)):
-			spawn_followers()
+		var total_capacidade = total_capacidade_alojamentos()
+		var followers_atuais = get_tree().get_nodes_in_group("Followers").size()
+		var vagas_disponiveis = total_capacidade - followers_atuais
+	
+	
+		if vagas_disponiveis > 0:
+			var num_to_spawn = randi_range(1, vagas_disponiveis)
+			for i in range(num_to_spawn):
+				spawn_followers()
 
 func _start_tick_loop():
 	while ticking:
@@ -275,12 +279,10 @@ func spawn_followers():
 		add_child(agente)
 		agente.add_to_group("Followers")
 
-func total_vagas() -> int:
-	var vagas = 0
+func total_capacidade_alojamentos() -> int:
+	var capacidade_total = 0
 	var alojamentos = get_tree().get_nodes_in_group("Alojamento")
 	for a in alojamentos:
 		if a is Alojamento:
-			var alocados = a.max_seguidores-a.seguidores_alocados
-			if alocados > 0:
-				vagas = vagas + alocados
-	return vagas
+			capacidade_total += a.max_seguidores
+	return capacidade_total
