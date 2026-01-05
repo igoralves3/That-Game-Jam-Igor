@@ -72,6 +72,8 @@ func set_speed(multiplier: float):
 	print("Speed changed to:", speed, " | time_scale:", Engine.time_scale)
 
 func _process(delta: float) -> void:
+	if get_tree().current_scene.name == "Main":
+		return
 	if !ticking or paused:
 		return
 	

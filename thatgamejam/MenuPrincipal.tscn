@@ -1,55 +1,82 @@
-[gd_scene load_steps=3 format=3 uid="uid://dfucmaamm4jhv"]
+[gd_scene load_steps=9 format=3 uid="uid://dfucmaamm4jhv"]
 
 [ext_resource type="Script" uid="uid://jw2m8yd0at51" path="res://scripts/menu_principal.gd" id="1_0oe1n"]
 [ext_resource type="AudioStream" uid="uid://cexnxedtm7cwx" path="res://Assets/SFX/buttonSFX.ogg" id="2_ba235"]
+[ext_resource type="StyleBox" uid="uid://b1q0csf56v7d0" path="res://prefabs/UI/Option_style_disabled.tres" id="2_ectly"]
+[ext_resource type="Texture2D" uid="uid://c56tbw4o5k3nu" path="res://Assets/UI elems 2.0/Banner_Vertical.png" id="2_knros"]
+[ext_resource type="StyleBox" uid="uid://1e4v4cmqh3my" path="res://prefabs/UI/Option_style_hover.tres" id="3_knros"]
+[ext_resource type="StyleBox" uid="uid://bl0sk7l858r3o" path="res://prefabs/UI/Option_style.tres" id="4_oh4jq"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_oh4jq"]
+font_size = 64
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_348rq"]
+texture = ExtResource("2_knros")
+texture_margin_left = 64.0
+texture_margin_top = 64.0
+texture_margin_right = 64.0
+texture_margin_bottom = 64.0
 
 [node name="MenuPrincipal" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 720.0
 script = ExtResource("1_0oe1n")
 
-[node name="ButtonStart" type="Button" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
-offset_left = 524.0
-offset_top = 238.0
-offset_right = 620.0
-offset_bottom = 269.0
-scale = Vector2(3.56, 1.76)
-text = "Start Game"
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0, 0, 0, 0.490196)
 
-[node name="ButtonExit" type="Button" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 524.0
-offset_top = 463.0
-offset_right = 620.0
+offset_left = 488.0
+offset_top = 128.0
+offset_right = 797.0
 offset_bottom = 494.0
-scale = Vector2(3.56, 1.76)
+theme_override_constants/separation = 32
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Cult of cults"
+label_settings = SubResource("LabelSettings_oh4jq")
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_348rq")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="ButtonStart" type="Button" parent="VBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/disabled = ExtResource("2_ectly")
+theme_override_styles/hover = ExtResource("3_knros")
+theme_override_styles/normal = ExtResource("4_oh4jq")
+text = "New Game"
+
+[node name="ButtonLoad" type="Button" parent="VBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/disabled = ExtResource("2_ectly")
+theme_override_styles/hover = ExtResource("3_knros")
+theme_override_styles/normal = ExtResource("4_oh4jq")
+text = "Load Game"
+
+[node name="ButtonExit" type="Button" parent="VBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/disabled = ExtResource("2_ectly")
+theme_override_styles/hover = ExtResource("3_knros")
+theme_override_styles/normal = ExtResource("4_oh4jq")
 text = "Exit Game"
-
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 514.0
-offset_top = 69.0
-offset_right = 554.0
-offset_bottom = 92.0
-scale = Vector2(3.52, 3.56)
-text = "Nome do Jogo"
-
-[node name="ButtonOptions" type="Button" parent="."]
-layout_mode = 0
-offset_left = 524.0
-offset_top = 327.0
-offset_right = 620.0
-offset_bottom = 358.0
-scale = Vector2(3.56, 1.76)
-text = "Options"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_ba235")
 volume_db = -10.0
 bus = &"SFX"
 
-[connection signal="pressed" from="ButtonStart" to="." method="_on_button_start_pressed"]
-[connection signal="pressed" from="ButtonExit" to="." method="_on_button_exit_pressed"]
-[connection signal="pressed" from="ButtonOptions" to="." method="_on_button_options_pressed"]
+[connection signal="pressed" from="VBoxContainer/PanelContainer/VBoxContainer/ButtonStart" to="." method="_on_button_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/PanelContainer/VBoxContainer/ButtonLoad" to="." method="_on_button_load_pressed"]
+[connection signal="pressed" from="VBoxContainer/PanelContainer/VBoxContainer/ButtonExit" to="." method="_on_button_exit_pressed"]
 [connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]

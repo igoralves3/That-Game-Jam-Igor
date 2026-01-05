@@ -10,8 +10,8 @@ config_version=5
 
 [application]
 
-config/name="ThatGameJam"
-run/main_scene="uid://b4ty43kpbs2hv"
+config/name="Cult of cults"
+run/main_scene="uid://dxc85e3jn6qg5"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
