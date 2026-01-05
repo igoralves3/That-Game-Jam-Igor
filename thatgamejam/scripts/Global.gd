@@ -16,7 +16,7 @@ var happiness: float = 1.0
 var money: int = 100
 
 var religionLvl: int = 1
-var requirementsToLvlUp: Array[Dictionary] = [{"pop": 5}, {"pop": 10}, {"pop": 15}, {"pop": 25}, {"pop": 40}, {"pop":65}, {"pop": 105}, {"pop": 170}, {"pop": 275}, {"pop": 445}, {"pop": 720}, {"pop": 1000}]
+var requirementsToLvlUp: Array[Dictionary] = [{"pop": 8}, {"pop": 16}, {"pop": 24}, {"pop": 32}, {"pop": 40}, {"pop":48}, {"pop": 56}, {"pop": 74}, {"pop": 82}, {"pop": 90}, {"pop": 98}, {"pop": 110}]
 var requirementIndex:= 0
 
 @onready var prayTimer: Timer

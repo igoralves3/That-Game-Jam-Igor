@@ -28,7 +28,7 @@ func _process(delta):
 		$AnimationPlayer.play("active")
 	else:
 		$AnimationPlayer.stop()
-		self.scale = Vector2(1, 1)
+		self.scale = Vector2(0.5, 0.5)
 
 func get_save_data():
 	return {
